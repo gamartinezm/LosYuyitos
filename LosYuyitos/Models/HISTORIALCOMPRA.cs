@@ -16,9 +16,9 @@ namespace LosYuyitos.Models
         }
 
         [Key]
-        public decimal HISTORIALID { get; set; }
+        public int HISTORIALID { get; set; }
 
-        public decimal COMPROBANTEID { get; set; }
+        public int COMPROBANTEID { get; set; }
 
         public DateTime? FECHAMODIFICACION { get; set; }
 

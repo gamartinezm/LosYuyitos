@@ -10,7 +10,7 @@ using LosYuyitos.Models;
 
 namespace LosYuyitos.Controllers
 {
-    [Authorize] //Se utiliza para bloquear el acceso a personas no registradas. Si es borrado o comentado, cualquier persona puede acceder a los datos.
+    //[Authorize] //Se utiliza para bloquear el acceso a personas no registradas. Si es borrado o comentado, cualquier persona puede acceder a los datos.
     public class PersonaController : Controller
     {
         private YuyitosModel db = new YuyitosModel();
@@ -23,7 +23,7 @@ namespace LosYuyitos.Controllers
         }
 
         // GET: Persona/Details/5
-        public ActionResult Details(decimal id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
@@ -65,7 +65,7 @@ namespace LosYuyitos.Controllers
         }
 
         // GET: Persona/Edit/5
-        public ActionResult Edit(decimal id)
+        public ActionResult Edit(int id)
         {
             if (id == null)
             {
@@ -100,7 +100,7 @@ namespace LosYuyitos.Controllers
         }
 
         // GET: Persona/Delete/5
-        public ActionResult Delete(decimal id)
+        public ActionResult Delete(int id)
         {
             if (id == null)
             {
@@ -117,7 +117,7 @@ namespace LosYuyitos.Controllers
         // POST: Persona/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(decimal id)
+        public ActionResult DeleteConfirmed(int id)
         {
             PERSONA pERSONA = db.PERSONA.Find(id);
             db.PERSONA.Remove(pERSONA);

@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             PERSONA = new HashSet<PERSONA>();
         }
 
-        public decimal GENEROID { get; set; }
+        public int GENEROID { get; set; }
 
         [StringLength(15)]
         public string NOMBRE { get; set; }

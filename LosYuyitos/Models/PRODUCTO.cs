@@ -17,21 +17,21 @@ namespace LosYuyitos.Models
             ORDENPEDIDO = new HashSet<ORDENPEDIDO>();
         }
 
-        public decimal PRODUCTOID { get; set; }
+        public int PRODUCTOID { get; set; }
 
-        public decimal TIPOPRODUCTOID { get; set; }
+        public int TIPOPRODUCTOID { get; set; }
 
-        public decimal PROVEEDORID { get; set; }
+        public int PROVEEDORID { get; set; }
 
-        public decimal MEDIDAID { get; set; }
+        public int MEDIDAID { get; set; }
 
         [Required]
         [StringLength(100)]
         public string DESCRIPCION { get; set; }
 
-        public decimal? PRECIOVENTA { get; set; }
+        public int? PRECIOVENTA { get; set; }
 
-        public decimal PRECIOCOMPRA { get; set; }
+        public int PRECIOCOMPRA { get; set; }
 
         public DateTime? FECHAVENCIMIENTO { get; set; }
 

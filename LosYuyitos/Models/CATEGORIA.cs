@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             CLIENTE = new HashSet<CLIENTE>();
         }
 
-        public decimal CATEGORIAID { get; set; }
+        public int CATEGORIAID { get; set; }
 
         [StringLength(50)]
         public string NOMBRE { get; set; }

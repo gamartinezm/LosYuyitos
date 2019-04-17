@@ -16,7 +16,7 @@ namespace LosYuyitos.Models
         }
 
         [Key]
-        public decimal TIPOPRODUCTOID { get; set; }
+        public int TIPOPRODUCTOID { get; set; }
 
         [StringLength(50)]
         public string DESCRIPCION { get; set; }

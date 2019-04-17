@@ -15,11 +15,11 @@ namespace LosYuyitos.Models
             COMPROBANTE = new HashSet<COMPROBANTE>();
         }
 
-        public decimal VENTADETALLEID { get; set; }
+        public int VENTADETALLEID { get; set; }
 
-        public decimal PRODUCTOID { get; set; }
+        public int PRODUCTOID { get; set; }
 
-        public decimal CLIENTEID { get; set; }
+        public int CLIENTEID { get; set; }
 
         public virtual CLIENTE CLIENTE { get; set; }
 

@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             PROVEEDOR = new HashSet<PROVEEDOR>();
         }
 
-        public decimal RUBROID { get; set; }
+        public int RUBROID { get; set; }
 
         [StringLength(50)]
         public string NOMBRE { get; set; }

@@ -16,7 +16,7 @@ namespace LosYuyitos.Models
             USUARIO = new HashSet<USUARIO>();
         }
 
-        public decimal PERSONAID { get; set; }
+        public int PERSONAID { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -34,7 +34,7 @@ namespace LosYuyitos.Models
         [StringLength(10)]
         public string RUT { get; set; }
 
-        public decimal GENERO { get; set; }
+        public int GENERO { get; set; }
 
         public DateTime? FECHANACIMIENTO { get; set; }
 
@@ -44,7 +44,7 @@ namespace LosYuyitos.Models
         [StringLength(30)]
         public string NUMERO { get; set; }
 
-        public decimal COMUNAID { get; set; }
+        public int COMUNAID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLIENTE> CLIENTE { get; set; }
