@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Modulo Personas</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ingresar nueva persona", "Create")
 </p>
 <table class="table">
     <tr>
@@ -72,9 +72,9 @@
             @Html.DisplayFor(modelItem => item.NUMERO)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PERSONAID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PERSONAID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PERSONAID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.PERSONAID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.PERSONAID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.PERSONAID })
         </td>
     </tr>
 }
