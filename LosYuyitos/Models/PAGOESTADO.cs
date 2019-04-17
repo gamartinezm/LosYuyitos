@@ -16,7 +16,7 @@ namespace LosYuyitos.Models
         }
 
         [Key]
-        public decimal ESTADOID { get; set; }
+        public int ESTADOID { get; set; }
 
         [StringLength(50)]
         public string NOMBRE { get; set; }

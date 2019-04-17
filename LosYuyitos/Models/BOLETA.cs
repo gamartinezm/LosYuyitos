@@ -9,11 +9,11 @@ namespace LosYuyitos.Models
     [Table("PORTAFOLIO.BOLETA")]
     public partial class BOLETA
     {
-        public decimal BOLETAID { get; set; }
+        public int BOLETAID { get; set; }
 
-        public decimal LISTADOID { get; set; }
+        public int LISTADOID { get; set; }
 
-        public decimal VENTAID { get; set; }
+        public int VENTAID { get; set; }
 
         public virtual HISTORIALCOMPRA HISTORIALCOMPRA { get; set; }
     }

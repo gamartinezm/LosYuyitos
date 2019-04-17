@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             USUARIO = new HashSet<USUARIO>();
         }
 
-        public decimal PERFILID { get; set; }
+        public int PERFILID { get; set; }
 
         [StringLength(50)]
         public string NOMBRE { get; set; }
