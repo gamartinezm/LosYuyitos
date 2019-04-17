@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             COMPROBANTE = new HashSet<COMPROBANTE>();
         }
 
-        public int TIPOPAGOID { get; set; }
+        public decimal TIPOPAGOID { get; set; }
 
         [Required]
         [StringLength(50)]

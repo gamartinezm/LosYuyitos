@@ -10,13 +10,13 @@ namespace LosYuyitos.Models
     public partial class STOCK
     {
         [Key]
-        public int INVENTARIOID { get; set; }
+        public decimal INVENTARIOID { get; set; }
 
-        public int PRODUCTOID { get; set; }
+        public decimal PRODUCTOID { get; set; }
 
-        public int? TOTAL { get; set; }
+        public decimal? TOTAL { get; set; }
 
-        public int STOCKCRITICO { get; set; }
+        public decimal STOCKCRITICO { get; set; }
 
         public virtual PRODUCTO PRODUCTO { get; set; }
     }

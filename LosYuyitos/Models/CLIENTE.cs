@@ -15,11 +15,11 @@ namespace LosYuyitos.Models
             VENTADETALLE = new HashSet<VENTADETALLE>();
         }
 
-        public int CLIENTEID { get; set; }
+        public decimal CLIENTEID { get; set; }
 
-        public int PERSONAID { get; set; }
+        public decimal PERSONAID { get; set; }
 
-        public int CATEGORIAID { get; set; }
+        public decimal CATEGORIAID { get; set; }
 
         public virtual CATEGORIA CATEGORIA { get; set; }
 

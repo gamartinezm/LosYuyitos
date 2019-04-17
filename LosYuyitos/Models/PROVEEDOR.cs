@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             PRODUCTO = new HashSet<PRODUCTO>();
         }
 
-        public int PROVEEDORID { get; set; }
+        public decimal PROVEEDORID { get; set; }
 
         [Required]
         [StringLength(10)]
@@ -25,7 +25,7 @@ namespace LosYuyitos.Models
         [StringLength(100)]
         public string RAZONSOCIAL { get; set; }
 
-        public int? TELEFONO { get; set; }
+        public decimal? TELEFONO { get; set; }
 
         [StringLength(100)]
         public string MAIL { get; set; }
@@ -33,7 +33,7 @@ namespace LosYuyitos.Models
         [StringLength(50)]
         public string CONTACTO { get; set; }
 
-        public int RUBROID { get; set; }
+        public decimal RUBROID { get; set; }
 
         [StringLength(100)]
         public string CALLE { get; set; }
@@ -41,7 +41,7 @@ namespace LosYuyitos.Models
         [StringLength(20)]
         public string NUMERO { get; set; }
 
-        public int COMUNAID { get; set; }
+        public decimal COMUNAID { get; set; }
 
         public virtual COMUNA COMUNA { get; set; }
 

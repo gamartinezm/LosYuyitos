@@ -15,11 +15,11 @@ namespace LosYuyitos.Models
             COMPROBANTE = new HashSet<COMPROBANTE>();
         }
 
-        public int USUARIOID { get; set; }
+        public decimal USUARIOID { get; set; }
 
-        public int PERSONAID { get; set; }
+        public decimal PERSONAID { get; set; }
 
-        public int PERFILID { get; set; }
+        public decimal PERFILID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }

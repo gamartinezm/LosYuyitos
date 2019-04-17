@@ -38,16 +38,20 @@ namespace LosYuyitos.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BOLETA>()
-                .Property(e => e.BOLETAID);
+                .Property(e => e.BOLETAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<BOLETA>()
-                .Property(e => e.LISTADOID);
+                .Property(e => e.LISTADOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<BOLETA>()
-                .Property(e => e.VENTAID);
+                .Property(e => e.VENTAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<CATEGORIA>()
-                .Property(e => e.CATEGORIAID);                
+                .Property(e => e.CATEGORIAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<CATEGORIA>()
                 .Property(e => e.NOMBRE)
@@ -63,13 +67,16 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CLIENTE>()
-                .Property(e => e.CLIENTEID);
+                .Property(e => e.CLIENTEID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<CLIENTE>()
-                .Property(e => e.PERSONAID);
+                .Property(e => e.PERSONAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<CLIENTE>()
-                .Property(e => e.CATEGORIAID);                
+                .Property(e => e.CATEGORIAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<CLIENTE>()
                 .HasMany(e => e.VENTADETALLE)
@@ -77,19 +84,24 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.COMPROBANTEID);
+                .Property(e => e.COMPROBANTEID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.VENTADETALLEID);
+                .Property(e => e.VENTADETALLEID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.TIPOPAGOID);
+                .Property(e => e.TIPOPAGOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.ESTADOID);
+                .Property(e => e.ESTADOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.USUARIOID);                
+                .Property(e => e.USUARIOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<COMPROBANTE>()
                 .HasMany(e => e.HISTORIALCOMPRA)
@@ -97,14 +109,16 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<COMUNA>()
-                .Property(e => e.COMUNAID);                
+                .Property(e => e.COMUNAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<COMUNA>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
             modelBuilder.Entity<COMUNA>()
-                .Property(e => e.REGIONID);                
+                .Property(e => e.REGIONID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<COMUNA>()
                 .HasMany(e => e.PERSONA)
@@ -117,7 +131,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<FAMILIAPRODUCTO>()
-                .Property(e => e.TIPOPRODUCTOID);                
+                .Property(e => e.TIPOPRODUCTOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<FAMILIAPRODUCTO>()
                 .Property(e => e.DESCRIPCION)
@@ -129,7 +144,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<GENERO>()
-                .Property(e => e.GENEROID);                
+                .Property(e => e.GENEROID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<GENERO>()
                 .Property(e => e.NOMBRE)
@@ -142,10 +158,12 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<HISTORIALCOMPRA>()
-                .Property(e => e.HISTORIALID);
+                .Property(e => e.HISTORIALID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<HISTORIALCOMPRA>()
-                .Property(e => e.COMPROBANTEID);                
+                .Property(e => e.COMPROBANTEID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<HISTORIALCOMPRA>()
                 .HasMany(e => e.BOLETA)
@@ -154,7 +172,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ORDENESTADO>()
-                .Property(e => e.ORDENESTADOID);                
+                .Property(e => e.ORDENESTADOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<ORDENESTADO>()
                 .Property(e => e.ESTADO)
@@ -167,17 +186,20 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ORDENPEDIDO>()
-                .Property(e => e.ORDENPEDIDOID);
+                .Property(e => e.ORDENPEDIDOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<ORDENPEDIDO>()
-                .Property(e => e.PRODUCTOID);                
+                .Property(e => e.PRODUCTOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<ORDENPEDIDO>()
                 .Property(e => e.ESTADO)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ORDENPEDIDO>()
-                .Property(e => e.ORDENESTADOID);                
+                .Property(e => e.ORDENESTADOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<ORDENPEDIDO>()
                 .HasMany(e => e.PRODUCTO)
@@ -185,7 +207,8 @@ namespace LosYuyitos.Models
                 .Map(m => m.ToTable("DETALLEPEDIDO", "PORTAFOLIO").MapLeftKey("ORDENPEDIDOID").MapRightKey("PRODUCTOID"));
 
             modelBuilder.Entity<PAGOESTADO>()
-                .Property(e => e.ESTADOID);                
+                .Property(e => e.ESTADOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PAGOESTADO>()
                 .Property(e => e.NOMBRE)
@@ -201,7 +224,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PERFIL>()
-                .Property(e => e.PERFILID);                
+                .Property(e => e.PERFILID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PERFIL>()
                 .Property(e => e.NOMBRE)
@@ -217,7 +241,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.PERSONAID);                
+                .Property(e => e.PERSONAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PERSONA>()
                 .Property(e => e.NOMBRE)
@@ -236,7 +261,8 @@ namespace LosYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.GENERO);                
+                .Property(e => e.GENERO)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PERSONA>()
                 .Property(e => e.CALLE)
@@ -247,7 +273,8 @@ namespace LosYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.COMUNAID);                
+                .Property(e => e.COMUNAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PERSONA>()
                 .HasMany(e => e.CLIENTE)
@@ -260,26 +287,32 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PRODUCTOID);
+                .Property(e => e.PRODUCTOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.TIPOPRODUCTOID);
+                .Property(e => e.TIPOPRODUCTOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PROVEEDORID);
+                .Property(e => e.PROVEEDORID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.MEDIDAID);                
+                .Property(e => e.MEDIDAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PRODUCTO>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PRECIOVENTA);
+                .Property(e => e.PRECIOVENTA)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PRECIOCOMPRA);                
+                .Property(e => e.PRECIOCOMPRA)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PRODUCTO>()
                 .HasMany(e => e.STOCK)
@@ -292,7 +325,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.PROVEEDORID);                
+                .Property(e => e.PROVEEDORID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .Property(e => e.RUT)
@@ -303,7 +337,8 @@ namespace LosYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.TELEFONO);                
+                .Property(e => e.TELEFONO)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .Property(e => e.MAIL)
@@ -314,7 +349,8 @@ namespace LosYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.RUBROID);                
+                .Property(e => e.RUBROID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .Property(e => e.CALLE)
@@ -325,7 +361,8 @@ namespace LosYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.COMUNAID);                
+                .Property(e => e.COMUNAID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .HasMany(e => e.PRODUCTO)
@@ -333,16 +370,16 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<REGION>()
-                .Property(e => e.REGIONID);
-                
+                .Property(e => e.REGIONID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<REGION>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
             modelBuilder.Entity<REGION>()
-                .Property(e => e.ORDEN);
-                
+                .Property(e => e.ORDEN)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<REGION>()
                 .HasMany(e => e.COMUNA)
@@ -350,8 +387,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RUBRO>()
-                .Property(e => e.RUBROID);
-                
+                .Property(e => e.RUBROID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<RUBRO>()
                 .Property(e => e.NOMBRE)
@@ -367,24 +404,24 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<STOCK>()
-                .Property(e => e.INVENTARIOID);
-
-
-            modelBuilder.Entity<STOCK>()
-                .Property(e => e.PRODUCTOID);
-
+                .Property(e => e.INVENTARIOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<STOCK>()
-                .Property(e => e.TOTAL);
-
+                .Property(e => e.PRODUCTOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<STOCK>()
-                .Property(e => e.STOCKCRITICO);
+                .Property(e => e.TOTAL)
+                .HasPrecision(38, 0);
 
+            modelBuilder.Entity<STOCK>()
+                .Property(e => e.STOCKCRITICO)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<TIPOPAGO>()
-                .Property(e => e.TIPOPAGOID);
-                
+                .Property(e => e.TIPOPAGOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<TIPOPAGO>()
                 .Property(e => e.NOMBRE)
@@ -400,8 +437,8 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TIPOPRODUCTO>()
-                .Property(e => e.TIPOPRODUCTOID);
-                
+                .Property(e => e.TIPOPRODUCTOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<TIPOPRODUCTO>()
                 .Property(e => e.TIPO)
@@ -422,16 +459,16 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<USUARIO>()
-                .Property(e => e.USUARIOID);
-
-
-            modelBuilder.Entity<USUARIO>()
-                .Property(e => e.PERSONAID);
-
+                .Property(e => e.USUARIOID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<USUARIO>()
-                .Property(e => e.PERFILID);
-                
+                .Property(e => e.PERSONAID)
+                .HasPrecision(38, 0);
+
+            modelBuilder.Entity<USUARIO>()
+                .Property(e => e.PERFILID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<USUARIO>()
                 .HasMany(e => e.COMPROBANTE)
@@ -439,15 +476,16 @@ namespace LosYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.VENTADETALLEID);
-
-
-            modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.PRODUCTOID);
-                
+                .Property(e => e.VENTADETALLEID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.CLIENTEID);
+                .Property(e => e.PRODUCTOID)
+                .HasPrecision(38, 0);
+
+            modelBuilder.Entity<VENTADETALLE>()
+                .Property(e => e.CLIENTEID)
+                .HasPrecision(38, 0);
 
             modelBuilder.Entity<VENTADETALLE>()
                 .HasMany(e => e.COMPROBANTE)

@@ -15,16 +15,16 @@ namespace LosYuyitos.Models
             PRODUCTO = new HashSet<PRODUCTO>();
         }
 
-        public int ORDENPEDIDOID { get; set; }
+        public decimal ORDENPEDIDOID { get; set; }
 
-        public int PRODUCTOID { get; set; }
+        public decimal PRODUCTOID { get; set; }
 
         public DateTime? FECHACREACION { get; set; }
 
         [StringLength(100)]
         public string ESTADO { get; set; }
 
-        public int ORDENESTADOID { get; set; }
+        public decimal ORDENESTADOID { get; set; }
 
         public virtual ORDENESTADO ORDENESTADO { get; set; }
 

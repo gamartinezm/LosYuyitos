@@ -16,12 +16,12 @@ namespace LosYuyitos.Models
             PROVEEDOR = new HashSet<PROVEEDOR>();
         }
 
-        public int COMUNAID { get; set; }
+        public decimal COMUNAID { get; set; }
 
         [StringLength(50)]
         public string NOMBRE { get; set; }
 
-        public int REGIONID { get; set; }
+        public decimal REGIONID { get; set; }
 
         public virtual REGION REGION { get; set; }
 

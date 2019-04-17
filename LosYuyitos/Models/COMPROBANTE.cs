@@ -15,17 +15,17 @@ namespace LosYuyitos.Models
             HISTORIALCOMPRA = new HashSet<HISTORIALCOMPRA>();
         }
 
-        public int COMPROBANTEID { get; set; }
+        public decimal COMPROBANTEID { get; set; }
 
-        public int VENTADETALLEID { get; set; }
+        public decimal VENTADETALLEID { get; set; }
 
-        public int TIPOPAGOID { get; set; }
+        public decimal TIPOPAGOID { get; set; }
 
         public DateTime FECHAEMISION { get; set; }
 
-        public int ESTADOID { get; set; }
+        public decimal ESTADOID { get; set; }
 
-        public int USUARIOID { get; set; }
+        public decimal USUARIOID { get; set; }
 
         public virtual PAGOESTADO PAGOESTADO { get; set; }
 

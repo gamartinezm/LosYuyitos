@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             ORDENPEDIDO = new HashSet<ORDENPEDIDO>();
         }
 
-        public int ORDENESTADOID { get; set; }
+        public decimal ORDENESTADOID { get; set; }
 
         [StringLength(5)]
         public string ESTADO { get; set; }

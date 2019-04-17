@@ -15,7 +15,7 @@ namespace LosYuyitos.Models
             PRODUCTO = new HashSet<PRODUCTO>();
         }
 
-        public int TIPOPRODUCTOID { get; set; }
+        public decimal TIPOPRODUCTOID { get; set; }
 
         [StringLength(30)]
         public string TIPO { get; set; }

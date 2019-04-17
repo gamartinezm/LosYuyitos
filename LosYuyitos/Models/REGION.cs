@@ -15,13 +15,13 @@ namespace LosYuyitos.Models
             COMUNA = new HashSet<COMUNA>();
         }
 
-        public int REGIONID { get; set; }
+        public decimal REGIONID { get; set; }
 
         [Required]
         [StringLength(50)]
         public string NOMBRE { get; set; }
 
-        public int ORDEN { get; set; }
+        public decimal ORDEN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMUNA> COMUNA { get; set; }
