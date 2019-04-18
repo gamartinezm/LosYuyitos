@@ -33,5 +33,12 @@ namespace LosYuyitos.Controllers
 
             return View();
         }
+
+        public ActionResult Cliente()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }
