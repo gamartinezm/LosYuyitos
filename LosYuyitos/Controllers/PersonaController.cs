@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using LosYuyitos.Models;
 
+
 namespace LosYuyitos.Controllers
 {
     //[Authorize] //Se utiliza para bloquear el acceso a personas no registradas. Si es borrado o comentado, cualquier persona puede acceder a los datos.
@@ -18,7 +19,7 @@ namespace LosYuyitos.Controllers
         // GET: Persona
         public ActionResult Index()
         {
-            var pERSONA = db.PERSONA.Include(p => p.COMUNA).Include(p => p.GENERO1);
+            var pERSONA = db.PERSONA.Include(p => p.COMUNA).Include(p => p.GENERO1).Include(p => p.COMUNA.REGION);
             return View(pERSONA.ToList());
         }
 
@@ -42,6 +43,7 @@ namespace LosYuyitos.Controllers
         {
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE");
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE");
+            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE");
             return View();
         }
 
@@ -61,8 +63,11 @@ namespace LosYuyitos.Controllers
 
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
+            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
+
             return View(pERSONA);
         }
+
 
         // GET: Persona/Edit/5
         public ActionResult Edit(int id)
@@ -79,6 +84,22 @@ namespace LosYuyitos.Controllers
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
             return View(pERSONA);
+        }
+
+        public void Editar(int id)
+        {
+            if (id == null)
+            {
+                new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PERSONA pERSONA = db.PERSONA.Find(id);
+            if (pERSONA == null)
+            {
+                HttpNotFound();
+            }
+            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
+            ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
+            View(pERSONA);
         }
 
         // POST: Persona/Edit/5
@@ -100,6 +121,7 @@ namespace LosYuyitos.Controllers
         }
 
         // GET: Persona/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             if (id == null)
@@ -115,6 +137,7 @@ namespace LosYuyitos.Controllers
         }
 
         // POST: Persona/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -133,5 +156,6 @@ namespace LosYuyitos.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

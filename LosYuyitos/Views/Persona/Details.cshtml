@@ -1,7 +1,7 @@
 ﻿@model LosYuyitos.Models.PERSONA
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,21 +11,6 @@
     <h4>PERSONA</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.COMUNA.NOMBRE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GENERO1.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GENERO1.NOMBRE)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.NOMBRE)
@@ -68,24 +53,46 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.GENERO1.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO1.NOMBRE)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CALLE)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CALLE)
+            @Html.DisplayFor(model => model.CALLE) @Html.DisplayFor(model => model.NUMERO)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NUMERO)
+            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NUMERO)
+            @Html.DisplayFor(model => model.COMUNA.NOMBRE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.COMUNA.REGION.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMUNA.REGION.NOMBRE)
         </dd>
 
     </dl>
+
+    
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.PERSONAID }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.PERSONAID }) |
     @Html.ActionLink("Volver", "Index")
 </p>

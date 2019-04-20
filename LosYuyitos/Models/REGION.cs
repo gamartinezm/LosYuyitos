@@ -18,7 +18,8 @@ namespace LosYuyitos.Models
         public int REGIONID { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
+        [Display(Name = "REGION")]
         public string NOMBRE { get; set; }
 
         public int ORDEN { get; set; }

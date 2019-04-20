@@ -19,6 +19,7 @@ namespace LosYuyitos.Models
         public int COMUNAID { get; set; }
 
         [StringLength(50)]
+        [Display(Name = "COMUNA")]
         public string NOMBRE { get; set; }
 
         public int REGIONID { get; set; }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<LosYuyitos.Models.CLIENTE>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cliente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,13 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.Label("NOMBRE")
-        </th>
-        <th>
-            @Html.Label("APELLIDO")
-        </th>
-        <th>
-            @Html.Label("HABILITADO")
+            @Html.DisplayNameFor(model => model.CATEGORIA.NOMBRE)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PERSONA.NOMBRE)
