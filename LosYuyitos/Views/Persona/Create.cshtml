@@ -83,9 +83,8 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.COMUNA.REGIONID, "REGION", htmlAttributes: new { @class = "control-label col-md-2" })
-
             <div class="col-md-10">
-                @Html.DropDownList("Region", ViewBag.listRegiones as List<SelectListItem>, "Seleccionar Region", new { @class = "form-control" })
+                @Html.DropDownList("REGIONID", ViewBag.listRegiones as List<SelectListItem>, "Seleccionar Region", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.COMUNA.REGIONID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -93,7 +92,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.COMUNA, "COMUNA", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Comuna", new SelectList(string.Empty, "Value", "Text"), "Seleccionar Comuna", new { @class = "form-control" })
+                @Html.DropDownList("COMUNAID", new SelectList(string.Empty, "Value", "Text"), "Seleccionar Comuna", new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.COMUNAID, "", new { @class = "text-danger" })
             </div>
         </div>

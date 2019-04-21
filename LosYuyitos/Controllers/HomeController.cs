@@ -13,7 +13,7 @@ namespace LosYuyitos.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ViewResult About()
         {
             ViewBag.Message = "Your application description page.";
 
@@ -22,16 +22,16 @@ namespace LosYuyitos.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Informacion de contacto:";
 
             return View();
         }
 
-        public ActionResult Person()
+        public ActionResult Persona()
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
+            return View("/Persona/Index");
         }
 
         public ActionResult Cliente()

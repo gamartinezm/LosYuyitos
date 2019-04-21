@@ -6,6 +6,7 @@ namespace LosYuyitos.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using System.Linq;
+    using System.Web.Mvc;
 
     [Table("PORTAFOLIO.PERSONA")]
     public partial class PERSONA
@@ -28,12 +29,14 @@ namespace LosYuyitos.Models
         [Display(Name = "APELLIDO PATERNO")]
         public string APPATERNO { get; set; }
 
+        [Required]
         [StringLength(50)]
         [Display(Name = "APELLIDO MATERNO")]
         public string APMATERNO { get; set; }
 
         [Required]
         [StringLength(10)]
+        [Remote("ValidacionRut", "PERSONA", ErrorMessage = "RUT ingresa no es valido.")]
         public string RUT { get; set; }
 
         [Required]

@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
-    $("#Region").change(function () {
+    $("#REGIONID").change(function () {
         
-        $("#Comuna").empty();
+        $("#COMUNAID").empty();
 
-        $.getJSON("/Persona/GetComunas", { RegionId: $("#Region").val() }, function (data) {
+        $.getJSON("/Persona/GetComunas", { REGIONID: $("#REGIONID").val() }, function (data) {
             $.each(data, function (index, row) {
-                $("#Comuna").append("<option value='" + this.Value + "'>" + this.Text + "</option>")
+                $("#COMUNAID").append("<option value='" + this.Value + "'>" + this.Text + "</option>")
             });
         });
     });

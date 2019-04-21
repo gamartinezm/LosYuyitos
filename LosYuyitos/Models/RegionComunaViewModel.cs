@@ -19,10 +19,10 @@ namespace LosYuyitos.Models
         }
 
 
-        public IEnumerable<SelectListItem> GetComunas(int regionid)
+        public IEnumerable<SelectListItem> GetComunas(int REGIONID)
         {
             var data = new YuyitosModel();
-            return data.COMUNA.Where(x => x.REGIONID == regionid).OrderBy(x => x.NOMBRE).Select(x => new SelectListItem
+            return data.COMUNA.Where(x => x.REGIONID == REGIONID).OrderBy(x => x.NOMBRE).Select(x => new SelectListItem
             {
                 Text = x.NOMBRE,
                 Value = x.COMUNAID.ToString()

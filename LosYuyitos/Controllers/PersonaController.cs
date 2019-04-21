@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using LosYuyitos.Models;
@@ -20,7 +21,7 @@ namespace LosYuyitos.Controllers
         // GET: Persona
         public ActionResult Index()
         {
-            var pERSONA = db.PERSONA.Include(p => p.COMUNA).Include(p => p.GENERO1).Include(p => p.COMUNA.REGION);
+            var pERSONA = db.PERSONA.OrderBy(x => x.PERSONAID).Include(p => p.COMUNA).Include(p => p.GENERO1).Include(p => p.COMUNA.REGION);
             return View(pERSONA.ToList());
         }
 
@@ -73,13 +74,17 @@ namespace LosYuyitos.Controllers
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
             ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
 
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View(pERSONA);
         }
 
-        public JsonResult GetComunas(int RegionId)
+        public JsonResult GetComunas(int REGIONID)
         {
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
-            var listComunas = RegionComunaViewModel.GetComunas(RegionId);
+            var listComunas = RegionComunaViewModel.GetComunas(REGIONID);
             return Json(listComunas, JsonRequestBehavior.AllowGet);
         }
 
@@ -97,6 +102,11 @@ namespace LosYuyitos.Controllers
             }
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View(pERSONA);
         }
 
@@ -169,6 +179,35 @@ namespace LosYuyitos.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult ValidacionRut(string RUT)
+        {
+            bool validacion = false;
+            try
+            {
+                RUT = RUT.ToUpper();
+                RUT = RUT.Replace(".", "");
+                RUT = RUT.Replace("-", "");
+                int rutAux = int.Parse(RUT.Substring(0, RUT.Length - 1));
+
+                char dv = char.Parse(RUT.Substring(RUT.Length - 1, 1));
+
+                int m = 0, s = 1;
+                for (; rutAux != 0; rutAux /= 10)
+                {
+                    s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+                }
+                if (dv == (char)(s != 0 ? s + 47 : 75))
+                {
+                    validacion = true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return Json(validacion, JsonRequestBehavior.AllowGet);
         }
     }
 }
