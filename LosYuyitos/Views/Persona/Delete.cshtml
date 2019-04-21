@@ -9,25 +9,17 @@
 
 <h3>Seguro quieres eliminar esta persona?</h3>
 <div>
-    <h4>PERSONA</h4>
+
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE)
+            @Html.DisplayNameFor(model => model.RUT)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.COMUNA.NOMBRE)
+            @Html.DisplayFor(model => model.RUT)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GENERO1.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GENERO1.NOMBRE)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.NOMBRE)
         </dt>
@@ -53,11 +45,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RUT)
+            @Html.DisplayNameFor(model => model.TELEFONO)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RUT)
+            @Html.DisplayFor(model => model.TELEFONO)
         </dd>
 
         <dt>
@@ -69,28 +61,49 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.GENERO1.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO1.NOMBRE)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CALLE)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CALLE)
+            @Html.DisplayFor(model => model.CALLE) @Html.DisplayFor(model => model.NUMERO)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NUMERO)
+            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NUMERO)
+            @Html.DisplayFor(model => model.COMUNA.NOMBRE)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.COMUNA.REGION.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMUNA.REGION.NOMBRE)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Eliminar" class="btn btn-default" />
+            </div>
+        </div>
+
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
             @Html.ActionLink("Volver", "Index")
         </div>
     }

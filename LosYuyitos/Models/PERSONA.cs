@@ -60,6 +60,9 @@ namespace LosYuyitos.Models
         [Required]
         public int COMUNAID { get; set; }
 
+        [Required]
+        public int TELEFONO { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLIENTE> CLIENTE { get; set; }
 
@@ -69,6 +72,8 @@ namespace LosYuyitos.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO> USUARIO { get; set; }
+
+        public IEnumerable<PERSONA> Persona { get; set; }
 
     }
 }

@@ -61,7 +61,7 @@ namespace LosYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PERSONAID,NOMBRE,APPATERNO,APMATERNO,RUT,GENERO,FECHANACIMIENTO,CALLE,NUMERO,COMUNAID")] PERSONA pERSONA)
+        public ActionResult Create([Bind(Include = "PERSONAID,NOMBRE,APPATERNO,APMATERNO,RUT,GENERO,FECHANACIMIENTO,CALLE,NUMERO,COMUNAID,TELEFONO")] PERSONA pERSONA)
         {
             if (ModelState.IsValid)
             {
@@ -131,7 +131,7 @@ namespace LosYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PERSONAID,NOMBRE,APPATERNO,APMATERNO,RUT,GENERO,FECHANACIMIENTO,CALLE,NUMERO,COMUNAID")] PERSONA pERSONA)
+        public ActionResult Edit([Bind(Include = "PERSONAID,NOMBRE,APPATERNO,APMATERNO,RUT,GENERO,FECHANACIMIENTO,CALLE,NUMERO,COMUNAID, TELEFONO")] PERSONA pERSONA)
         {
             if (ModelState.IsValid)
             {
