@@ -23,12 +23,11 @@ namespace LosYuyitos.Models
         [StringLength(50)]
         public string NOMBRE { get; set; }
 
-        
+        [Required]
         [StringLength(50)]
         [Display(Name = "APELLIDO PATERNO")]
         public string APPATERNO { get; set; }
 
-        [Required]
         [StringLength(50)]
         [Display(Name = "APELLIDO MATERNO")]
         public string APMATERNO { get; set; }
