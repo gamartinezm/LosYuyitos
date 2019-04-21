@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,12 +39,22 @@ namespace LosYuyitos.Controllers
             return View(pERSONA);
         }
 
+
         // GET: Persona/Create
         public ActionResult Create()
         {
+
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE");
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE");
             ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE");
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
+            //List<REGION> RegionList = db.REGION.ToList();
+            //ViewBag.RegionList = new SelectList(RegionList, "RegionId", "nombre");
+
             return View();
         }
 
@@ -65,9 +76,25 @@ namespace LosYuyitos.Controllers
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
             ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
 
+            //List<REGION> REGIONID = db.REGION.ToList();
+            //ViewBag.REGIONID = new SelectList(REGIONID, "REGIONID", "NOMBRE");
+
             return View(pERSONA);
         }
 
+        public JsonResult GetComunas(int RegionId)
+        {
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listComunas = RegionComunaViewModel.GetComunas(RegionId);
+            return Json(listComunas, JsonRequestBehavior.AllowGet);
+        }
+
+        //public JsonResult GetComunaList(int RegionId)
+        //{
+        //    db.Configuration.ProxyCreationEnabled = false;
+        //    List<COMUNA> ComunaList = db.COMUNA.Where(x => x.REGIONID == RegionId).ToList();
+        //    return Json(ComunaList, JsonRequestBehavior.AllowGet);
+        //}
 
         // GET: Persona/Edit/5
         public ActionResult Edit(int id)
@@ -157,5 +184,41 @@ namespace LosYuyitos.Controllers
             base.Dispose(disposing);
         }
 
+//        [HttpPost]
+//        public JsonResult ValidarRut(string rut)
+//        {
+//            var rutPersona = rut;
+//            return Json(rutPersona);
+//        }
+
+//        [HttpPost]
+//        public bool Validar(string rut)
+//        {
+
+//            var validacion = false;
+//            try
+//            {
+//                rut = rut.ToUpper();
+//                rut = rut.Replace(".", "");
+//                rut = rut.Replace("-", "");
+//                int rutAux = int.Parse(rut.Substring(0, rut.Length - 1));
+
+//                char dv = char.Parse(rut.Substring(rut.Length - 1, 1));
+
+//                int m = 0, s = 1;
+//                for (; rutAux != 0; rutAux /= 10)
+//                {
+//                    s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+//                }
+//                if (dv == (char)(s != 0 ? s + 47 : 75))
+//                {
+//                    validacion = true;
+//                }
+//            }
+//            catch (Exception)
+//            {
+//            }
+//            return validacion;
+//        }
     }
 }

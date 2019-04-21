@@ -3,8 +3,6 @@
 @{
     ViewBag.Title = "Registrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-
 }
 
 <h2>Registrar</h2>
@@ -17,14 +15,7 @@
     <div class="form-horizontal">
         <h4>PERSONA</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.PERSONAID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PERSONAID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PERSONAID, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.NOMBRE, "NOMBRE", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,7 +44,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RUT, "RUT", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RUT, "12345678-9", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.RUT, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.RUT, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -92,16 +83,17 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.COMUNA.REGIONID, "REGION", htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.ValidationMessageFor(model => model.COMUNA.REGIONID, "", new { @class = "text-danger" })
+
             <div class="col-md-10">
-                @Html.DropDownList("REGIONID", null, "Seleccionar", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Region", ViewBag.listRegiones as List<SelectListItem>, "Seleccionar Region", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.COMUNA.REGIONID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.COMUNAID, "COMUNA", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.COMUNA, "COMUNA", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("COMUNAID", null, "Seleccionar", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Comuna", new SelectList(string.Empty, "Value", "Text"), "Seleccionar Comuna", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.COMUNAID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -114,15 +106,12 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Volver", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Volver", "Index")
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
+    <script src="~/Scripts/RegionesComunas.js"></script>
 }
-
-
-
 

@@ -23,7 +23,7 @@ namespace LosYuyitos.Models
         [StringLength(50)]
         public string NOMBRE { get; set; }
 
-        [Required]
+        
         [StringLength(50)]
         [Display(Name = "APELLIDO PATERNO")]
         public string APPATERNO { get; set; }
@@ -37,21 +37,25 @@ namespace LosYuyitos.Models
         [StringLength(10)]
         public string RUT { get; set; }
 
+        [Required]
         public int GENERO { get; set; }
 
-        //[DisplayFormat(DataFormatString = "{dd/MM/yyyy}")]
+        [Required]
         [Display(Name = "FECHA NACIMIENTO")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FECHANACIMIENTO { get; set; }
 
+        [Required]
         [StringLength(100)]
         [Display(Name = "DIRECCION")]
         public string CALLE { get; set; }
 
+        [Required]
         [StringLength(30)]
         public string NUMERO { get; set; }
 
+        [Required]
         public int COMUNAID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -63,15 +67,6 @@ namespace LosYuyitos.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIO> USUARIO { get; set; }
-
-
-        //public ObtenerRegionesComunas()
-        //{
-        //    RegionesList = new SelectList<(new list(String)>;
-
-
-
-        //}
 
     }
 }

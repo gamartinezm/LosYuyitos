@@ -191,11 +191,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
-    <Compile Include="Controllers\FIadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
-    <Compile Include="Controllers\ProveedoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +216,7 @@
     <Compile Include="Models\PRODUCTO.cs" />
     <Compile Include="Models\PROVEEDOR.cs" />
     <Compile Include="Models\REGION.cs" />
+    <Compile Include="Models\RegionComunaViewModel.cs" />
     <Compile Include="Models\RUBRO.cs" />
     <Compile Include="Models\STOCK.cs" />
     <Compile Include="Models\TIPOPAGO.cs" />
@@ -250,6 +249,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\RegionesComunas.js" />
+    <Content Include="Scripts\validarRut.js" />
+    <Content Include="Scripts\validarRut2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
