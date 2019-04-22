@@ -49,7 +49,7 @@ namespace LosYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID")] CLIENTE cLIENTE)
+        public ActionResult Create([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID,FECHACREACION")] CLIENTE cLIENTE)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace LosYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID")] CLIENTE cLIENTE)
+        public ActionResult Edit([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID,FECHACREACION")] CLIENTE cLIENTE)
         {
             if (ModelState.IsValid)
             {

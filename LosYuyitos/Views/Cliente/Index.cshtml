@@ -5,40 +5,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Autorizar Cliente</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Cliente", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CATEGORIA.NOMBRE)
+            @Html.Label("#")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PERSONA.NOMBRE)
+            @Html.Label("RUT")
+        </th>
+        <th>
+            @Html.Label("CLIENTE")
+        </th>
+        <th>
+            @Html.Label("CONTACTO")
+        </th>
+        <th>
+            @Html.Label("AUTORIZADO")
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CATEGORIA.NOMBRE)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PERSONA.APPATERNO)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.CLIENTEID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CLIENTEID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CLIENTEID })
-            </td>
-        </tr>
+    <tr>
+        <td></td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERSONA.RUT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE) @Html.DisplayFor(modelItem => item.PERSONA.APPATERNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERSONA.TELEFONO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CATEGORIA.NOMBRE)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.CLIENTEID }, new { @class = "btn btn-primary editar d-none cursor-pointer" })
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.CLIENTEID }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id = item.CLIENTEID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.CLIENTEID })*@
+        </td>
+    </tr>
     }
 
 </table>

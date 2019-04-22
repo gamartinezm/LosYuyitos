@@ -21,6 +21,9 @@ namespace LosYuyitos.Models
 
         public int CATEGORIAID { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd / MM / yyyy HH: mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime? FECHACREACION { get; set; }
+
         public virtual CATEGORIA CATEGORIA { get; set; }
 
         public virtual PERSONA PERSONA { get; set; }
