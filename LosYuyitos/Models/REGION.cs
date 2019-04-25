@@ -6,7 +6,7 @@ namespace LosYuyitos.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("PORTAFOLIO.REGION")]
+    [Table("YUYITOS.REGION")]
     public partial class REGION
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

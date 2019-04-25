@@ -6,7 +6,7 @@ namespace LosYuyitos.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("PORTAFOLIO.HISTORIALCOMPRA")]
+    [Table("YUYITOS.HISTORIALCOMPRA")]
     public partial class HISTORIALCOMPRA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

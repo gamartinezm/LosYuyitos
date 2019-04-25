@@ -6,7 +6,7 @@ namespace LosYuyitos.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("PORTAFOLIO.TIPOPAGO")]
+    [Table("YUYITOS.TIPOPAGO")]
     public partial class TIPOPAGO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

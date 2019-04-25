@@ -6,7 +6,7 @@ namespace LosYuyitos.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("PORTAFOLIO.BOLETA")]
+    [Table("YUYITOS.BOLETA")]
     public partial class BOLETA
     {
         public int BOLETAID { get; set; }

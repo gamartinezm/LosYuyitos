@@ -182,7 +182,7 @@ namespace LosYuyitos.Models
             modelBuilder.Entity<ORDENPEDIDO>()
                 .HasMany(e => e.PRODUCTO)
                 .WithMany(e => e.ORDENPEDIDO)
-                .Map(m => m.ToTable("DETALLEPEDIDO", "PORTAFOLIO").MapLeftKey("ORDENPEDIDOID").MapRightKey("PRODUCTOID"));
+                .Map(m => m.ToTable("DETALLEPEDIDO", "YUYITOS").MapLeftKey("ORDENPEDIDOID").MapRightKey("PRODUCTOID"));
 
             modelBuilder.Entity<PAGOESTADO>()
                 .Property(e => e.ESTADOID);                

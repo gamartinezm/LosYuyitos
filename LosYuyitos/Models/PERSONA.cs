@@ -8,7 +8,7 @@ namespace LosYuyitos.Models
     using System.Linq;
     using System.Web.Mvc;
 
-    [Table("PORTAFOLIO.PERSONA")]
+    [Table("YUYITOS.PERSONA")]
     public partial class PERSONA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
