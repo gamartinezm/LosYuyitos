@@ -23,6 +23,7 @@ namespace LosYuyitos.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "RAZON SOCIAL")]
         public string RAZONSOCIAL { get; set; }
 
         public int? TELEFONO { get; set; }
@@ -36,6 +37,7 @@ namespace LosYuyitos.Models
         public int RUBROID { get; set; }
 
         [StringLength(100)]
+        [Display(Name = "DIRECCION")]
         public string CALLE { get; set; }
 
         [StringLength(20)]
@@ -49,5 +51,9 @@ namespace LosYuyitos.Models
         public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
 
         public virtual RUBRO RUBRO { get; set; }
+
+        [StringLength(50)]
+        [Display(Name = "WEB")]
+        public string SITIOWEB { get; set; }
     }
 }

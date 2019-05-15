@@ -26,6 +26,38 @@
 
 
 
+<div class="container">
+    <div class="Row">
+        <div class="divTableCell col-lg-4">@Html.DisplayNameFor(model => model.RUT)</div>
+        <div class="divTableCell col-lg-4">@Html.DisplayNameFor(model => model.NOMBRE)</div>
+        @*<div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>*@
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="Row">
+            <div class="divTableCell col-lg-4">@Html.DisplayFor(modelItem => item.RUT)</div>
+            <div class="divTableCell col-lg-4">@Html.DisplayFor(modelItem => item.NOMBRE)</div>
+            @*<div class="divTableCell">&nbsp;</div>
+                <div class="divTableCell">&nbsp;</div>
+                <div class="divTableCell">&nbsp;</div>
+                <div class="divTableCell">&nbsp;</div>
+                <div class="divTableCell">&nbsp;</div>
+                <div class="divTableCell">&nbsp;</div>
+                <div class="divTableCell">&nbsp;</div>
+                <div class="divTableCell">&nbsp;</div>*@
+        </div>
+    }
+</div>
+
+
+
     <div>
         <table class="table" id="myTable">
             <tr>
@@ -54,42 +86,43 @@
                 <th></th>
             </tr>
 
-
+            @{int i = 1;}
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PERSONAID)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.RUT)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NOMBRE)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.APPATERNO)
-                        @Html.DisplayFor(modelItem => item.APMATERNO)
-                    </td>
+            <tr>
+                <td>
+                    <span>@i</span>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RUT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.APPATERNO)
+                    @Html.DisplayFor(modelItem => item.APMATERNO)
+                </td>
 
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TELEFONO)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FECHANACIMIENTO)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CALLE)
-                        @Html.DisplayFor(modelItem => item.NUMERO)
-                        -
-                        @Html.DisplayFor(modelItem => item.COMUNA.NOMBRE)
-                    </td>
-                    <td class="d-flex">
-                        @Html.ActionLink("Editar", "Edit", new { id = item.PERSONAID }, new { @class = "btn btn-primary editar d-none cursor-pointer" })
-                        @Html.ActionLink("Detalles", "Details", new { id = item.PERSONAID }, new { @class = "btn btn-primary editar d-none cursor-pointer" })
-                        @Html.ActionLink("Eliminar", "Delete", new { id = item.PERSONAID }, new { @class = "btn btn-danger btnEliminar mr-2 cursor-pointer" })
-                    </td>
-                </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TELEFONO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FECHANACIMIENTO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CALLE)
+                    @Html.DisplayFor(modelItem => item.NUMERO)
+                    -
+                    @Html.DisplayFor(modelItem => item.COMUNA.NOMBRE)
+                </td>
+                <td class="d-flex">
+                    @Html.ActionLink("Editar", "Editar", new { id = item.PERSONAID }, new { @class = "btn btn-primary editar d-none cursor-pointer" })
+                    @Html.ActionLink("Detalles", "Detalles", new { id = item.PERSONAID }, new { @class = "btn btn-primary editar d-none cursor-pointer" })
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PERSONAID }, new { @class = "btn btn-danger btnEliminar mr-2 cursor-pointer" })
+                </td>
+            </tr>
+                i++;
             }
 
         </table>
