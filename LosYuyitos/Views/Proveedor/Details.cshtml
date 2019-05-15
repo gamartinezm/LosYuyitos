@@ -1,0 +1,105 @@
+﻿@model LosYuyitos.Models.PROVEEDOR
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>PROVEEDOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RAZONSOCIAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RAZONSOCIAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAIL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CONTACTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CONTACTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CALLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CALLE) @Html.DisplayFor(model => model.NUMERO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMUNA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMUNA.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMUNA.REGION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMUNA.REGION.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.Label("OBSERVACIONES")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RUBRO.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SITIOWEB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SITIOWEB)
+        </dd>
+
+    </dl>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.PROVEEDORID }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+
+</div>
+<p>
+    @Html.ActionLink("Volver", "Index")
+</p>
