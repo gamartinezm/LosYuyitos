@@ -52,8 +52,9 @@ namespace LosYuyitos.Models
 
         public virtual RUBRO RUBRO { get; set; }
 
-        [StringLength(50)]
-        [Display(Name = "WEB")]
-        public string SITIOWEB { get; set; }
+        //[StringLength(50)]
+        //[Display(Name = "WEB")]
+
+        //public string SITIOWEB { get; set; }
     }
 }

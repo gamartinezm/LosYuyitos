@@ -55,7 +55,8 @@ namespace LosYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID,SITIOWEB")] PROVEEDOR pROVEEDOR)
+        //public ActionResult Create([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID,SITIOWEB")] PROVEEDOR pROVEEDOR)
+        public ActionResult Create([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID")] PROVEEDOR pROVEEDOR)
         {
             if (ModelState.IsValid)
             {
@@ -109,7 +110,8 @@ namespace LosYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID.SITIOWEB")] PROVEEDOR pROVEEDOR)
+        //public ActionResult Edit([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID,SITIOWEB")] PROVEEDOR pROVEEDOR)
+        public ActionResult Edit([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID")] PROVEEDOR pROVEEDOR)
         {
             if (ModelState.IsValid)
             {

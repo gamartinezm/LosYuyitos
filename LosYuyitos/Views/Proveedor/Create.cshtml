@@ -1,11 +1,11 @@
 ﻿@model LosYuyitos.Models.PROVEEDOR
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Registrar Proveedor";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Registrar</h2>
 
 
 @using (Html.BeginForm()) 
@@ -88,13 +88,13 @@
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         @Html.LabelFor(model => model.SITIOWEB, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.SITIOWEB, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.SITIOWEB, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>*@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
