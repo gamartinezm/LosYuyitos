@@ -26,6 +26,38 @@
 
 
 
+@*<div class="container">
+    <div class="Row">
+        <div class="divTableCell col-lg-4">@Html.DisplayNameFor(model => model.RUT)</div>
+        <div class="divTableCell col-lg-4">@Html.DisplayNameFor(model => model.NOMBRE)</div>
+        <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+            <div class="divTableCell">&nbsp;</div>
+    </div>
+@foreach (var item in Model)
+{
+<div class="Row">
+    <div class="divTableCell col-lg-4">@Html.DisplayFor(modelItem => item.RUT)</div>
+    <div class="divTableCell col-lg-4">@Html.DisplayFor(modelItem => item.NOMBRE)</div>
+    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell">&nbsp;</div>
+            </div>
+        }
+        </div>*@
+
+
+
     <div>
         <table class="table" id="myTable">
             <tr>
@@ -54,12 +86,12 @@
                 <th></th>
             </tr>
 
-
+            @{int i = 1;}
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PERSONAID)
+                        <span>@i</span>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.RUT)
@@ -90,6 +122,7 @@
                         @Html.ActionLink("Eliminar", "Delete", new { id = item.PERSONAID }, new { @class = "btn btn-danger btnEliminar mr-2 cursor-pointer" })
                     </td>
                 </tr>
+                i++;
             }
 
         </table>
