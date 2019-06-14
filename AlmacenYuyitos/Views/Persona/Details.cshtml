@@ -1,0 +1,105 @@
+﻿@model AlmacenYuyitos.Models.PERSONA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <h4>Informacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE): @Html.DisplayFor(model => model.COMUNA.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMUNA.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GENERO1.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GENERO1.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APPATERNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APPATERNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APMATERNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APMATERNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHANACIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHANACIMIENTO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CALLE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CALLE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NUMERO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NUMERO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COMPLEMENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COMPLEMENTO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PERSONAID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

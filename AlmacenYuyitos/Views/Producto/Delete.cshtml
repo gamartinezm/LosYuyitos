@@ -1,0 +1,88 @@
+﻿@model AlmacenYuyitos.Models.PRODUCTO
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PRODUCTO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FAMILIAPRODUCTO.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FAMILIAPRODUCTO.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVEEDOR.RUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVEEDOR.RUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPOPRODUCTO.UNIDADMEDIDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPOPRODUCTO.UNIDADMEDIDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIOVENTA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIOVENTA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRECIOCOMPRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRECIOCOMPRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STOCK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STOCK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.STOCKCRITICO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STOCKCRITICO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAVENCIMIENTO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAVENCIMIENTO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
