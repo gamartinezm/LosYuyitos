@@ -95,6 +95,40 @@
                 </div>
             </li>
 
+            <hr class="sidebar-divider">
+            <li>
+                <div class="text-center">
+                    <a href="/Usuario/LoginUsuario" class="btn btn-primary btn-icon-split btn-sm">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-times-circle"></i>
+                        </span>
+                        <span class="text">Cerrar Sesión</span>
+                    </a>
+                </div>
+            </li>
+            <hr class="" />
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <hr class="sidebar-divider">
+                <li>
+                    <div class="text-center">
+                        <a href="/Usuario/LogoutUsuario" class="btn btn-primary btn-icon-split btn-sm">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-times-circle"></i>
+                            </span>
+                            <span class="text">Cerrar Sesión (Autentificado)</span>
+                        </a>
+                    </div>
+
+
+                    <a href="/Usuario/LoginUsuario" class="btn btn-primary btn-circle btn-lg">
+                        <i class="fa fa-times-circle"></i>
+                    </a>
+                </li>
+            }
+
+
 
 
 
