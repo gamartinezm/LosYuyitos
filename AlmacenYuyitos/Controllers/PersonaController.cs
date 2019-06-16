@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AlmacenYuyitos.Models;
+using OfficeOpenXml;
 
 namespace AlmacenYuyitos.Controllers
 {
@@ -132,5 +133,58 @@ namespace AlmacenYuyitos.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public void ExportExcel()
+        {
+            var pERSONA = db.PERSONA.Include(p => p.COMUNA).Include(p => p.GENERO1);
+
+            ExcelPackage pck = new ExcelPackage();
+            ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
+
+            ws.Cells["A1"].Value = "Comunicacion";
+            ws.Cells["B1"].Value = "Com1";
+
+            ws.Cells["A2"].Value = "Reporte";
+            ws.Cells["B2"].Value = "Reporte1";
+
+            ws.Cells["A3"].Value = "Date";
+            ws.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", DateTimeOffset.Now);
+
+            ws.Cells["A6"].Value = "RUT";
+            ws.Cells["B6"].Value = "NOMBRE";
+            ws.Cells["C6"].Value = "PATERNO";
+            ws.Cells["D6"].Value = "MATERNO";
+            ws.Cells["E6"].Value = "TELEFONO";
+            ws.Cells["F6"].Value = "CALLE";
+            ws.Cells["G6"].Value = "NUMERO";
+            ws.Cells["H6"].Value = "COMPLEMENTO";
+            ws.Cells["I6"].Value = "COMUNA";
+
+            int rowStart = 7;
+            foreach (var item in pERSONA)
+            {
+                ws.Cells[string.Format("A{0}", rowStart)].Value = item.RUT;
+                ws.Cells[string.Format("B{0}", rowStart)].Value = item.NOMBRE;
+                ws.Cells[string.Format("C{0}", rowStart)].Value = item.APPATERNO;
+                ws.Cells[string.Format("D{0}", rowStart)].Value = item.APMATERNO;
+                ws.Cells[string.Format("E{0}", rowStart)].Value = item.TELEFONO;
+                ws.Cells[string.Format("F{0}", rowStart)].Value = item.CALLE;
+                ws.Cells[string.Format("G{0}", rowStart)].Value = item.NUMERO;
+                ws.Cells[string.Format("H{0}", rowStart)].Value = item.COMPLEMENTO;
+                ws.Cells[string.Format("I{0}", rowStart)].Value = item.COMUNA.NOMBRE;
+                rowStart++;
+            }
+
+            ws.Cells["A:AZ"].AutoFitColumns();
+            Response.Clear();
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            Response.AddHeader("content-disposition", "attachment : filename=" + "ExcelReport.xlsx");
+            Response.BinaryWrite(pck.GetAsByteArray());
+            Response.End();
+
+        }
+
+        
+
     }
 }
