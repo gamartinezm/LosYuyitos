@@ -4,8 +4,9 @@
     ViewBag.Title = "Index";
 }
 
+
 <div class="text-center">
-    <a href="/Persona/Create" class="btn btn-primary btn-icon-split btn-sm">
+    <a href="@Url.Action("Create","Persona")" class="btn btn-primary btn-icon-split btn-sm">
         <span class="icon text-white-50">
             <i class="fas fa-flag"></i>
         </span>
@@ -93,7 +94,7 @@
             <span class="text">Descargar</span>
         </a>
         @*<a href="@Url.Action("ExportExcel","Persona")">Descargar Planilla</a>*@
-        <div class="h-auto"></div>
+        <div><hr /></div>
     </div>
 </div>
 

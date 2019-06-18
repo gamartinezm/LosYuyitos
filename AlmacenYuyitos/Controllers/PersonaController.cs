@@ -141,14 +141,14 @@ namespace AlmacenYuyitos.Controllers
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");
 
-            ws.Cells["A1"].Value = "Comunicacion";
-            ws.Cells["B1"].Value = "Com1";
+            ws.Cells["A1"].Value = "Almacen";
+            ws.Cells["B1"].Value = "Yuyitos";
 
-            ws.Cells["A2"].Value = "Reporte";
-            ws.Cells["B2"].Value = "Reporte1";
+            ws.Cells["A2"].Value = "Listado";
+            ws.Cells["B2"].Value = "Clientes";
 
-            ws.Cells["A3"].Value = "Date";
-            ws.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy} at {0:H: mm tt}", DateTimeOffset.Now);
+            ws.Cells["A3"].Value = "Fecha";
+            ws.Cells["B3"].Value = string.Format("{0:dd MMMM yyyy}", DateTimeOffset.Now);
 
             ws.Cells["A6"].Value = "RUT";
             ws.Cells["B6"].Value = "NOMBRE";
