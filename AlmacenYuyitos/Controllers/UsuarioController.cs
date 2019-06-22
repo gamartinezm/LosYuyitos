@@ -11,6 +11,7 @@ using AlmacenYuyitos.Models;
 
 namespace AlmacenYuyitos.Controllers
 {
+    [Authorize]
     public class UsuarioController : Controller
     {
         private YuyitosModel db = new YuyitosModel();

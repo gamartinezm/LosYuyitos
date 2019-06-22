@@ -11,6 +11,7 @@ using OfficeOpenXml;
 
 namespace AlmacenYuyitos.Controllers
 {
+    [Authorize]
     public class PersonaController : Controller
     {
         private YuyitosModel db = new YuyitosModel();
