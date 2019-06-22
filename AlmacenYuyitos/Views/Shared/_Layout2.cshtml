@@ -95,38 +95,23 @@
                 </div>
             </li>
 
-            <hr class="sidebar-divider">
-            <li>
-                <div class="text-center">
-                    <a href="/Usuario/LoginUsuario" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#logoutModal">
-                        <span class="icon text-white-50">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </span>
-                        <span class="text">Cerrar Sesión</span>
-                    </a>
-                </div>
-            </li>
-            <hr class="" />
+            @Html.Partial("_LogoutPartial")
 
-            @if (User.Identity.IsAuthenticated)
+            @*@if (User.Identity.IsAuthenticated)
             {
                 <hr class="sidebar-divider">
                 <li>
                     <div class="text-center">
-                        <a href="/Usuario/LogoutUsuario" class="btn btn-primary btn-icon-split btn-sm">
+                        <a href="/Account/Login" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#logoutModal">
                             <span class="icon text-white-50">
-                                <i class="fas fa-times-circle"></i>
+                                <i class="fas fa-sign-out-alt"></i>
                             </span>
-                            <span class="text">Cerrar Sesión (Autentificado)</span>
+                            <span class="text">Cerrar Sesión</span>
                         </a>
                     </div>
-
-
-                    <a href="/Usuario/LoginUsuario" class="btn btn-primary btn-circle btn-lg">
-                        <i class="fa fa-times-circle"></i>
-                    </a>
                 </li>
-            }
+                <hr class="" />
+            }*@
 
 
 
@@ -375,7 +360,7 @@
                 <div class="modal-body">Persione "SI" para finalizar su sesión actual</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                    <a class="btn btn-primary" href="@Url.Action("LoginUsuario","Usuario")">Si</a>
+                    <a class="btn btn-primary" href="javascript:document.getElementById('logoutForm').submit()">Si</a>
                 </div>
             </div>
         </div>

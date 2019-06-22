@@ -21,13 +21,26 @@ namespace AlmacenYuyitos.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("YuyitosModel", throwIfV1Schema: false)
         {
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder); // MUST go first.
+
+            modelBuilder.HasDefaultSchema("YUYITOS"); // Use uppercase!
+
+            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers");
+            modelBuilder.Entity<IdentityRole>().ToTable("AspNetRoles");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("AspNetUserRoles");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("AspNetUserClaims");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("AspNetUserLogins");
         }
     }
 }

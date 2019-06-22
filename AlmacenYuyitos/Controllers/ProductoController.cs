@@ -10,6 +10,7 @@ using AlmacenYuyitos.Models;
 
 namespace AlmacenYuyitos.Controllers
 {
+    [Authorize]
     public class ProductoController : Controller
     {
         private YuyitosModel db = new YuyitosModel();

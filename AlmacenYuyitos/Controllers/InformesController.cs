@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace AlmacenYuyitos.Controllers
 {
+    [Authorize]
     public class InformesController : Controller
     {
         // GET: Informes
