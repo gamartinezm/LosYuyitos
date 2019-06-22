@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using AlmacenYuyitos.Models;
 using OfficeOpenXml;
+using System.Drawing;
+
 
 namespace AlmacenYuyitos.Controllers
 {
@@ -43,7 +45,14 @@ namespace AlmacenYuyitos.Controllers
         {
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE");
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE");
+            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE");
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View();
+
         }
 
         // POST: Persona/Create
@@ -62,7 +71,20 @@ namespace AlmacenYuyitos.Controllers
 
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
+            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View(pERSONA);
+        }
+
+        public JsonResult GetComunas(int RegionId)
+        {
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listComunas = RegionComunaViewModel.GetComunas(RegionId);
+            return Json(listComunas, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Persona/Edit/5
@@ -184,8 +206,5 @@ namespace AlmacenYuyitos.Controllers
             Response.End();
 
         }
-
-        
-
     }
 }
