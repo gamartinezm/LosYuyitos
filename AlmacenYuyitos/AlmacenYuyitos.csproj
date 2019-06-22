@@ -226,6 +226,7 @@
     <Compile Include="Models\PRODUCTO.cs" />
     <Compile Include="Models\PROVEEDOR.cs" />
     <Compile Include="Models\REGION.cs" />
+    <Compile Include="Models\RegionComunaViewModel.cs" />
     <Compile Include="Models\RUBRO.cs" />
     <Compile Include="Models\TIPOPAGO.cs" />
     <Compile Include="Models\TIPOPRODUCTO.cs" />
@@ -2008,6 +2009,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\RegionesComunas.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

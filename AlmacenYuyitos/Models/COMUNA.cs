@@ -22,7 +22,7 @@ namespace AlmacenYuyitos.Models
         [StringLength(50)]
         public string NOMBRE { get; set; }
 
-        [Display(Name = "REGION")]
+        [Display(Name = "COMUNA")]
         public int REGIONID { get; set; }
 
         public virtual REGION REGION { get; set; }

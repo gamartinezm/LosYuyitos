@@ -19,6 +19,7 @@ namespace AlmacenYuyitos.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "REGION")]
         public string NOMBRE { get; set; }
 
         public int ORDEN { get; set; }
