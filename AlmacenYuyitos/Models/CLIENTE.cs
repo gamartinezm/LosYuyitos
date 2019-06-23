@@ -15,12 +15,17 @@ namespace AlmacenYuyitos.Models
             VENTADETALLE = new HashSet<VENTADETALLE>();
         }
 
+        [Display(Name = "CODIGO")]
         public int CLIENTEID { get; set; }
 
+        [Display(Name = "RUT CLIENTE")]
         public int PERSONAID { get; set; }
 
+        [Display(Name = "ESTADO")]
         public int CATEGORIAID { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? FECHACREACION { get; set; }
 
         public virtual CATEGORIA CATEGORIA { get; set; }

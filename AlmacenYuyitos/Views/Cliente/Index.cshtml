@@ -1,0 +1,260 @@
+﻿@model IEnumerable<AlmacenYuyitos.Models.CLIENTE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card shadow mb-4">
+    <!-- Card Header - Accordion -->
+    <a href="#collapseCardExample1" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">Pendiente de autorización</h6>
+    </a>
+    <!-- Card Content - Collapse -->
+    <div class="collapse" id="collapseCardExample1" style="">
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        CODIGO
+                    </th>
+                    <th>
+                        ESTADO
+                    </th>
+                    <th>
+                        RUT CLIENTE
+                    </th>
+                    <th>
+                        NOMBRE CLIENTE
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FECHACREACION)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.CATEGORIAID == 2)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CLIENTEID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CATEGORIA.NOMBRE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERSONA.RUT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE)
+                                @Html.DisplayFor(modelItem => item.PERSONA.APMATERNO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FECHACREACION)
+                            </td>
+                            <td>
+                                <a href="/Cliente/Edit/@item.CLIENTEID" class="btn btn-primary btn-icon-split btn-sm">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                    <span class="text">Cambia Estado</span>
+                                </a>
+
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.CLIENTEID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.CLIENTEID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CLIENTEID })*@
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <!-- Card Header - Accordion -->
+    <a href="#collapseCardExample2" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">Autorizados</h6>
+    </a>
+    <!-- Card Content - Collapse -->
+    <div class="collapse" id="collapseCardExample2" style="">
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        CODIGO
+                    </th>
+                    <th>
+                        ESTADO
+                    </th>
+                    <th>
+                        RUT CLIENTE
+                    </th>
+                    <th>
+                        NOMBRE CLIENTE
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.CATEGORIAID == 1)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CLIENTEID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CATEGORIA.NOMBRE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERSONA.RUT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE)
+                                @Html.DisplayFor(modelItem => item.PERSONA.APMATERNO)
+                            </td>
+                            <td>
+                                <a href="/Cliente/Edit/@item.CLIENTEID" class="btn btn-primary btn-icon-split btn-sm">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                    <span class="text">Cambia Estado</span>
+                                </a>
+                                @*@Html.ActionLink("Edit", "Edit", new { id = item.CLIENTEID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.CLIENTEID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CLIENTEID })*@
+                            </td>
+                        </tr>
+                    }
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <!-- Card Header - Accordion -->
+    <a href="#collapseCardExample3" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+        <h6 class="m-0 font-weight-bold text-primary">No autorizados</h6>
+    </a>
+    <!-- Card Content - Collapse -->
+    <div class="collapse" id="collapseCardExample3" style="">
+        <div class="card-body">
+            <table class="table">
+                <tr>
+                    <th>
+                        CODIGO
+                    </th>
+                    <th>
+                        ESTADO
+                    </th>
+                    <th>
+                        RUT CLIENTE
+                    </th>
+                    <th>
+                        NOMBRE CLIENTE
+                    </th>
+                    @*<th></th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    if (item.CATEGORIAID == 0)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CLIENTEID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CATEGORIA.NOMBRE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERSONA.RUT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PERSONA.NOMBRE)
+                                @Html.DisplayFor(modelItem => item.PERSONA.APMATERNO)
+                            </td>
+                            <td>
+                                @*<a href="/Cliente/Edit/@item.CLIENTEID" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#logoutModal1">*@
+                                    <a href="/Cliente/Edit/@item.CLIENTEID" class="btn btn-primary btn-icon-split btn-sm">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </span>
+                                        <span class="text">Cambia Estado</span>
+                                    </a>
+                            </td>
+                            @*<td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.CLIENTEID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.CLIENTEID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CLIENTEID })
+                            </td>*@
+                        </tr>
+                    }
+                    <div class="modal fade" id="logoutModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <h4>CLIENTE</h4>
+                                        <hr />
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.CATEGORIA.NOMBRE)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => item.CATEGORIA.NOMBRE)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.PERSONA.RUT)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => item.PERSONA.RUT)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.FECHACREACION)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => item.FECHACREACION)
+                                            </dd>
+
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                                    <a class="btn btn-primary" href="javascript:document.getElementById('logoutForm').submit()">Si</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
