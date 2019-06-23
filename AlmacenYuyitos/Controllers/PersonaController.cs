@@ -60,18 +60,19 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PERSONA pERSONA)
+        public ActionResult Create([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PERSONA pERSONA, [Bind(Include = "PERSONAID")] CLIENTE cLIENTE)
         {
             if (ModelState.IsValid)
             {
                 db.PERSONA.Add(pERSONA);
+                db.CLIENTE.Add(cLIENTE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
             ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
-            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
+            //ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
             var listRegiones = RegionComunaViewModel.GetRegiones();

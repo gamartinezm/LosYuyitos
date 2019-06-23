@@ -6,7 +6,14 @@
 
 
 <div>
-    <h4>Informacion</h4>
+    @{
+        var NombreCompleto = Model.NOMBRE + " " + Model.APPATERNO + " " + Model.APMATERNO;
+        <h4>@Html.DisplayFor(m => NombreCompleto)</h4>
+        <h4>@Html.DisplayFor(model => model.RUT)</h4>
+        
+    }
+
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
