@@ -8,8 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using AlmacenYuyitos.Models;
 
+
 namespace AlmacenYuyitos.Controllers
 {
+    [Authorize]
     public class ClienteController : Controller
     {
         private YuyitosModel db = new YuyitosModel();
