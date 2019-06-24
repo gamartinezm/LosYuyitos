@@ -5,6 +5,8 @@ namespace AlmacenYuyitos.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
+    using System.Linq;
 
     [Table("YUYITOS.PERSONA")]
     public partial class PERSONA
@@ -20,6 +22,7 @@ namespace AlmacenYuyitos.Models
 
         [Required]
         [StringLength(10)]
+        [Remote("ValidacionRut", "PERSONA", ErrorMessage = "RUT no valido")]
         public string RUT { get; set; }
 
         [Required]

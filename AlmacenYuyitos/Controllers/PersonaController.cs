@@ -207,5 +207,34 @@ namespace AlmacenYuyitos.Controllers
             Response.End();
 
         }
+
+        public JsonResult ValidacionRut(string RUT)
+        {
+            bool validacion = false;
+            try
+            {
+                RUT = RUT.ToUpper();
+                RUT = RUT.Replace(".", "");
+                RUT = RUT.Replace("-", "");
+                int rutAux = int.Parse(RUT.Substring(0, RUT.Length - 1));
+
+                char dv = char.Parse(RUT.Substring(RUT.Length - 1, 1));
+
+                int m = 0, s = 1;
+                for (; rutAux != 0; rutAux /= 10)
+                {
+                    s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+                }
+                if (dv == (char)(s != 0 ? s + 47 : 75))
+                {
+                    validacion = true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return Json(validacion, JsonRequestBehavior.AllowGet);
+        }
     }
 }
