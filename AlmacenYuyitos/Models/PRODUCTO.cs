@@ -15,7 +15,7 @@ namespace AlmacenYuyitos.Models
             VENTADETALLE = new HashSet<VENTADETALLE>();
         }
 
-        public int PRODUCTOID { get; set; }
+        public Int64 PRODUCTOID { get; set; }
 
         public int PRECIOVENTA { get; set; }
 

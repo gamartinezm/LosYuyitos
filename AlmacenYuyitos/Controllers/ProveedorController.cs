@@ -42,6 +42,13 @@ namespace AlmacenYuyitos.Controllers
         {
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE");
             ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE");
+
+            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE");
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View();
         }
 
@@ -61,7 +68,19 @@ namespace AlmacenYuyitos.Controllers
 
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
             ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View(pROVEEDOR);
+        }
+
+        public JsonResult GetComunas(int RegionId)
+        {
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listComunas = RegionComunaViewModel.GetComunas(RegionId);
+            return Json(listComunas, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Proveedor/Edit/5
@@ -132,6 +151,35 @@ namespace AlmacenYuyitos.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public JsonResult ValidacionRut(string RUT)
+        {
+            bool validacion = false;
+            try
+            {
+                RUT = RUT.ToUpper();
+                RUT = RUT.Replace(".", "");
+                RUT = RUT.Replace("-", "");
+                int rutAux = int.Parse(RUT.Substring(0, RUT.Length - 1));
+
+                char dv = char.Parse(RUT.Substring(RUT.Length - 1, 1));
+
+                int m = 0, s = 1;
+                for (; rutAux != 0; rutAux /= 10)
+                {
+                    s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+                }
+                if (dv == (char)(s != 0 ? s + 47 : 75))
+                {
+                    validacion = true;
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return Json(validacion, JsonRequestBehavior.AllowGet);
         }
     }
 }

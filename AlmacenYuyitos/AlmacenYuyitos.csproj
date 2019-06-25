@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProductoFamiliaController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\RubroController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2082,6 +2083,11 @@
     <Content Include="Views\Cliente\Details.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Rubro\Create.cshtml" />
+    <Content Include="Views\Rubro\Delete.cshtml" />
+    <Content Include="Views\Rubro\Details.cshtml" />
+    <Content Include="Views\Rubro\Edit.cshtml" />
+    <Content Include="Views\Rubro\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

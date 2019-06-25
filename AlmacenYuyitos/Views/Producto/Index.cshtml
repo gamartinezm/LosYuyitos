@@ -4,72 +4,169 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FAMILIAPRODUCTO.DESCRIPCION)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PROVEEDOR.RUT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TIPOPRODUCTO.UNIDADMEDIDA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRECIOVENTA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PRECIOCOMPRA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STOCK)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STOCKCRITICO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FECHAVENCIMIENTO)
-        </th>
-        <th></th>
-    </tr>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Listado Clientes</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="max-content" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PRODUCTOID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FAMILIAPRODUCTO.DESCRIPCION)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PROVEEDOR.RUT)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TIPOPRODUCTO.UNIDADMEDIDA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PRECIOVENTA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PRECIOCOMPRA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.STOCK)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.STOCKCRITICO)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FECHAVENCIMIENTO)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FAMILIAPRODUCTO.DESCRIPCION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PROVEEDOR.RUT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TIPOPRODUCTO.UNIDADMEDIDA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PRECIOVENTA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PRECIOCOMPRA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STOCK)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STOCKCRITICO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FECHAVENCIMIENTO)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PRODUCTOID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PRODUCTOID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PRODUCTOID })
-        </td>
-    </tr>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PRODUCTOID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FAMILIAPRODUCTO.DESCRIPCION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PROVEEDOR.RUT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TIPOPRODUCTO.UNIDADMEDIDA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PRECIOVENTA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PRECIOCOMPRA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.STOCK)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.STOCKCRITICO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FECHAVENCIMIENTO)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.PRODUCTOID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.PRODUCTOID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.PRODUCTOID })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FAMILIAPRODUCTO.DESCRIPCION)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PROVEEDOR.RUT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIPOPRODUCTO.UNIDADMEDIDA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRECIOVENTA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRECIOCOMPRA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STOCK)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STOCKCRITICO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHAVENCIMIENTO)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAMILIAPRODUCTO.DESCRIPCION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PROVEEDOR.RUT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPOPRODUCTO.UNIDADMEDIDA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRECIOVENTA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRECIOCOMPRA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STOCK)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STOCKCRITICO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHAVENCIMIENTO)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.PRODUCTOID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PRODUCTOID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.PRODUCTOID })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+
+@section Scripts {
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 }
-
-</table>

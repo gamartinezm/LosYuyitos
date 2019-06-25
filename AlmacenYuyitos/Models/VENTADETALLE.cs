@@ -17,11 +17,11 @@ namespace AlmacenYuyitos.Models
 
         public int VENTADETALLEID { get; set; }
 
-        public int PRODUCTOID { get; set; }
+        public Int64 PRODUCTOID { get; set; }
 
         public int CLIENTEID { get; set; }
 
-        public int PRODUCTO_PRODUCTOID { get; set; }
+        public Int64 PRODUCTO_PRODUCTOID { get; set; }
 
         public virtual CLIENTE CLIENTE { get; set; }
 

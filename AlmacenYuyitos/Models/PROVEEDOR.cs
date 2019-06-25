@@ -5,6 +5,7 @@ namespace AlmacenYuyitos.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web.Mvc;
 
     [Table("YUYITOS.PROVEEDOR")]
     public partial class PROVEEDOR
@@ -20,11 +21,13 @@ namespace AlmacenYuyitos.Models
 
         [Required]
         [StringLength(10)]
+        [Remote("ValidacionRut", "PROVEEDOR", ErrorMessage = "RUT no valido")]
         public string RUT { get; set; }
 
         [Required]
         [StringLength(100)]
         public string RAZONSOCIAL { get; set; }
+
 
         public int? TELEFONO { get; set; }
 

@@ -1,112 +1,74 @@
 ﻿@model AlmacenYuyitos.Models.PERSONA
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles";
 }
 
 
 <div>
-    @{
-        var NombreCompleto = Model.NOMBRE + " " + Model.APPATERNO + " " + Model.APMATERNO;
-        <h4>@Html.DisplayFor(m => NombreCompleto)</h4>
-        <h4>@Html.DisplayFor(model => model.RUT)</h4>
-        
-    }
 
 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE): @Html.DisplayFor(model => model.COMUNA.NOMBRE)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.COMUNA.NOMBRE)
-        </dd>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">RUT CLIENTE: @Html.DisplayFor(model => model.RUT)</h6>
+        </div>
+        <div class="card-body">
+            <dd>
+                NOMBRE COMPLETO:
+            </dd>
+            <dt>
+                @Html.DisplayFor(model => model.NOMBRE) @Html.DisplayFor(model => model.APMATERNO) @Html.DisplayFor(model => model.APMATERNO)
+            </dt>
+            <br />
+            <dd>
+                DIRECCION:
+            </dd>
+            <dt>
+                @Html.DisplayFor(model => model.CALLE) @Html.DisplayFor(model => model.NUMERO) @Html.DisplayFor(model => model.COMPLEMENTO)
+            </dt>
+            <dt>
+                @Html.DisplayFor(model => model.COMUNA.NOMBRE)
+            </dt>
+            <dt>
+                @Html.DisplayFor(model => model.COMUNA.REGION.NOMBRE)
+            </dt>
+            <br />
+            <dd>
+                @Html.DisplayNameFor(model => model.TELEFONO):
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GENERO1.NOMBRE)
-        </dt>
+            <dt>
+                @Html.DisplayFor(model => model.TELEFONO)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.GENERO1.NOMBRE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RUT)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RUT)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NOMBRE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NOMBRE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.APPATERNO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.APPATERNO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.APMATERNO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.APMATERNO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FECHANACIMIENTO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FECHANACIMIENTO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TELEFONO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TELEFONO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CALLE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CALLE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NUMERO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NUMERO)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.COMPLEMENTO)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.COMPLEMENTO)
-        </dd>
-
-    </dl>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PERSONAID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <a href="/Persona/Index" class="btn btn-secondary btn-user btn-block">
+                        VOLVER
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <a href="/Persona/Edit/@Model.PERSONAID" class="btn btn-primary btn-user btn-block">
+                       EDITAR
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.PERSONAID }, new { @class="btn btn-secondary btn-user btn-block" }) 
+    </p>*@
