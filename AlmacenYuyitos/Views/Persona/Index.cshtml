@@ -1,10 +1,31 @@
 ﻿@model IEnumerable<AlmacenYuyitos.Models.PERSONA>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Inicio";
 }
 
 <div class="row">
+    <div class="col-md-6 text-center">
+        <div class="form-group">
+            <div class="col-md-6 offset-md-3">
+                <a href="@Url.Action("Create", "Persona")" class="btn btn-primary btn-user btn-block">
+                    REGISTRAR CLIENTE
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <div class="form-group">
+            <div class="col-md-6 offset-md-3">
+                <a href="@Url.Action("ExportExcel", "Persona")" class="btn btn-success btn-user btn-block">
+                    DESCARGAR EXCEL
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="row">
     <div class="col-md-6 text-center">
         <a href="@Url.Action("ExportExcel", "Persona")" class="btn btn-success btn-icon-split btn-sm">
             <span class="icon text-white-50">
@@ -22,7 +43,7 @@
             <span class="text">Nuevo Registro</span>
         </a>
     </div>
-</div>
+</div>*@
 
 
 <div>
