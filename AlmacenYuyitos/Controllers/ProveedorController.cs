@@ -97,6 +97,12 @@ namespace AlmacenYuyitos.Controllers
             }
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
             ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
+            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pROVEEDOR.COMUNA.REGIONID);
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View(pROVEEDOR);
         }
 
@@ -115,6 +121,11 @@ namespace AlmacenYuyitos.Controllers
             }
             ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
             ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
+
+            RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
+            var listRegiones = RegionComunaViewModel.GetRegiones();
+            ViewBag.listRegiones = listRegiones;
+
             return View(pROVEEDOR);
         }
 

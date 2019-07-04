@@ -4,84 +4,195 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-6 text-center">
+        <div class="form-group">
+            <div class="col-md-6 offset-md-3">
+                <a href="@Url.Action("Create", "Proveedor")" class="btn btn-primary btn-user btn-block">
+                    NUEVO PROVEEDOR
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <div class="form-group">
+            <div class="col-md-6 offset-md-3">
+                <a href="#" class="btn btn-success btn-user btn-block">
+                    @*<a href="@Url.Action("ExportExcel", "Proveedor")" class="btn btn-success btn-user btn-block">*@
+                        EXCEL (CONSTRUCCION)
+                    </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.COMUNA.NOMBRE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RUBRO.NOMBRE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RUT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RAZONSOCIAL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TELEFONO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MAIL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CONTACTO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CALLE)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NUMERO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.COMPLEMENTO)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.COMUNA.NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RUBRO.NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RUT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RAZONSOCIAL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TELEFONO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MAIL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CONTACTO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CALLE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NUMERO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.COMPLEMENTO)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PROVEEDORID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PROVEEDORID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PROVEEDORID })
-        </td>
-    </tr>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Listado Proveedores</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="max-content" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            RUT
+                        </th>
+                        <th>
+                            RAZON SOCIAL
+                        </th>
+                        <th>
+                            CONTACTO
+                        </th>
+                        <th>
+                            TELEFONO
+                        </th>
+                        <th>
+                            CORREO
+                        </th>
+
+                        <th>
+                            DIRECCION
+                        </th>
+
+                        <th>
+                            COMUNA
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RUT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RAZONSOCIAL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CONTACTO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TELEFONO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MAIL)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CALLE)
+                                @Html.DisplayFor(modelItem => item.NUMERO)
+                                @Html.DisplayFor(modelItem => item.COMPLEMENTO)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.COMUNA.NOMBRE)
+                            </td>
+                            <td>
+                                <a href="/Proveedor/Edit/@item.PROVEEDORID" class="btn btn-primary btn-icon-split btn-sm">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                    <span class="text">Editar</span>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.COMUNA.NOMBRE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RUBRO.NOMBRE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RUT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RAZONSOCIAL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TELEFONO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MAIL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CONTACTO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CALLE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NUMERO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPLEMENTO)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMUNA.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RUBRO.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RUT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RAZONSOCIAL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TELEFONO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CONTACTO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CALLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NUMERO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPLEMENTO)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.PROVEEDORID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PROVEEDORID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.PROVEEDORID })
+            </td>
+        </tr>
+    }
+
+    </table>*@
+
+@section Scripts {
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 }
-
-</table>

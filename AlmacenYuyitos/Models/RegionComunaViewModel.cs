@@ -29,7 +29,5 @@ namespace AlmacenYuyitos.Models
                 Value = x.COMUNAID.ToString()
             }).ToList();
         }
-
-
     }
 }

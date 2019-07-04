@@ -194,6 +194,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\DetallePedidoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Models\HISTORIALORDEN.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\OrdenCompraViewModel.cs" />
     <Compile Include="Models\ORDENESTADO.cs" />
     <Compile Include="Models\ORDENPEDIDO.cs" />
     <Compile Include="Models\PAGOESTADO.cs" />
@@ -2001,6 +2003,7 @@
     <Content Include="Content\vendor\jquery\jquery.min.map" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\DetallePedido.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -2011,6 +2014,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ProveedorPedido.js" />
     <Content Include="Scripts\RegionesComunas.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -2088,6 +2092,12 @@
     <Content Include="Views\Rubro\Details.cshtml" />
     <Content Include="Views\Rubro\Edit.cshtml" />
     <Content Include="Views\Rubro\Index.cshtml" />
+    <Content Include="Views\DetallePedido\Create.cshtml" />
+    <Content Include="Views\DetallePedido\Delete.cshtml" />
+    <Content Include="Views\DetallePedido\Details.cshtml" />
+    <Content Include="Views\DetallePedido\Edit.cshtml" />
+    <Content Include="Views\DetallePedido\Index.cshtml" />
+    <Content Include="Views\DetallePedido\IndexOC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
