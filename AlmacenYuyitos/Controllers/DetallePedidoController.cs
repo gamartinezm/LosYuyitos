@@ -19,7 +19,9 @@ namespace AlmacenYuyitos.Controllers
         public JsonResult GetOrdenes(int PROVEEDORID)
         {
             OrdenCompraViewModel OrdenCompraViewModel = new OrdenCompraViewModel();
-            var listOrdenes = OrdenCompraViewModel.GetOrdenPedido(PROVEEDORID);
+            var listOrdenes = OrdenCompraViewModel.GetOrdenPedido(PROVEEDORID).ToList();
+            var item = new SelectListItem() { Value = "0", Selected = true, Text = "Seleccione" };
+            listOrdenes.Insert(0, item);
             return Json(listOrdenes, JsonRequestBehavior.AllowGet);
         }
 
@@ -61,6 +63,28 @@ namespace AlmacenYuyitos.Controllers
             ViewBag.listOrdenes = listOrdenes;
 
             return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult GetDetalle(int ordenId)
+        {
+
+            var dETALLEPEDIDO = db.DETALLEPEDIDO.Include(d => d.FAMILIAPRODUCTO).Include(d => d.ORDENPEDIDO).Include(d => d.TIPOPRODUCTO).Where(d => d.ORDENPEDIDO_ORDENPEDIDOID == ordenId);
+            return View(dETALLEPEDIDO.ToList());
+
+            //ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION");
+            //ViewBag.ORDENPEDIDO_ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENESTADO_ESTADO");
+            //ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA");
+            //ViewBag.PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RAZONSOCIAL");
+            //ViewBag.ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENPEDIDOID");
+            //ViewBag.DETALLEPEDIDOID = new SelectList(db.DETALLEPEDIDO, "ORDENPEDIDO_ORDENPEDIDOID", "ORDENPEDIDO_ORDENPEDIDOID");
+
+            //OrdenCompraViewModel OrdenCompraViewModel = new OrdenCompraViewModel();
+            //var listOrdenes = OrdenCompraViewModel.GetProveedor();
+            //ViewBag.listOrdenes = listOrdenes;
+
+            //return View();
 
         }
 

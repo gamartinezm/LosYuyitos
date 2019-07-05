@@ -14,7 +14,6 @@
     <h4>DETALLEPEDIDO</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
     <div class="row">
         <div class="form-group col-md-6">
             @Html.LabelFor(model => model.ORDENPEDIDO.PROVEEDOR_PROVEEDORID, "PROVEEDORID", htmlAttributes: new { @class = "control-label col-md-6" })
@@ -33,6 +32,8 @@
     </div>
 
 
+    <div id="tabla"></div>
+    
 
     @*@{
                         if (!string.IsNullOrEmpty(Model.ORDENPEDIDO_ORDENPEDIDOID.ToString()))
@@ -92,7 +93,6 @@
                 }
             }*@
 
-
     @*<div class="form-group">
             @Html.LabelFor(model => model.TIPOPRODUCTO_TIPOPRODUCTOID, "TIPOPRODUCTO_TIPOPRODUCTOID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -148,4 +148,31 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/ProveedorPedido.js"></script>
+    <script>
+        $(function () {
+            
+        });
+
+        $('#PROVEEDORID').on('change', function () {
+            $('#tabla').html('');
+        });
+
+        $('#ORDENPEDIDOID').on('change', function () {
+            var idOrden = $(this).find(":selected").text();
+            getDatos(idOrden);
+        });
+
+        function getDatos(idOrden) {
+            $.ajax({
+                url: '/DetallePedido/GetDetalle',
+                type: 'POST',
+                data: { ordenId: idOrden},
+                success: function (result) {
+                    $('#tabla').html(result);
+                },
+                error: function () {
+                }
+            });
+        }
+    </script>
 }

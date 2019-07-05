@@ -30,14 +30,14 @@ namespace AlmacenYuyitos.Models
             }).ToList();
         }
 
-        public IEnumerable<SelectListItem> GetDetallePedido(int ORDENPEDIDOID)
-        {
-            var data = new YuyitosModel();
-            return data.DETALLEPEDIDO.Where(x => x.ORDENPEDIDO_ORDENPEDIDOID == ORDENPEDIDOID).OrderBy(x => x.ORDENPEDIDO_ORDENPEDIDOID).Select(x => new SelectListItem
-            {
-                Text = x.ORDENPEDIDO_ORDENPEDIDOID.ToString(),
-                Value = x.ORDENPEDIDO_ORDENPEDIDOID.ToString()
-            }).ToList();
-        }
+        //public IEnumerable<SelectListItem> GetDetallePedido(int ORDENPEDIDOID)
+        //{
+        //    var data = new YuyitosModel();
+        //    return data.DETALLEPEDIDO.Where(x => x.ORDENPEDIDO_ORDENPEDIDOID == ORDENPEDIDOID).OrderBy(x => x.ORDENPEDIDO_ORDENPEDIDOID).Select(x => new SelectListItem
+        //    {
+        //        Text = x.ORDENPEDIDO_ORDENPEDIDOID.ToString(),
+        //        Value = x.ORDENPEDIDO_ORDENPEDIDOID.ToString()
+        //    }).ToList();
+        //}
     }
 }
