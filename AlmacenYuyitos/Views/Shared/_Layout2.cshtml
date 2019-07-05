@@ -73,7 +73,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
-                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <i class="fas fa-fw far fa-edit"></i>
                     <span>Productos</span>
                 </a>
                 <div id="collapseTree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -87,10 +87,23 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Compras</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Menu:</h6>
+                        <a class="collapse-item" href="/DetallePedido/Index">Consultar Ordenes</a>
+                        <a class="collapse-item" href="/DetallePedido/Create">Nueva Orden</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Informes</span>
                 </a>
-                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Menu:</h6>
                         <a class="collapse-item" href="/Informes/Index">Estadisticas</a>
@@ -98,38 +111,31 @@
                     </div>
                 </div>
             </li>
-
             @Html.Partial("_LogoutPartial")
-
             @*@if (User.Identity.IsAuthenticated)
-            {
-                <hr class="sidebar-divider">
-                <li>
-                    <div class="text-center">
-                        <a href="/Account/Login" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#logoutModal">
-                            <span class="icon text-white-50">
-                                <i class="fas fa-sign-out-alt"></i>
-                            </span>
-                            <span class="text">Cerrar Sesión</span>
-                        </a>
-                    </div>
-                </li>
-                <hr class="" />
-            }*@
-
-
-
+        {
+            <hr class="sidebar-divider">
+            <li>
+                <div class="text-center">
+                    <a href="/Account/Login" class="btn btn-primary btn-icon-split btn-sm" data-toggle="modal" data-target="#logoutModal">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </span>
+                        <span class="text">Cerrar Sesión</span>
+                    </a>
+                </div>
+            </li>
+            <hr class="" />
+        }*@
 
 
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
         </ul>
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
