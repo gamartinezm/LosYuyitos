@@ -2,42 +2,65 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Create</h2>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>DETALLEPEDIDO</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="row">
-            <div class="form-group col-md-6">
-                @Html.LabelFor(model => model.ORDENPEDIDO.PROVEEDOR_PROVEEDORID, "PROVEEDORID", htmlAttributes: new { @class = "control-label col-md-6" })
-                <div class="col-md-10">
-                    @Html.DropDownList("PROVEEDORID", ViewBag.listOrdenes as List<SelectListItem>, "Seleccionar Proveedor", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ORDENPEDIDO.PROVEEDOR_PROVEEDORID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group col-md-6">
-                @Html.LabelFor(model => model.ORDENPEDIDO.ORDENPEDIDOID, "ORDENPEDIDOID", htmlAttributes: new { @class = "control-label col-md-6" })
-                <div class="col-md-10">
-                    @Html.DropDownList("ORDENPEDIDOID", new SelectList(string.Empty, "Value", "Text"), "Seleccionar Orden", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ORDENPEDIDO.ORDENPEDIDOID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
 
-
-        <div id="tabla">
-            @*VISTA DETALLE LISTADO ORDENES*@
-        </div>
-
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Consultar Ordenes</h6>
     </div>
-}
-<div>
-    @Html.ActionLink("Back to List", "Index")
+
+    <div>
+        <br />
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.ORDENPEDIDO.PROVEEDOR_PROVEEDORID, "RAZON SOCIAL", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-10">
+                @Html.DropDownList("PROVEEDORID", ViewBag.listOrdenes as List<SelectListItem>, "Seleccionar Proveedor", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ORDENPEDIDO.PROVEEDOR_PROVEEDORID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.ORDENPEDIDO.ORDENPEDIDOID, "N° DE ORDEN", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-10">
+                @Html.DropDownList("ORDENPEDIDOID", new SelectList(string.Empty, "Value", "Text"), "Seleccionar Orden", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ORDENPEDIDO.ORDENPEDIDOID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div id="tabla">
+        @*VISTA DETALLE LISTADO ORDENES*@
+    </div>
 </div>
+}
+
+<div class="row">
+    <div class="col-md-6 text-center">
+        <div class="form-group">
+            <div class="col-md-6 offset-md-3">
+                <a href="@Url.Action("Index", "DetallePedido")" class="btn btn-primary btn-user btn-block">
+                    LIMPIAR
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 text-center">
+        <div class="form-group">
+            <div class="col-md-6 offset-md-3">
+                <a href="@Url.Action("Create", "ORDENPEDIDO")" class="btn btn-success btn-user btn-block">
+                    NUEVA ORDEN
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/ProveedorPedido.js"></script>
@@ -59,7 +82,7 @@
             $.ajax({
                 url: '/DetallePedido/GetDetalle',
                 type: 'POST',
-                data: { ordenId: idOrden},
+                data: { ordenId: idOrden },
                 success: function (result) {
                     $('#tabla').html(result);
                 },
@@ -68,6 +91,13 @@
             });
         }
     </script>
+
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 }
 
 @*@model IEnumerable<AlmacenYuyitos.Models.DETALLEPEDIDO>

@@ -63,20 +63,38 @@ namespace AlmacenYuyitos.Controllers
         // GET: DetallePedido/Create
         public ActionResult Create()
         {
-            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION");
-            ViewBag.ORDENPEDIDO_ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENESTADO_ESTADO");
-            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA");
-            ViewBag.PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RAZONSOCIAL");
-            ViewBag.ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENPEDIDOID");
-            ViewBag.DETALLEPEDIDOID = new SelectList(db.DETALLEPEDIDO, "ORDENPEDIDO_ORDENPEDIDOID", "ORDENPEDIDO_ORDENPEDIDOID");
+            var ordenMax = db.ORDENPEDIDO.Max(d => d.ORDENPEDIDOID);
 
-            OrdenCompraViewModel OrdenCompraViewModel = new OrdenCompraViewModel();
-            var listOrdenes = OrdenCompraViewModel.GetProveedor();
-            ViewBag.listOrdenes = listOrdenes;
+            ViewBag.ORDENPEDIDO_ORDENPEDIDOID = ordenMax ;
+            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION");
+            //ViewBag.ORDENPEDIDO_ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENPEDIDOID");
+            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA");
 
             return View();
 
         }
+
+
+        // POST: DetallePedido/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "TIPOPRODUCTO_TIPOPRODUCTOID,ORDENPEDIDO_ORDENPEDIDOID,FAMILIAPRODUCTOID,CANTIDAD,PRECIOCOMPRA")] DETALLEPEDIDO dETALLEPEDIDO)
+        {
+            if (ModelState.IsValid)
+            {
+                db.DETALLEPEDIDO.Add(dETALLEPEDIDO);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION", dETALLEPEDIDO.FAMILIAPRODUCTOID);
+            ViewBag.ORDENPEDIDO_ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENESTADO_ESTADO", dETALLEPEDIDO.ORDENPEDIDO_ORDENPEDIDOID);
+            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA", dETALLEPEDIDO.TIPOPRODUCTO_TIPOPRODUCTOID);
+            return View(dETALLEPEDIDO);
+        }
+
 
         [HttpPost]
         public ActionResult GetDetalle(int ordenId)
@@ -98,31 +116,6 @@ namespace AlmacenYuyitos.Controllers
 
             //return View();
 
-        }
-
-        // POST: DetallePedido/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TIPOPRODUCTO_TIPOPRODUCTOID,ORDENPEDIDO_ORDENPEDIDOID,FAMILIAPRODUCTOID,CANTIDAD,PRECIOCOMPRA")] DETALLEPEDIDO dETALLEPEDIDO)
-        {
-            if (ModelState.IsValid)
-            {
-                db.DETALLEPEDIDO.Add(dETALLEPEDIDO);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION", dETALLEPEDIDO.FAMILIAPRODUCTOID);
-            ViewBag.ORDENPEDIDO_ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENESTADO_ESTADO", dETALLEPEDIDO.ORDENPEDIDO_ORDENPEDIDOID);
-            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA", dETALLEPEDIDO.TIPOPRODUCTO_TIPOPRODUCTOID);
-
-            OrdenCompraViewModel OrdenCompraViewModel = new OrdenCompraViewModel();
-            var listOrdenes = OrdenCompraViewModel.GetProveedor();
-            ViewBag.listOrdenes = listOrdenes;
-
-            return View(dETALLEPEDIDO);
         }
 
         // GET: DetallePedido/Edit/5

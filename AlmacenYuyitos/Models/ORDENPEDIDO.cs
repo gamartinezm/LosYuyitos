@@ -20,7 +20,7 @@ namespace AlmacenYuyitos.Models
 
         public DateTime FECHACREACION { get; set; }
 
-        [Required]
+        
         [StringLength(10)]
         public string ORDENESTADO_ESTADO { get; set; }
 

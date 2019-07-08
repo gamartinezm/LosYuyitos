@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AlmacenYuyitos.Models.ORDENPEDIDO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ORDENESTADO.ESTADO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PROVEEDOR.RUT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHACREACION)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ORDENESTADO.ESTADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PROVEEDOR.RUT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHACREACION)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ORDENPEDIDOID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ORDENPEDIDOID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ORDENPEDIDOID })
+        </td>
+    </tr>
+}
+
+</table>
