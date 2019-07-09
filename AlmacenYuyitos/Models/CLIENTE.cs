@@ -7,10 +7,10 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.CLIENTE")]
-    public partial class CLIENTE
+    public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CLIENTE()
+        public Cliente()
         {
             VENTADETALLE = new HashSet<VENTADETALLE>();
         }

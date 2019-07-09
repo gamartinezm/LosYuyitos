@@ -41,7 +41,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: VentaDetalle/Create
         public ActionResult Create()
         {
-            ViewBag.CLIENTEID = new SelectList(db.CLIENTE, "CLIENTEID", "CLIENTEID");
+            ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID");
             ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID");
             return View();
         }
@@ -60,7 +60,7 @@ namespace AlmacenYuyitos.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CLIENTEID = new SelectList(db.CLIENTE, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
+            ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
             ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
             return View(vENTADETALLE);
         }
@@ -77,7 +77,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CLIENTEID = new SelectList(db.CLIENTE, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
+            ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
             ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
             return View(vENTADETALLE);
         }
@@ -95,7 +95,7 @@ namespace AlmacenYuyitos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CLIENTEID = new SelectList(db.CLIENTE, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
+            ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
             ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
             return View(vENTADETALLE);
         }

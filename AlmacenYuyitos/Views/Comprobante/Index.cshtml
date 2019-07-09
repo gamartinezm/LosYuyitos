@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AlmacenYuyitos.Models.COMPROBANTE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PAGOESTADO.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPOPAGO.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO.PERSONA_RUT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHAEMISION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TOTALCOMPRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MONTOCANCELADO)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PAGOESTADO.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPOPAGO.NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIO.PERSONA_RUT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FECHAEMISION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TOTALCOMPRA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTOCANCELADO)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.COMPROBANTEID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.COMPROBANTEID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.COMPROBANTEID })
+        </td>
+    </tr>
+}
+
+</table>

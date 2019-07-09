@@ -19,7 +19,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            var cLIENTE = db.CLIENTE.Include(c => c.CATEGORIA).Include(c => c.PERSONA).OrderBy(c => c.CLIENTEID);
+            var cLIENTE = db.Cliente.Include(c => c.CATEGORIA).Include(c => c.PERSONA).OrderBy(c => c.CLIENTEID);
             return View(cLIENTE.ToList());
         }
 
@@ -32,7 +32,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
+            Cliente cLIENTE = db.Cliente.Find(id);
             if (cLIENTE == null)
             {
                 return HttpNotFound();
@@ -53,11 +53,11 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID,FECHACREACION")] CLIENTE cLIENTE)
+        public ActionResult Create([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID,FECHACREACION")] Cliente cLIENTE)
         {
             if (ModelState.IsValid)
             {
-                db.CLIENTE.Add(cLIENTE);
+                db.Cliente.Add(cLIENTE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,7 +70,7 @@ namespace AlmacenYuyitos.Controllers
         public IEnumerable<SelectListItem> GetClientes()
         {
             var data = new YuyitosModel();
-            return data.CLIENTE.Select(x => new SelectListItem
+            return data.Cliente.Select(x => new SelectListItem
             {
                 //Text = x.NOMBRE,
                 Value = x.CLIENTEID.ToString()
@@ -86,7 +86,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
+            Cliente cLIENTE = db.Cliente.Find(id);
             if (cLIENTE == null)
             {
                 return HttpNotFound();
@@ -101,14 +101,14 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID,FECHACREACION")] CLIENTE cLIENTE)
+        public ActionResult Edit([Bind(Include = "CLIENTEID,PERSONAID,CATEGORIAID,FECHACREACION")] Cliente cLIENTE)
         {
             
 
             if (ModelState.IsValid)
             {
 
-                var cliente = db.CLIENTE.FirstOrDefault(x => x.CLIENTEID == cLIENTE.CLIENTEID);
+                var cliente = db.Cliente.FirstOrDefault(x => x.CLIENTEID == cLIENTE.CLIENTEID);
                 cliente.CATEGORIAID = cLIENTE.CATEGORIAID;
 
 
@@ -134,7 +134,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
+            Cliente cLIENTE = db.Cliente.Find(id);
             if (cLIENTE == null)
             {
                 return HttpNotFound();
@@ -147,8 +147,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CLIENTE cLIENTE = db.CLIENTE.Find(id);
-            db.CLIENTE.Remove(cLIENTE);
+            Cliente cLIENTE = db.Cliente.Find(id);
+            db.Cliente.Remove(cLIENTE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

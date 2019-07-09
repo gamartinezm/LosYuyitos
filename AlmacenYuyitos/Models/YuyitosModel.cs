@@ -12,9 +12,11 @@ namespace AlmacenYuyitos.Models
         {
         }
 
+        //control + r + r
+
         public virtual DbSet<BOLETA> BOLETA { get; set; }
         public virtual DbSet<CATEGORIA> CATEGORIA { get; set; }
-        public virtual DbSet<CLIENTE> CLIENTE { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<COMPROBANTE> COMPROBANTE { get; set; }
         public virtual DbSet<COMUNA> COMUNA { get; set; }
         public virtual DbSet<DETALLEPEDIDO> DETALLEPEDIDO { get; set; }
@@ -63,16 +65,16 @@ namespace AlmacenYuyitos.Models
                 .WithRequired(e => e.CATEGORIA)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CLIENTE>()
+            modelBuilder.Entity<Cliente>()
                 .Property(e => e.CLIENTEID);
 
-            modelBuilder.Entity<CLIENTE>()
+            modelBuilder.Entity<Cliente>()
                 .Property(e => e.PERSONAID);
 
-            modelBuilder.Entity<CLIENTE>()
+            modelBuilder.Entity<Cliente>()
                 .Property(e => e.CATEGORIAID);
 
-            modelBuilder.Entity<CLIENTE>()
+            modelBuilder.Entity<Cliente>()
                 .HasMany(e => e.VENTADETALLE)
                 .WithRequired(e => e.CLIENTE)
                 .WillCascadeOnDelete(false);

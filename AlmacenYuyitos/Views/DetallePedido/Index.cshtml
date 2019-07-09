@@ -66,17 +66,7 @@
                 </table>
             </div>
         </div>
-
-        <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-        <!-- Page level custom scripts -->
-        <script src="~/Content/js/demo/datatables-demo.js"></script>
-        <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
     </div>
-
-<div id="tabla">
-</div>
 
 <div class="row">
     <div class="col-md-6 text-center">
@@ -101,37 +91,11 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/ProveedorPedido.js"></script>
-    <script src="~/Scripts/TablaDetallePedido.js">
-        @*$(function () {
-
-        });
-
-        $('#PROVEEDORID').on('change', function () {
-            $('#dataTable').html('');
-        });
-
-        $('#ORDENPEDIDOID').on('change', function () {
-            var idOrden = $(this).find(":selected").text();
-            getDatos(idOrden);
-        });
-
-        function getDatos(idOrden) {
-            $.ajax({
-                url: '/DetallePedido/GetDetalle',
-                type: 'POST',
-                data: { ordenId: idOrden },
-                success: function (result) {
-                    $('#dataTable').html(result);
-                },
-                error: function () {
-                }
-            });
-        }*@
-    </script>
+    <script src="~/Scripts/TablaDetallePedido.js"></script>
     <!-- Page level plugins -->
-        <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-        <!-- Page level custom scripts -->
-        <script src="~/Content/js/demo/datatables-demo.js"></script>
-        <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 }

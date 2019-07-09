@@ -194,6 +194,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ComprobanteController.cs" />
     <Compile Include="Controllers\DetallePedidoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformesController.cs" />
@@ -1835,6 +1836,7 @@
     <Content Include="Imagenes\Login.JPG" />
     <Content Include="Imagenes\Login2.JPG" />
     <Content Include="Imagenes\Login2.png" />
+    <Content Include="Scripts\AgregarDetallePedido.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\scss\navs\_global.scss" />
@@ -2113,6 +2115,11 @@
     <Content Include="Views\VentaDetalle\Edit.cshtml" />
     <Content Include="Views\VentaDetalle\Index.cshtml" />
     <Content Include="Views\Persona\GetHistorial.cshtml" />
+    <Content Include="Views\Comprobante\Create.cshtml" />
+    <Content Include="Views\Comprobante\Delete.cshtml" />
+    <Content Include="Views\Comprobante\Details.cshtml" />
+    <Content Include="Views\Comprobante\Edit.cshtml" />
+    <Content Include="Views\Comprobante\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

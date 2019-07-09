@@ -1,0 +1,66 @@
+﻿@model AlmacenYuyitos.Models.COMPROBANTE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>COMPROBANTE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PAGOESTADO.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAGOESTADO.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPOPAGO.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPOPAGO.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.USUARIO.PERSONA_RUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.USUARIO.PERSONA_RUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHAEMISION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHAEMISION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TOTALCOMPRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOTALCOMPRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTOCANCELADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTOCANCELADO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.COMPROBANTEID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

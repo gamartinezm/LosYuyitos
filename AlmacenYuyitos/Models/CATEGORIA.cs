@@ -12,7 +12,7 @@ namespace AlmacenYuyitos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATEGORIA()
         {
-            CLIENTE = new HashSet<CLIENTE>();
+            CLIENTE = new HashSet<Cliente>();
         }
 
         public int CATEGORIAID { get; set; }
@@ -25,6 +25,6 @@ namespace AlmacenYuyitos.Models
         public string DESCRIPCION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
+        public virtual ICollection<Cliente> CLIENTE { get; set; }
     }
 }

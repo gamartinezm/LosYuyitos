@@ -81,12 +81,12 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PERSONA pERSONA, [Bind(Include = "PERSONAID")] CLIENTE cLIENTE)
+        public ActionResult Create([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PERSONA pERSONA, [Bind(Include = "PERSONAID")] Cliente cLIENTE)
         {
             if (ModelState.IsValid)
             {
                 db.PERSONA.Add(pERSONA);
-                db.CLIENTE.Add(cLIENTE);
+                db.Cliente.Add(cLIENTE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

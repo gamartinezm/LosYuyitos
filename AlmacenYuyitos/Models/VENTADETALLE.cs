@@ -17,7 +17,7 @@ namespace AlmacenYuyitos.Models
 
         public int COMPROBANTE_COMPROBANTEID { get; set; }
 
-        public virtual CLIENTE CLIENTE { get; set; }
+        public virtual Cliente CLIENTE { get; set; }
 
         public virtual COMPROBANTE COMPROBANTE { get; set; }
 

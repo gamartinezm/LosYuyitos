@@ -14,7 +14,7 @@ namespace AlmacenYuyitos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PERSONA()
         {
-            CLIENTE = new HashSet<CLIENTE>();
+            CLIENTE = new HashSet<Cliente>();
             USUARIO = new HashSet<USUARIO>();
         }
 
@@ -67,7 +67,7 @@ namespace AlmacenYuyitos.Models
         public int COMUNAID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
+        public virtual ICollection<Cliente> CLIENTE { get; set; }
 
         public virtual COMUNA COMUNA { get; set; }
 
