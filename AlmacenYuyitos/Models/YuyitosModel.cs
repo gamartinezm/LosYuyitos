@@ -491,8 +491,8 @@ namespace AlmacenYuyitos.Models
             modelBuilder.Entity<VENTADETALLE>()
                 .Property(e => e.VENTADETALLEID);
 
-            modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.PRODUCTOID);
+            //modelBuilder.Entity<VENTADETALLE>()
+            //    .Property(e => e.PRODUCTOID);
 
             modelBuilder.Entity<VENTADETALLE>()
                 .Property(e => e.CLIENTEID);

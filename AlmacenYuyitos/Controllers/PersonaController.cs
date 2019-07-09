@@ -40,6 +40,27 @@ namespace AlmacenYuyitos.Controllers
             return View(pERSONA);
         }
 
+        [HttpPost]
+        public ActionResult GetHistorial(int ordenId)
+        {
+            var vENTADETALLE = db.VENTADETALLE.Include(v => v.CLIENTE).Include(v => v.PRODUCTO).Where(v => v.CLIENTE.PERSONAID == ordenId);
+            return View(vENTADETALLE.ToList());
+
+            //ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION");
+            //ViewBag.ORDENPEDIDO_ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENESTADO_ESTADO");
+            //ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA");
+            //ViewBag.PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RAZONSOCIAL");
+            //ViewBag.ORDENPEDIDOID = new SelectList(db.ORDENPEDIDO, "ORDENPEDIDOID", "ORDENPEDIDOID");
+            //ViewBag.DETALLEPEDIDOID = new SelectList(db.DETALLEPEDIDO, "ORDENPEDIDO_ORDENPEDIDOID", "ORDENPEDIDO_ORDENPEDIDOID");
+
+            //OrdenCompraViewModel OrdenCompraViewModel = new OrdenCompraViewModel();
+            //var listOrdenes = OrdenCompraViewModel.GetProveedor();
+            //ViewBag.listOrdenes = listOrdenes;
+
+            //return View();
+
+        }
+
         // GET: Persona/Create
         public ActionResult Create()
         {

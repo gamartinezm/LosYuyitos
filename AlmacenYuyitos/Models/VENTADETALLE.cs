@@ -17,7 +17,7 @@ namespace AlmacenYuyitos.Models
 
         public int VENTADETALLEID { get; set; }
 
-        public Int64 PRODUCTOID { get; set; }
+        //public Int64 PRODUCTOID { get; set; }
 
         public int CLIENTEID { get; set; }
 

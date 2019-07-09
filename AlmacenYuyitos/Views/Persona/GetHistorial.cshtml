@@ -1,0 +1,38 @@
+﻿@*@model IEnumerable<AlmacenYuyitos.Models.PERSONA>
+
+@{
+    ViewBag.Title = "GetHistorial";
+    Layout = null;
+}
+
+<h2>GetHistorial</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTE.CLIENTEID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTO.PRODUCTOID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VENTADETALLEID)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CLIENTE.CLIENTEID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRODUCTO.PRODUCTOID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPROBANTE)
+            </td>
+        </tr>
+    }
+
+</table>*@
