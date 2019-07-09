@@ -1,12 +1,9 @@
 ﻿@model AlmacenYuyitos.Models.DETALLEPEDIDO
-
 @{
     ViewBag.Title = "Create";
 }
-
 <h2 class="text-center">PASO 2</h2>
-
-@using (Html.BeginForm())
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "crear-orden" }))
 {
     @Html.AntiForgeryToken()
 
@@ -19,14 +16,12 @@
         <div class="card-body">
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                 @*<div class="form-group">
                         @Html.Label("ORDENPEDIDO_ORDENPEDIDOID", "N° DE ORDEN", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.ORDENPEDIDO.ORDENPEDIDOID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Orden, @readonly = "readonly" } })
                         </div>
                     </div>*@
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.TIPOPRODUCTO_TIPOPRODUCTOID, "TIPOPRODUCTO_TIPOPRODUCTOID", htmlAttributes: new { @class = "control-label col-md-6" })
                     <div class="col-md-10">
@@ -34,7 +29,6 @@
                         @Html.ValidationMessageFor(model => model.TIPOPRODUCTO_TIPOPRODUCTOID, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.ORDENPEDIDO_ORDENPEDIDOID, "ORDENPEDIDO_ORDENPEDIDOID", htmlAttributes: new { @class = "control-label col-md-6" })
                     <div class="col-md-10">
@@ -43,7 +37,6 @@
                         @Html.ValidationMessageFor(model => model.ORDENPEDIDO_ORDENPEDIDOID, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.FAMILIAPRODUCTOID, "FAMILIAPRODUCTOID", htmlAttributes: new { @class = "control-label col-md-6" })
                     <div class="col-md-10">
@@ -51,7 +44,6 @@
                         @Html.ValidationMessageFor(model => model.FAMILIAPRODUCTOID, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.CANTIDAD, htmlAttributes: new { @class = "control-label col-md-6" })
                     <div class="col-md-10">
@@ -59,7 +51,6 @@
                         @Html.ValidationMessageFor(model => model.CANTIDAD, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(model => model.PRECIOCOMPRA, htmlAttributes: new { @class = "control-label col-md-6" })
                     <div class="col-md-10">
@@ -67,7 +58,6 @@
                         @Html.ValidationMessageFor(model => model.PRECIOCOMPRA, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Create" class="btn btn-default" />
@@ -80,34 +70,70 @@
 
     <hr />
 
-    <div class="row">
-        <div class="col-md-4 text-center">
-            <div class="form-group">
-                <div class="col-md-6 offset-md-3">
-                    <a href="/DetallePedido/Create" class="btn btn-secondary btn-user btn-block" type="submit">
-                        AGREGAR
-                    </a>
-                </div>
-            </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Productos Ingresados</h6>
         </div>
-        <div class="col-md-4 text-center">
-            <div class="form-group">
-                <div class="col-md-6 offset-md-3">
-                    <input type="reset" value="LIMPIAR" class="form-group btn btn-primary btn-user btn-block" />
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 text-center">
-            <div class="form-group">
-                <div class="col-md-6 offset-md-3">
-                    <input type="submit" value="GUARDAR" class="form-group btn btn-primary btn-user btn-block" />
-                </div>
-            </div>
+        <div class="card-body">
+            <table id="productos-seleccionados" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Orden N°</th>
+                        <th>Tipo de Producto</th>
+                        <th>Familia de Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-productos-seleccionados"></tbody>  
+            </table>
         </div>
     </div>
-
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#crear-orden").submit(function (e) {
+                e.preventDefault();
+                var actionurl = e.currentTarget.action;
+                $.ajax({
+                    url: actionurl,
+                    type: 'post',
+                    dataType: 'json',
+                    data: $("#crear-orden").serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            llenarTabla();
+                        } else {
+                            console.log("error al ingresar el producto");
+                        }
+                    },
+                    error: function (response) {
+                        alert("ha ocurrido un error!");  
+                    }
+                });
+            });
+        });
+
+        function llenarTabla() {
+            var numOrden = $('#TIPOPRODUCTO_TIPOPRODUCTOID  option:selected').text();
+            var tipoProducto = $('#ORDENPEDIDO_ORDENPEDIDOID').val();
+            var familiaProducto = $('#FAMILIAPRODUCTOID  option:selected').text();
+            var cantidad = $('#CANTIDAD').val();
+            var precio = $('#PRECIOCOMPRA').val();
+
+            $('#tbody-productos-seleccionados').append('<tr><td>' + numOrden + '</td><td>' + tipoProducto + '</td><td>' + familiaProducto + '</td><td>' + cantidad + '</td><td>' + precio + '</td></tr>');
+
+            console.log(numOrden);
+            console.log(tipoProducto);
+            console.log(familiaProducto);
+            console.log(cantidad);
+            console.log(precio);
+        }
+    </script>
+}

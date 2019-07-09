@@ -86,7 +86,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 db.DETALLEPEDIDO.Add(dETALLEPEDIDO);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true }, JsonRequestBehavior.AllowGet);
             }
 
             ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION", dETALLEPEDIDO.FAMILIAPRODUCTOID);
