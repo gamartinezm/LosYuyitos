@@ -71,7 +71,7 @@ namespace AlmacenYuyitos.Models
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
 
-        [Required]
+        
         [Display(Name = "Nombre Usuario")]
         public string UserName { get; set; }
 

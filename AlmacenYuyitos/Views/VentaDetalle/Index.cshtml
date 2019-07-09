@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AlmacenYuyitos.Models.VENTADETALLE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CLIENTE.CLIENTEID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTO.PRODUCTOID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VENTADETALLEID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CLIENTE.CLIENTEID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUCTO.PRODUCTOID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENTADETALLEID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.VENTADETALLEID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.VENTADETALLEID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.VENTADETALLEID })
+        </td>
+    </tr>
+}
+
+</table>
