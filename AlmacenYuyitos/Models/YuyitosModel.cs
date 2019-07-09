@@ -42,16 +42,13 @@ namespace AlmacenYuyitos.Models
                 .Property(e => e.BOLETAID);
 
             modelBuilder.Entity<BOLETA>()
-                .Property(e => e.LISTADOID)
-                ;
+                .Property(e => e.LISTADOID);
 
             modelBuilder.Entity<BOLETA>()
-                .Property(e => e.VENTAID)
-                ;
+                .Property(e => e.VENTAID);
 
             modelBuilder.Entity<CATEGORIA>()
-                .Property(e => e.CATEGORIAID)
-                ;
+                .Property(e => e.CATEGORIAID);
 
             modelBuilder.Entity<CATEGORIA>()
                 .Property(e => e.NOMBRE)
@@ -67,16 +64,13 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CLIENTE>()
-                .Property(e => e.CLIENTEID)
-                ;
+                .Property(e => e.CLIENTEID);
 
             modelBuilder.Entity<CLIENTE>()
-                .Property(e => e.PERSONAID)
-                ;
+                .Property(e => e.PERSONAID);
 
             modelBuilder.Entity<CLIENTE>()
-                .Property(e => e.CATEGORIAID)
-                ;
+                .Property(e => e.CATEGORIAID);
 
             modelBuilder.Entity<CLIENTE>()
                 .HasMany(e => e.VENTADETALLE)
@@ -84,28 +78,22 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.COMPROBANTEID)
-                ;
+                .Property(e => e.COMPROBANTEID);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.TIPOPAGOID)
-                ;
+                .Property(e => e.TIPOPAGOID);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.ESTADOID)
-                ;
+                .Property(e => e.ESTADOID);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.USUARIOID)
-                ;
+                .Property(e => e.USUARIOID);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.TOTALCOMPRA)
-                ;
+                .Property(e => e.TOTALCOMPRA);
 
             modelBuilder.Entity<COMPROBANTE>()
-                .Property(e => e.MONTOCANCELADO)
-                ;
+                .Property(e => e.MONTOCANCELADO);
 
             modelBuilder.Entity<COMPROBANTE>()
                 .HasMany(e => e.HISTORIALCOMPRA)
@@ -119,16 +107,14 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<COMUNA>()
-                .Property(e => e.COMUNAID)
-                ;
+                .Property(e => e.COMUNAID);
 
             modelBuilder.Entity<COMUNA>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
             modelBuilder.Entity<COMUNA>()
-                .Property(e => e.REGIONID)
-                ;
+                .Property(e => e.REGIONID);
 
             modelBuilder.Entity<COMUNA>()
                 .HasMany(e => e.PERSONA)
@@ -141,32 +127,26 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<DETALLEPEDIDO>()
-                .Property(e => e.CANTIDAD)
-                ;
+                .Property(e => e.CANTIDAD);
 
             modelBuilder.Entity<DETALLEPEDIDO>()
-                .Property(e => e.TIPOPRODUCTO_TIPOPRODUCTOID)
-                ;
+                .Property(e => e.TIPOPRODUCTO_TIPOPRODUCTOID);
 
             modelBuilder.Entity<DETALLEPEDIDO>()
-                .Property(e => e.ORDENPEDIDO_ORDENPEDIDOID)
-                ;
+                .Property(e => e.ORDENPEDIDO_ORDENPEDIDOID);
 
             modelBuilder.Entity<DETALLEPEDIDO>()
-                .Property(e => e.FAMILIAPRODUCTOID)
-                ;
+                .Property(e => e.FAMILIAPRODUCTOID);
 
             modelBuilder.Entity<DETALLEPEDIDO>()
-                .Property(e => e.PRECIOCOMPRA)
-                ;
+                .Property(e => e.PRECIOCOMPRA);
 
             modelBuilder.Entity<FAMILIAPRODUCTO>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
             modelBuilder.Entity<FAMILIAPRODUCTO>()
-                .Property(e => e.FAMILIAPRODUCTOID)
-                ;
+                .Property(e => e.FAMILIAPRODUCTOID);
 
             modelBuilder.Entity<FAMILIAPRODUCTO>()
                 .HasMany(e => e.DETALLEPEDIDO)
@@ -179,8 +159,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<GENERO>()
-                .Property(e => e.GENEROID)
-                ;
+                .Property(e => e.GENEROID);
 
             modelBuilder.Entity<GENERO>()
                 .Property(e => e.NOMBRE)
@@ -193,16 +172,13 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<HISTORIALCOMPRA>()
-                .Property(e => e.HISTORIALID)
-                ;
+                .Property(e => e.HISTORIALID);
 
             modelBuilder.Entity<HISTORIALCOMPRA>()
-                .Property(e => e.COMPROBANTEID)
-                ;
+                .Property(e => e.COMPROBANTEID);
 
             modelBuilder.Entity<HISTORIALCOMPRA>()
-                .Property(e => e.PAGOESTADO_ESTADOID)
-                ;
+                .Property(e => e.PAGOESTADO_ESTADOID);
 
             modelBuilder.Entity<HISTORIALCOMPRA>()
                 .HasMany(e => e.BOLETA)
@@ -211,8 +187,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<HISTORIALORDEN>()
-                .Property(e => e.HISTORIALORDENID)
-                ;
+                .Property(e => e.HISTORIALORDENID);
 
             modelBuilder.Entity<HISTORIALORDEN>()
                 .Property(e => e.OBSERVACION)
@@ -224,8 +199,7 @@ namespace AlmacenYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<HISTORIALORDEN>()
-                .Property(e => e.ORDENPEDIDO_ORDENPEDIDOID)
-                ;
+                .Property(e => e.ORDENPEDIDO_ORDENPEDIDOID);
 
             modelBuilder.Entity<ORDENESTADO>()
                 .Property(e => e.ESTADO)
@@ -245,8 +219,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ORDENPEDIDO>()
-                .Property(e => e.ORDENPEDIDOID)
-                ;
+                .Property(e => e.ORDENPEDIDOID);
 
             modelBuilder.Entity<ORDENPEDIDO>()
                 .Property(e => e.ORDENESTADO_ESTADO)
@@ -254,8 +227,7 @@ namespace AlmacenYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<ORDENPEDIDO>()
-                .Property(e => e.PROVEEDOR_PROVEEDORID)
-                ;
+                .Property(e => e.PROVEEDOR_PROVEEDORID);
 
             modelBuilder.Entity<ORDENPEDIDO>()
                 .HasMany(e => e.DETALLEPEDIDO)
@@ -270,8 +242,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PAGOESTADO>()
-                .Property(e => e.ESTADOID)
-                ;
+                .Property(e => e.ESTADOID);
 
             modelBuilder.Entity<PAGOESTADO>()
                 .Property(e => e.NOMBRE)
@@ -293,8 +264,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PERFIL>()
-                .Property(e => e.PERFILID)
-                ;
+                .Property(e => e.PERFILID);
 
             modelBuilder.Entity<PERFIL>()
                 .Property(e => e.NOMBRE)
@@ -310,8 +280,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.PERSONAID)
-                ;
+                .Property(e => e.PERSONAID);
 
             modelBuilder.Entity<PERSONA>()
                 .Property(e => e.RUT)
@@ -330,12 +299,10 @@ namespace AlmacenYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.TELEFONO)
-                ;
+                .Property(e => e.TELEFONO);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.GENERO)
-                ;
+                .Property(e => e.GENERO);
 
             modelBuilder.Entity<PERSONA>()
                 .Property(e => e.CALLE)
@@ -346,8 +313,7 @@ namespace AlmacenYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.COMUNAID)
-                ;
+                .Property(e => e.COMUNAID);
 
             modelBuilder.Entity<PERSONA>()
                 .Property(e => e.COMPLEMENTO)
@@ -364,36 +330,28 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PRODUCTOID)
-                ;
+                .Property(e => e.PRODUCTOID);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PRECIOVENTA)
-                ;
+                .Property(e => e.PRECIOVENTA);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PRECIOCOMPRA)
-                ;
+                .Property(e => e.PRECIOCOMPRA);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.STOCK)
-                ;
+                .Property(e => e.STOCK);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.STOCKCRITICO)
-                ;
+                .Property(e => e.STOCKCRITICO);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.TIPOPRODUCTO_TIPOPRODUCTOID)
-                ;
+                .Property(e => e.TIPOPRODUCTO_TIPOPRODUCTOID);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.PROVEEDOR_PROVEEDORID)
-                ;
+                .Property(e => e.PROVEEDOR_PROVEEDORID);
 
             modelBuilder.Entity<PRODUCTO>()
-                .Property(e => e.FAMILIAPRODUCTOID)
-                ;
+                .Property(e => e.FAMILIAPRODUCTOID);
 
             modelBuilder.Entity<PRODUCTO>()
                 .HasMany(e => e.VENTADETALLE)
@@ -402,8 +360,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.PROVEEDORID)
-                ;
+                .Property(e => e.PROVEEDORID);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .Property(e => e.RUT)
@@ -414,8 +371,7 @@ namespace AlmacenYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.TELEFONO)
-                ;
+                .Property(e => e.TELEFONO);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .Property(e => e.MAIL)
@@ -426,8 +382,7 @@ namespace AlmacenYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.RUBROID)
-                ;
+                .Property(e => e.RUBROID);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .Property(e => e.CALLE)
@@ -438,8 +393,7 @@ namespace AlmacenYuyitos.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDOR>()
-                .Property(e => e.COMUNAID)
-                ;
+                .Property(e => e.COMUNAID);
 
             modelBuilder.Entity<PROVEEDOR>()
                 .Property(e => e.COMPLEMENTO)
@@ -458,16 +412,14 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<REGION>()
-                .Property(e => e.REGIONID)
-                ;
+                .Property(e => e.REGIONID);
 
             modelBuilder.Entity<REGION>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
             modelBuilder.Entity<REGION>()
-                .Property(e => e.ORDEN)
-                ;
+                .Property(e => e.ORDEN);
 
             modelBuilder.Entity<REGION>()
                 .HasMany(e => e.COMUNA)
@@ -475,8 +427,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RUBRO>()
-                .Property(e => e.RUBROID)
-                ;
+                .Property(e => e.RUBROID);
 
             modelBuilder.Entity<RUBRO>()
                 .Property(e => e.NOMBRE)
@@ -493,8 +444,7 @@ namespace AlmacenYuyitos.Models
 
 
             modelBuilder.Entity<TIPOPAGO>()
-                .Property(e => e.TIPOPAGOID)
-                ;
+                .Property(e => e.TIPOPAGOID);
 
             modelBuilder.Entity<TIPOPAGO>()
                 .Property(e => e.NOMBRE)
@@ -510,8 +460,7 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TIPOPRODUCTO>()
-                .Property(e => e.TIPOPRODUCTOID)
-                ;
+                .Property(e => e.TIPOPRODUCTOID);
 
             modelBuilder.Entity<TIPOPRODUCTO>()
                 .Property(e => e.MEDIDA);
@@ -533,16 +482,13 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<USUARIO>()
-                .Property(e => e.USUARIOID)
-                ;
+                .Property(e => e.USUARIOID);
 
             modelBuilder.Entity<USUARIO>()
-                .Property(e => e.PERSONAID)
-                ;
+                .Property(e => e.PERSONAID);
 
             modelBuilder.Entity<USUARIO>()
-                .Property(e => e.PERFILID)
-                ;
+                .Property(e => e.PERFILID);
 
             modelBuilder.Entity<USUARIO>()
                 .Property(e => e.PERSONA_RUT)
@@ -562,20 +508,16 @@ namespace AlmacenYuyitos.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.VENTADETALLEID)
-                ;
+                .Property(e => e.VENTADETALLEID);
 
             modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.CLIENTEID)
-                ;
+                .Property(e => e.CLIENTEID);
 
             modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.PRODUCTO_PRODUCTOID)
-                ;
+                .Property(e => e.PRODUCTO_PRODUCTOID);
 
             modelBuilder.Entity<VENTADETALLE>()
-                .Property(e => e.COMPROBANTE_COMPROBANTEID)
-                ;
+                .Property(e => e.COMPROBANTE_COMPROBANTEID);
         }
     }
 }
