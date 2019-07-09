@@ -1,0 +1,119 @@
+﻿@model IEnumerable<AlmacenYuyitos.Models.DETALLEPEDIDO>
+@{
+    ViewBag.Title = "GetDetalle";
+    Layout = null;
+}
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="max-content" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        ITEM
+                    </th>
+                    <th>
+                        DESCRIPCION
+                    </th>
+                    <th>
+                        CANTIDAD
+                    </th>
+                    <th>
+                        MEDIDA
+                    </th>
+                    <th>
+                        PRECIO
+                    </th>
+                    <th>
+                        ESTADO
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int i = 1;}
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        <span>@i</span>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FAMILIAPRODUCTO.DESCRIPCION)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CANTIDAD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TIPOPRODUCTO.UNIDADMEDIDA)
+                    </td>
+                    <td>
+                        $ @Html.DisplayFor(modelItem => item.PRECIOCOMPRA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ORDENPEDIDO.ORDENESTADO_ESTADO)
+                    </td>
+                </tr>
+                    i++;
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FAMILIAPRODUCTO.DESCRIPCION)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ORDENPEDIDO.ORDENESTADO_ESTADO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TIPOPRODUCTO.UNIDADMEDIDA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CANTIDAD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PRECIOCOMPRA)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FAMILIAPRODUCTO.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ORDENPEDIDO.ORDENESTADO_ESTADO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TIPOPRODUCTO.UNIDADMEDIDA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CANTIDAD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PRECIOCOMPRA)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </table>*@
+
+
+@section Scripts {
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+}

@@ -1,0 +1,42 @@
+﻿@model AlmacenYuyitos.Models.ORDENPEDIDO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ORDENPEDIDO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ORDENESTADO.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORDENESTADO.ESTADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROVEEDOR.RUT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROVEEDOR.RUT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHACREACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHACREACION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ORDENPEDIDOID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

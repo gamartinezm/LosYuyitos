@@ -1,0 +1,113 @@
+﻿@model AlmacenYuyitos.Models.DETALLEPEDIDO
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="text-center">PASO 2</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Seleccionar Productos</h6>
+        </div>
+        <div class="card-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @*<div class="form-group">
+                        @Html.Label("ORDENPEDIDO_ORDENPEDIDOID", "N° DE ORDEN", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ORDENPEDIDO.ORDENPEDIDOID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Orden, @readonly = "readonly" } })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TIPOPRODUCTO_TIPOPRODUCTOID, "TIPOPRODUCTO_TIPOPRODUCTOID", htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("TIPOPRODUCTO_TIPOPRODUCTOID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TIPOPRODUCTO_TIPOPRODUCTOID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ORDENPEDIDO_ORDENPEDIDOID, "ORDENPEDIDO_ORDENPEDIDOID", htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" data-val="true" data-val-number="El campo CANTIDAD debe ser un número." id="ORDENPEDIDO_ORDENPEDIDOID" name="ORDENPEDIDO_ORDENPEDIDOID" type="number" value="@ViewBag.ORDENPEDIDO_ORDENPEDIDOID" readonly="readonly">
+                        @*@ViewBag.ORDENPEDIDO_ORDENPEDIDOID, class = "form-control", @value = ViewBag.ORDENPEDIDO_ORDENPEDIDOID, @readonly = "readonly" } })*@
+                        @Html.ValidationMessageFor(model => model.ORDENPEDIDO_ORDENPEDIDOID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FAMILIAPRODUCTOID, "FAMILIAPRODUCTOID", htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("FAMILIAPRODUCTOID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FAMILIAPRODUCTOID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CANTIDAD, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CANTIDAD, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CANTIDAD, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PRECIOCOMPRA, htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PRECIOCOMPRA, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PRECIOCOMPRA, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <a href="/DetallePedido/Create" class="btn btn-secondary btn-user btn-block" type="submit">
+                        AGREGAR
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="reset" value="LIMPIAR" class="form-group btn btn-primary btn-user btn-block" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="GUARDAR" class="form-group btn btn-primary btn-user btn-block" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
