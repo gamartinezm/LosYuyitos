@@ -22,9 +22,13 @@ namespace AlmacenYuyitos.Models
 
         public DateTime FECHAMODIFICACION { get; set; }
 
+        public int PAGOESTADO_ESTADOID { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BOLETA> BOLETA { get; set; }
 
         public virtual COMPROBANTE COMPROBANTE { get; set; }
+
+        public virtual PAGOESTADO PAGOESTADO { get; set; }
     }
 }

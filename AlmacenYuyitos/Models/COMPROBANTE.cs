@@ -13,11 +13,10 @@ namespace AlmacenYuyitos.Models
         public COMPROBANTE()
         {
             HISTORIALCOMPRA = new HashSet<HISTORIALCOMPRA>();
+            VENTADETALLE = new HashSet<VENTADETALLE>();
         }
 
         public int COMPROBANTEID { get; set; }
-
-        public int VENTADETALLEID { get; set; }
 
         public int TIPOPAGOID { get; set; }
 
@@ -26,6 +25,10 @@ namespace AlmacenYuyitos.Models
         public int ESTADOID { get; set; }
 
         public int USUARIOID { get; set; }
+
+        public int? TOTALCOMPRA { get; set; }
+
+        public int? MONTOCANCELADO { get; set; }
 
         public virtual PAGOESTADO PAGOESTADO { get; set; }
 
@@ -36,6 +39,7 @@ namespace AlmacenYuyitos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HISTORIALCOMPRA> HISTORIALCOMPRA { get; set; }
 
-        public virtual VENTADETALLE VENTADETALLE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VENTADETALLE> VENTADETALLE { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace AlmacenYuyitos.Models
         public PAGOESTADO()
         {
             COMPROBANTE = new HashSet<COMPROBANTE>();
+            HISTORIALCOMPRA = new HashSet<HISTORIALCOMPRA>();
         }
 
         [Key]
@@ -27,5 +28,8 @@ namespace AlmacenYuyitos.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HISTORIALCOMPRA> HISTORIALCOMPRA { get; set; }
     }
 }
