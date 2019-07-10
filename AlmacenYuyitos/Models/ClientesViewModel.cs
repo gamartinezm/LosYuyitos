@@ -16,12 +16,12 @@ namespace AlmacenYuyitos.Models
 
         public DateTime? FECHACREACION { get; set; }
 
-        public virtual CATEGORIA CATEGORIA { get; set; }
+        public virtual Categoria CATEGORIA { get; set; }
 
-        public virtual PERSONA PERSONA { get; set; }
+        public virtual Persona PERSONA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VENTADETALLE> VENTADETALLE { get; set; }
+        public virtual ICollection<VentaDetalle> VENTADETALLE { get; set; }
     }
 
 }

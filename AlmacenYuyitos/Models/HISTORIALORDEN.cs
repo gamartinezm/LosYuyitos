@@ -7,7 +7,7 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.HISTORIALORDEN")]
-    public partial class HISTORIALORDEN
+    public partial class HistorialOrden
     {
         public int HISTORIALORDENID { get; set; }
 
@@ -23,8 +23,8 @@ namespace AlmacenYuyitos.Models
 
         public int ORDENPEDIDO_ORDENPEDIDOID { get; set; }
 
-        public virtual ORDENESTADO ORDENESTADO { get; set; }
+        public virtual OrdenEstado ORDENESTADO { get; set; }
 
-        public virtual ORDENPEDIDO ORDENPEDIDO { get; set; }
+        public virtual OrdenPedido ORDENPEDIDO { get; set; }
     }
 }

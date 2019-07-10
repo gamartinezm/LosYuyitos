@@ -16,7 +16,7 @@ namespace AlmacenYuyitos.Controllers
     {
         private YuyitosModel db = new YuyitosModel();
 
-        // GET: Cliente
+        // GET: CLIENTE
         public ActionResult Index()
         {
             var cLIENTE = db.Cliente.Include(c => c.CATEGORIA).Include(c => c.PERSONA).OrderBy(c => c.CLIENTEID);
@@ -24,8 +24,8 @@ namespace AlmacenYuyitos.Controllers
         }
 
 
-        // GET: Cliente/Details/5
-        [Route("Cliente/Details/[id]")]
+        // GET: CLIENTE/Details/5
+        [Route("CLIENTE/Details/[id]")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,15 +40,15 @@ namespace AlmacenYuyitos.Controllers
             return View(cLIENTE);
         }
 
-        // GET: Cliente/Create
+        // GET: CLIENTE/Create
         public ActionResult Create()
         {
-            ViewBag.CATEGORIAID = new SelectList(db.CATEGORIA, "CATEGORIAID", "NOMBRE");
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT");
+            ViewBag.CATEGORIAID = new SelectList(db.Categoria, "CATEGORIAID", "NOMBRE");
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT");
             return View();
         }
 
-        // POST: Cliente/Create
+        // POST: CLIENTE/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -62,8 +62,8 @@ namespace AlmacenYuyitos.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CATEGORIAID = new SelectList(db.CATEGORIA, "CATEGORIAID", "NOMBRE", cLIENTE.CATEGORIAID);
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT", cLIENTE.PERSONAID);
+            ViewBag.CATEGORIAID = new SelectList(db.Categoria, "CATEGORIAID", "NOMBRE", cLIENTE.CATEGORIAID);
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT", cLIENTE.PERSONAID);
             return View(cLIENTE);
         }
 
@@ -79,7 +79,7 @@ namespace AlmacenYuyitos.Controllers
 
 
 
-        // GET: Cliente/Edit/5
+        // GET: CLIENTE/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -91,12 +91,12 @@ namespace AlmacenYuyitos.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CATEGORIAID = new SelectList(db.CATEGORIA, "CATEGORIAID", "NOMBRE", cLIENTE.CATEGORIAID);
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT", cLIENTE.PERSONAID);
+            ViewBag.CATEGORIAID = new SelectList(db.Categoria, "CATEGORIAID", "NOMBRE", cLIENTE.CATEGORIAID);
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT", cLIENTE.PERSONAID);
             return View(cLIENTE);
         }
 
-        // POST: Cliente/Edit/5
+        // POST: CLIENTE/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -122,12 +122,12 @@ namespace AlmacenYuyitos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CATEGORIAID = new SelectList(db.CATEGORIA, "CATEGORIAID", "NOMBRE", cLIENTE.CATEGORIAID);
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT", cLIENTE.PERSONAID);
+            ViewBag.CATEGORIAID = new SelectList(db.Categoria, "CATEGORIAID", "NOMBRE", cLIENTE.CATEGORIAID);
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT", cLIENTE.PERSONAID);
             return View(cLIENTE);
         }
 
-        // GET: Cliente/Delete/5
+        // GET: CLIENTE/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -142,7 +142,7 @@ namespace AlmacenYuyitos.Controllers
             return View(cLIENTE);
         }
 
-        // POST: Cliente/Delete/5
+        // POST: CLIENTE/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

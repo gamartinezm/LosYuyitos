@@ -12,7 +12,7 @@ namespace AlmacenYuyitos.Models
         public IEnumerable<SelectListItem> GetProveedor()
         {
             var data = new YuyitosModel();
-            return data.PROVEEDOR.Select(x => new SelectListItem
+            return data.Proveedor.Select(x => new SelectListItem
             {
                 Text = x.RAZONSOCIAL,
                 Value = x.PROVEEDORID.ToString()
@@ -23,7 +23,7 @@ namespace AlmacenYuyitos.Models
         public IEnumerable<SelectListItem> GetOrdenPedido(int PROVEEDORID)
         {
             var data = new YuyitosModel();
-            return data.ORDENPEDIDO.Where(x => x.PROVEEDOR_PROVEEDORID == PROVEEDORID).OrderBy(x => x.ORDENPEDIDOID).Select(x => new SelectListItem
+            return data.OrdenPedido.Where(x => x.PROVEEDOR_PROVEEDORID == PROVEEDORID).OrderBy(x => x.ORDENPEDIDOID).Select(x => new SelectListItem
             {
                 Text = x.ORDENPEDIDOID.ToString(),
                 Value = x.PROVEEDOR_PROVEEDORID.ToString()

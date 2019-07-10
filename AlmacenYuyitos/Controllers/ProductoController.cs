@@ -18,7 +18,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: Producto
         public ActionResult Index()
         {
-            var pRODUCTO = db.PRODUCTO.Include(p => p.FAMILIAPRODUCTO).Include(p => p.PROVEEDOR).Include(p => p.TIPOPRODUCTO);
+            var pRODUCTO = db.Producto.Include(p => p.FAMILIAPRODUCTO).Include(p => p.PROVEEDOR).Include(p => p.TIPOPRODUCTO);
             return View(pRODUCTO.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PRODUCTO pRODUCTO = db.PRODUCTO.Find(id);
+            Producto pRODUCTO = db.Producto.Find(id);
             if (pRODUCTO == null)
             {
                 return HttpNotFound();
@@ -40,9 +40,9 @@ namespace AlmacenYuyitos.Controllers
         // GET: Producto/Create
         public ActionResult Create()
         {
-            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION");
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RUT");
-            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA");
+            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FamiliaProducto, "FAMILIAPRODUCTOID", "DESCRIPCION");
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RUT");
+            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TipoProducto, "TIPOPRODUCTOID", "UNIDADMEDIDA");
             return View();
         }
 
@@ -51,18 +51,18 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PRODUCTOID,PRECIOVENTA,PRECIOCOMPRA,STOCK,STOCKCRITICO,TIPOPRODUCTO_TIPOPRODUCTOID,FECHAVENCIMIENTO,PROVEEDOR_PROVEEDORID,FAMILIAPRODUCTOID")] PRODUCTO pRODUCTO)
+        public ActionResult Create([Bind(Include = "PRODUCTOID,PRECIOVENTA,PRECIOCOMPRA,STOCK,STOCKCRITICO,TIPOPRODUCTO_TIPOPRODUCTOID,FECHAVENCIMIENTO,PROVEEDOR_PROVEEDORID,FAMILIAPRODUCTOID")] Producto pRODUCTO)
         {
             if (ModelState.IsValid)
             {
-                db.PRODUCTO.Add(pRODUCTO);
+                db.Producto.Add(pRODUCTO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION", pRODUCTO.FAMILIAPRODUCTOID);
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RUT", pRODUCTO.PROVEEDOR_PROVEEDORID);
-            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA", pRODUCTO.TIPOPRODUCTO_TIPOPRODUCTOID);
+            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FamiliaProducto, "FAMILIAPRODUCTOID", "DESCRIPCION", pRODUCTO.FAMILIAPRODUCTOID);
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RUT", pRODUCTO.PROVEEDOR_PROVEEDORID);
+            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TipoProducto, "TIPOPRODUCTOID", "UNIDADMEDIDA", pRODUCTO.TIPOPRODUCTO_TIPOPRODUCTOID);
             return View(pRODUCTO);
         }
 
@@ -73,14 +73,14 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PRODUCTO pRODUCTO = db.PRODUCTO.Find(id);
+            Producto pRODUCTO = db.Producto.Find(id);
             if (pRODUCTO == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION", pRODUCTO.FAMILIAPRODUCTOID);
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RUT", pRODUCTO.PROVEEDOR_PROVEEDORID);
-            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA", pRODUCTO.TIPOPRODUCTO_TIPOPRODUCTOID);
+            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FamiliaProducto, "FAMILIAPRODUCTOID", "DESCRIPCION", pRODUCTO.FAMILIAPRODUCTOID);
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RUT", pRODUCTO.PROVEEDOR_PROVEEDORID);
+            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TipoProducto, "TIPOPRODUCTOID", "UNIDADMEDIDA", pRODUCTO.TIPOPRODUCTO_TIPOPRODUCTOID);
             return View(pRODUCTO);
         }
 
@@ -89,7 +89,7 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PRODUCTOID,PRECIOVENTA,PRECIOCOMPRA,STOCK,STOCKCRITICO,TIPOPRODUCTO_TIPOPRODUCTOID,FECHAVENCIMIENTO,PROVEEDOR_PROVEEDORID,FAMILIAPRODUCTOID")] PRODUCTO pRODUCTO)
+        public ActionResult Edit([Bind(Include = "PRODUCTOID,PRECIOVENTA,PRECIOCOMPRA,STOCK,STOCKCRITICO,TIPOPRODUCTO_TIPOPRODUCTOID,FECHAVENCIMIENTO,PROVEEDOR_PROVEEDORID,FAMILIAPRODUCTOID")] Producto pRODUCTO)
         {
             if (ModelState.IsValid)
             {
@@ -97,9 +97,9 @@ namespace AlmacenYuyitos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION", pRODUCTO.FAMILIAPRODUCTOID);
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RUT", pRODUCTO.PROVEEDOR_PROVEEDORID);
-            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TIPOPRODUCTO, "TIPOPRODUCTOID", "UNIDADMEDIDA", pRODUCTO.TIPOPRODUCTO_TIPOPRODUCTOID);
+            ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FamiliaProducto, "FAMILIAPRODUCTOID", "DESCRIPCION", pRODUCTO.FAMILIAPRODUCTOID);
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RUT", pRODUCTO.PROVEEDOR_PROVEEDORID);
+            ViewBag.TIPOPRODUCTO_TIPOPRODUCTOID = new SelectList(db.TipoProducto, "TIPOPRODUCTOID", "UNIDADMEDIDA", pRODUCTO.TIPOPRODUCTO_TIPOPRODUCTOID);
             return View(pRODUCTO);
         }
 
@@ -110,7 +110,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PRODUCTO pRODUCTO = db.PRODUCTO.Find(id);
+            Producto pRODUCTO = db.Producto.Find(id);
             if (pRODUCTO == null)
             {
                 return HttpNotFound();
@@ -123,8 +123,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PRODUCTO pRODUCTO = db.PRODUCTO.Find(id);
-            db.PRODUCTO.Remove(pRODUCTO);
+            Producto pRODUCTO = db.Producto.Find(id);
+            db.Producto.Remove(pRODUCTO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

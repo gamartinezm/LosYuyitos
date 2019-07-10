@@ -1,15 +1,73 @@
-﻿@model IEnumerable<AlmacenYuyitos.Models.COMPROBANTE>
+﻿@model IEnumerable<AlmacenYuyitos.Models.Comprobante>
 
 @{
     ViewBag.Title = "Index";
+    Layout = null;
 }
 
-<h2>Index</h2>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Historial Cliente</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="max-content" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            RUT CLIENTE
+                        </th>
+                        <th>
+                            TIPO DE PAGO
+                        </th>
+                        <th>
+                            ESTADO
+                        </th>
+                        <th>
+                            FECHA COMPRA
+                        </th>
+                        <th>
+                            TOTAL COMPRA
+                        </th>
+                        <th>
+                            MONTO CANCELADO
+                        </th>
+                    </tr>
+                </thead>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USUARIO.PERSONA_RUT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TIPOPAGO.NOMBRE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PAGOESTADO.NOMBRE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FECHAEMISION)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TOTALCOMPRA)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MONTOCANCELADO)
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.PAGOESTADO.NOMBRE)
@@ -32,32 +90,44 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PAGOESTADO.NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TIPOPAGO.NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.USUARIO.PERSONA_RUT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FECHAEMISION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TOTALCOMPRA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MONTOCANCELADO)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.COMPROBANTEID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.COMPROBANTEID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.COMPROBANTEID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAGOESTADO.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPOPAGO.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.USUARIO.PERSONA_RUT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHAEMISION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TOTALCOMPRA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MONTOCANCELADO)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.COMPROBANTEID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.COMPROBANTEID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.COMPROBANTEID })
+            </td>
+        </tr>
+    }
 
-</table>
+</table>*@
+
+
+@section Scripts {
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}

@@ -8,13 +8,13 @@ namespace AlmacenYuyitos.Models
     using System.Web.Mvc;
 
     [Table("YUYITOS.PROVEEDOR")]
-    public partial class PROVEEDOR
+    public partial class Proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PROVEEDOR()
+        public Proveedor()
         {
-            ORDENPEDIDO = new HashSet<ORDENPEDIDO>();
-            PRODUCTO = new HashSet<PRODUCTO>();
+            ORDENPEDIDO = new HashSet<OrdenPedido>();
+            PRODUCTO = new HashSet<Producto>();
         }
 
         public int PROVEEDORID { get; set; }
@@ -53,14 +53,14 @@ namespace AlmacenYuyitos.Models
         [StringLength(100)]
         public string COMPLEMENTO { get; set; }
 
-        public virtual COMUNA COMUNA { get; set; }
+        public virtual Comuna COMUNA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDENPEDIDO> ORDENPEDIDO { get; set; }
+        public virtual ICollection<OrdenPedido> ORDENPEDIDO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+        public virtual ICollection<Producto> PRODUCTO { get; set; }
 
-        public virtual RUBRO RUBRO { get; set; }
+        public virtual Rubro RUBRO { get; set; }
     }
 }

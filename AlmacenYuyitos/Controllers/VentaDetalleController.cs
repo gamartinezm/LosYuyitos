@@ -10,6 +10,7 @@ using AlmacenYuyitos.Models;
 
 namespace AlmacenYuyitos.Controllers
 {
+    [Authorize]
     public class VentaDetalleController : Controller
     {
         private YuyitosModel db = new YuyitosModel();
@@ -18,7 +19,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: VentaDetalle
         public ActionResult Index(int ordenId)
         {
-            var vENTADETALLE = db.VENTADETALLE.Where(v => v.CLIENTE.PERSONAID == ordenId);
+            var vENTADETALLE = db.VentaDetalle.Where(v => v.CLIENTE.PERSONAID == ordenId);
             //var vENTADETALLE = db.VENTADETALLE.Find(ordenId);
             return View(vENTADETALLE.ToList());
         }
@@ -30,7 +31,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VENTADETALLE vENTADETALLE = db.VENTADETALLE.Find(id);
+            VentaDetalle vENTADETALLE = db.VentaDetalle.Find(id);
             if (vENTADETALLE == null)
             {
                 return HttpNotFound();
@@ -42,7 +43,7 @@ namespace AlmacenYuyitos.Controllers
         public ActionResult Create()
         {
             ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID");
-            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID");
+            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.Producto, "PRODUCTOID", "PRODUCTOID");
             return View();
         }
 
@@ -51,17 +52,17 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VENTADETALLEID,PRODUCTOID,CLIENTEID,PRODUCTO_PRODUCTOID")] VENTADETALLE vENTADETALLE)
+        public ActionResult Create([Bind(Include = "VENTADETALLEID,PRODUCTOID,CLIENTEID,PRODUCTO_PRODUCTOID")] VentaDetalle vENTADETALLE)
         {
             if (ModelState.IsValid)
             {
-                db.VENTADETALLE.Add(vENTADETALLE);
+                db.VentaDetalle.Add(vENTADETALLE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
-            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
+            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.Producto, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
             return View(vENTADETALLE);
         }
 
@@ -72,13 +73,13 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VENTADETALLE vENTADETALLE = db.VENTADETALLE.Find(id);
+            VentaDetalle vENTADETALLE = db.VentaDetalle.Find(id);
             if (vENTADETALLE == null)
             {
                 return HttpNotFound();
             }
             ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
-            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
+            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.Producto, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
             return View(vENTADETALLE);
         }
 
@@ -87,7 +88,7 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VENTADETALLEID,PRODUCTOID,CLIENTEID,PRODUCTO_PRODUCTOID")] VENTADETALLE vENTADETALLE)
+        public ActionResult Edit([Bind(Include = "VENTADETALLEID,PRODUCTOID,CLIENTEID,PRODUCTO_PRODUCTOID")] VentaDetalle vENTADETALLE)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +97,7 @@ namespace AlmacenYuyitos.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CLIENTEID = new SelectList(db.Cliente, "CLIENTEID", "CLIENTEID", vENTADETALLE.CLIENTEID);
-            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.PRODUCTO, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
+            ViewBag.PRODUCTO_PRODUCTOID = new SelectList(db.Producto, "PRODUCTOID", "PRODUCTOID", vENTADETALLE.PRODUCTO_PRODUCTOID);
             return View(vENTADETALLE);
         }
 
@@ -107,7 +108,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            VENTADETALLE vENTADETALLE = db.VENTADETALLE.Find(id);
+            VentaDetalle vENTADETALLE = db.VentaDetalle.Find(id);
             if (vENTADETALLE == null)
             {
                 return HttpNotFound();
@@ -120,8 +121,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            VENTADETALLE vENTADETALLE = db.VENTADETALLE.Find(id);
-            db.VENTADETALLE.Remove(vENTADETALLE);
+            VentaDetalle vENTADETALLE = db.VentaDetalle.Find(id);
+            db.VentaDetalle.Remove(vENTADETALLE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

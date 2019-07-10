@@ -18,7 +18,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: Rubro
         public ActionResult Index()
         {
-            return View(db.RUBRO.ToList());
+            return View(db.Rubro.ToList());
         }
 
         // GET: Rubro/Details/5
@@ -28,7 +28,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RUBRO rUBRO = db.RUBRO.Find(id);
+            Rubro rUBRO = db.Rubro.Find(id);
             if (rUBRO == null)
             {
                 return HttpNotFound();
@@ -47,11 +47,11 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RUBROID,NOMBRE,DESCRIPCION")] RUBRO rUBRO)
+        public ActionResult Create([Bind(Include = "RUBROID,NOMBRE,DESCRIPCION")] Rubro rUBRO)
         {
             if (ModelState.IsValid)
             {
-                db.RUBRO.Add(rUBRO);
+                db.Rubro.Add(rUBRO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RUBRO rUBRO = db.RUBRO.Find(id);
+            Rubro rUBRO = db.Rubro.Find(id);
             if (rUBRO == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RUBROID,NOMBRE,DESCRIPCION")] RUBRO rUBRO)
+        public ActionResult Edit([Bind(Include = "RUBROID,NOMBRE,DESCRIPCION")] Rubro rUBRO)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            RUBRO rUBRO = db.RUBRO.Find(id);
+            Rubro rUBRO = db.Rubro.Find(id);
             if (rUBRO == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            RUBRO rUBRO = db.RUBRO.Find(id);
-            db.RUBRO.Remove(rUBRO);
+            Rubro rUBRO = db.Rubro.Find(id);
+            db.Rubro.Remove(rUBRO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

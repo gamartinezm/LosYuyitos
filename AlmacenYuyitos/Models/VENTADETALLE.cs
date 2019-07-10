@@ -7,7 +7,7 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.VENTADETALLE")]
-    public partial class VENTADETALLE
+    public partial class VentaDetalle
     {
         public int VENTADETALLEID { get; set; }
 
@@ -19,8 +19,8 @@ namespace AlmacenYuyitos.Models
 
         public virtual Cliente CLIENTE { get; set; }
 
-        public virtual COMPROBANTE COMPROBANTE { get; set; }
+        public virtual Comprobante COMPROBANTE { get; set; }
 
-        public virtual PRODUCTO PRODUCTO { get; set; }
+        public virtual Producto PRODUCTO { get; set; }
     }
 }

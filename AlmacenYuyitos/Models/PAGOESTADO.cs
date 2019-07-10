@@ -7,13 +7,13 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.PAGOESTADO")]
-    public partial class PAGOESTADO
+    public partial class PagoEstado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PAGOESTADO()
+        public PagoEstado()
         {
-            COMPROBANTE = new HashSet<COMPROBANTE>();
-            HISTORIALCOMPRA = new HashSet<HISTORIALCOMPRA>();
+            COMPROBANTE = new HashSet<Comprobante>();
+            HISTORIALCOMPRA = new HashSet<HistorialCompra>();
         }
 
         [Key]
@@ -27,9 +27,9 @@ namespace AlmacenYuyitos.Models
         public string DESCRIPCION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
+        public virtual ICollection<Comprobante> COMPROBANTE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HISTORIALCOMPRA> HISTORIALCOMPRA { get; set; }
+        public virtual ICollection<HistorialCompra> HISTORIALCOMPRA { get; set; }
     }
 }

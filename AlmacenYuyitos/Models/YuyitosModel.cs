@@ -14,53 +14,53 @@ namespace AlmacenYuyitos.Models
 
         //control + r + r
 
-        public virtual DbSet<BOLETA> BOLETA { get; set; }
-        public virtual DbSet<CATEGORIA> CATEGORIA { get; set; }
+        public virtual DbSet<Boleta> Boleta { get; set; }
+        public virtual DbSet<Categoria> Categoria { get; set; }
         public virtual DbSet<Cliente> Cliente { get; set; }
-        public virtual DbSet<COMPROBANTE> COMPROBANTE { get; set; }
-        public virtual DbSet<COMUNA> COMUNA { get; set; }
-        public virtual DbSet<DETALLEPEDIDO> DETALLEPEDIDO { get; set; }
-        public virtual DbSet<FAMILIAPRODUCTO> FAMILIAPRODUCTO { get; set; }
-        public virtual DbSet<GENERO> GENERO { get; set; }
-        public virtual DbSet<HISTORIALCOMPRA> HISTORIALCOMPRA { get; set; }
-        public virtual DbSet<HISTORIALORDEN> HISTORIALORDEN { get; set; }
-        public virtual DbSet<ORDENESTADO> ORDENESTADO { get; set; }
-        public virtual DbSet<ORDENPEDIDO> ORDENPEDIDO { get; set; }
-        public virtual DbSet<PAGOESTADO> PAGOESTADO { get; set; }
-        public virtual DbSet<PERFIL> PERFIL { get; set; }
-        public virtual DbSet<PERSONA> PERSONA { get; set; }
-        public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
-        public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
-        public virtual DbSet<REGION> REGION { get; set; }
-        public virtual DbSet<RUBRO> RUBRO { get; set; }
-        public virtual DbSet<TIPOPAGO> TIPOPAGO { get; set; }
-        public virtual DbSet<TIPOPRODUCTO> TIPOPRODUCTO { get; set; }
-        public virtual DbSet<USUARIO> USUARIO { get; set; }
-        public virtual DbSet<VENTADETALLE> VENTADETALLE { get; set; }
+        public virtual DbSet<Comprobante> Comprobante { get; set; }
+        public virtual DbSet<Comuna> Comuna { get; set; }
+        public virtual DbSet<DetallePedido> DetallePedido { get; set; }
+        public virtual DbSet<FamiliaProducto> FamiliaProducto { get; set; }
+        public virtual DbSet<Genero> Genero { get; set; }
+        public virtual DbSet<HistorialCompra> HistorialCompra { get; set; }
+        public virtual DbSet<HistorialOrden> HistorialOrden { get; set; }
+        public virtual DbSet<OrdenEstado> OrdenEstado { get; set; }
+        public virtual DbSet<OrdenPedido> OrdenPedido { get; set; }
+        public virtual DbSet<PagoEstado> PagoEstado { get; set; }
+        public virtual DbSet<Perfil> Perfil { get; set; }
+        public virtual DbSet<Persona> Persona { get; set; }
+        public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<Proveedor> Proveedor { get; set; }
+        public virtual DbSet<Region> Region { get; set; }
+        public virtual DbSet<Rubro> Rubro { get; set; }
+        public virtual DbSet<TipoPago> TipoPago { get; set; }
+        public virtual DbSet<TipoProducto> TipoProducto { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<VentaDetalle> VentaDetalle { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BOLETA>()
+            modelBuilder.Entity<Boleta>()
                 .Property(e => e.BOLETAID);
 
-            modelBuilder.Entity<BOLETA>()
+            modelBuilder.Entity<Boleta>()
                 .Property(e => e.LISTADOID);
 
-            modelBuilder.Entity<BOLETA>()
+            modelBuilder.Entity<Boleta>()
                 .Property(e => e.VENTAID);
 
-            modelBuilder.Entity<CATEGORIA>()
+            modelBuilder.Entity<Categoria>()
                 .Property(e => e.CATEGORIAID);
 
-            modelBuilder.Entity<CATEGORIA>()
+            modelBuilder.Entity<Categoria>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CATEGORIA>()
+            modelBuilder.Entity<Categoria>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CATEGORIA>()
+            modelBuilder.Entity<Categoria>()
                 .HasMany(e => e.CLIENTE)
                 .WithRequired(e => e.CATEGORIA)
                 .WillCascadeOnDelete(false);
@@ -79,446 +79,446 @@ namespace AlmacenYuyitos.Models
                 .WithRequired(e => e.CLIENTE)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .Property(e => e.COMPROBANTEID);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .Property(e => e.TIPOPAGOID);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .Property(e => e.ESTADOID);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .Property(e => e.USUARIOID);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .Property(e => e.TOTALCOMPRA);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .Property(e => e.MONTOCANCELADO);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .HasMany(e => e.HISTORIALCOMPRA)
                 .WithRequired(e => e.COMPROBANTE)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<COMPROBANTE>()
+            modelBuilder.Entity<Comprobante>()
                 .HasMany(e => e.VENTADETALLE)
                 .WithRequired(e => e.COMPROBANTE)
                 .HasForeignKey(e => e.COMPROBANTE_COMPROBANTEID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<COMUNA>()
+            modelBuilder.Entity<Comuna>()
                 .Property(e => e.COMUNAID);
 
-            modelBuilder.Entity<COMUNA>()
+            modelBuilder.Entity<Comuna>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<COMUNA>()
+            modelBuilder.Entity<Comuna>()
                 .Property(e => e.REGIONID);
 
-            modelBuilder.Entity<COMUNA>()
+            modelBuilder.Entity<Comuna>()
                 .HasMany(e => e.PERSONA)
                 .WithRequired(e => e.COMUNA)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<COMUNA>()
+            modelBuilder.Entity<Comuna>()
                 .HasMany(e => e.PROVEEDOR)
                 .WithRequired(e => e.COMUNA)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<DETALLEPEDIDO>()
+            modelBuilder.Entity<DetallePedido>()
                 .Property(e => e.CANTIDAD);
 
-            modelBuilder.Entity<DETALLEPEDIDO>()
+            modelBuilder.Entity<DetallePedido>()
                 .Property(e => e.TIPOPRODUCTO_TIPOPRODUCTOID);
 
-            modelBuilder.Entity<DETALLEPEDIDO>()
+            modelBuilder.Entity<DetallePedido>()
                 .Property(e => e.ORDENPEDIDO_ORDENPEDIDOID);
 
-            modelBuilder.Entity<DETALLEPEDIDO>()
+            modelBuilder.Entity<DetallePedido>()
                 .Property(e => e.FAMILIAPRODUCTOID);
 
-            modelBuilder.Entity<DETALLEPEDIDO>()
+            modelBuilder.Entity<DetallePedido>()
                 .Property(e => e.PRECIOCOMPRA);
 
-            modelBuilder.Entity<FAMILIAPRODUCTO>()
+            modelBuilder.Entity<FamiliaProducto>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<FAMILIAPRODUCTO>()
+            modelBuilder.Entity<FamiliaProducto>()
                 .Property(e => e.FAMILIAPRODUCTOID);
 
-            modelBuilder.Entity<FAMILIAPRODUCTO>()
+            modelBuilder.Entity<FamiliaProducto>()
                 .HasMany(e => e.DETALLEPEDIDO)
                 .WithRequired(e => e.FAMILIAPRODUCTO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<FAMILIAPRODUCTO>()
+            modelBuilder.Entity<FamiliaProducto>()
                 .HasMany(e => e.PRODUCTO)
                 .WithRequired(e => e.FAMILIAPRODUCTO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<GENERO>()
+            modelBuilder.Entity<Genero>()
                 .Property(e => e.GENEROID);
 
-            modelBuilder.Entity<GENERO>()
+            modelBuilder.Entity<Genero>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<GENERO>()
+            modelBuilder.Entity<Genero>()
                 .HasMany(e => e.PERSONA)
                 .WithRequired(e => e.GENERO1)
                 .HasForeignKey(e => e.GENERO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<HISTORIALCOMPRA>()
+            modelBuilder.Entity<HistorialCompra>()
                 .Property(e => e.HISTORIALID);
 
-            modelBuilder.Entity<HISTORIALCOMPRA>()
+            modelBuilder.Entity<HistorialCompra>()
                 .Property(e => e.COMPROBANTEID);
 
-            modelBuilder.Entity<HISTORIALCOMPRA>()
+            modelBuilder.Entity<HistorialCompra>()
                 .Property(e => e.PAGOESTADO_ESTADOID);
 
-            modelBuilder.Entity<HISTORIALCOMPRA>()
+            modelBuilder.Entity<HistorialCompra>()
                 .HasMany(e => e.BOLETA)
                 .WithRequired(e => e.HISTORIALCOMPRA)
                 .HasForeignKey(e => e.LISTADOID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<HISTORIALORDEN>()
+            modelBuilder.Entity<HistorialOrden>()
                 .Property(e => e.HISTORIALORDENID);
 
-            modelBuilder.Entity<HISTORIALORDEN>()
+            modelBuilder.Entity<HistorialOrden>()
                 .Property(e => e.OBSERVACION)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<HISTORIALORDEN>()
+            modelBuilder.Entity<HistorialOrden>()
                 .Property(e => e.ORDENESTADO_ESTADO)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<HISTORIALORDEN>()
+            modelBuilder.Entity<HistorialOrden>()
                 .Property(e => e.ORDENPEDIDO_ORDENPEDIDOID);
 
-            modelBuilder.Entity<ORDENESTADO>()
+            modelBuilder.Entity<OrdenEstado>()
                 .Property(e => e.ESTADO)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ORDENESTADO>()
+            modelBuilder.Entity<OrdenEstado>()
                 .HasMany(e => e.HISTORIALORDEN)
                 .WithRequired(e => e.ORDENESTADO)
                 .HasForeignKey(e => e.ORDENESTADO_ESTADO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ORDENESTADO>()
+            modelBuilder.Entity<OrdenEstado>()
                 .HasMany(e => e.ORDENPEDIDO)
                 .WithRequired(e => e.ORDENESTADO)
                 .HasForeignKey(e => e.ORDENESTADO_ESTADO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ORDENPEDIDO>()
+            modelBuilder.Entity<OrdenPedido>()
                 .Property(e => e.ORDENPEDIDOID);
 
-            modelBuilder.Entity<ORDENPEDIDO>()
+            modelBuilder.Entity<OrdenPedido>()
                 .Property(e => e.ORDENESTADO_ESTADO)
                 .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ORDENPEDIDO>()
+            modelBuilder.Entity<OrdenPedido>()
                 .Property(e => e.PROVEEDOR_PROVEEDORID);
 
-            modelBuilder.Entity<ORDENPEDIDO>()
+            modelBuilder.Entity<OrdenPedido>()
                 .HasMany(e => e.DETALLEPEDIDO)
                 .WithRequired(e => e.ORDENPEDIDO)
                 .HasForeignKey(e => e.ORDENPEDIDO_ORDENPEDIDOID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ORDENPEDIDO>()
+            modelBuilder.Entity<OrdenPedido>()
                 .HasMany(e => e.HISTORIALORDEN)
                 .WithRequired(e => e.ORDENPEDIDO)
                 .HasForeignKey(e => e.ORDENPEDIDO_ORDENPEDIDOID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PAGOESTADO>()
+            modelBuilder.Entity<PagoEstado>()
                 .Property(e => e.ESTADOID);
 
-            modelBuilder.Entity<PAGOESTADO>()
+            modelBuilder.Entity<PagoEstado>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PAGOESTADO>()
+            modelBuilder.Entity<PagoEstado>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PAGOESTADO>()
+            modelBuilder.Entity<PagoEstado>()
                 .HasMany(e => e.COMPROBANTE)
                 .WithRequired(e => e.PAGOESTADO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PAGOESTADO>()
+            modelBuilder.Entity<PagoEstado>()
                 .HasMany(e => e.HISTORIALCOMPRA)
                 .WithRequired(e => e.PAGOESTADO)
                 .HasForeignKey(e => e.PAGOESTADO_ESTADOID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PERFIL>()
+            modelBuilder.Entity<Perfil>()
                 .Property(e => e.PERFILID);
 
-            modelBuilder.Entity<PERFIL>()
+            modelBuilder.Entity<Perfil>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERFIL>()
+            modelBuilder.Entity<Perfil>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERFIL>()
+            modelBuilder.Entity<Perfil>()
                 .HasMany(e => e.USUARIO)
                 .WithRequired(e => e.PERFIL)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.PERSONAID);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.RUT)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.APPATERNO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.APMATERNO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.TELEFONO);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.GENERO);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.CALLE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.NUMERO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.COMUNAID);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .Property(e => e.COMPLEMENTO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .HasMany(e => e.CLIENTE)
                 .WithRequired(e => e.PERSONA)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PERSONA>()
+            modelBuilder.Entity<Persona>()
                 .HasMany(e => e.USUARIO)
                 .WithRequired(e => e.PERSONA)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.PRODUCTOID);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.PRECIOVENTA);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.PRECIOCOMPRA);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.STOCK);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.STOCKCRITICO);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.TIPOPRODUCTO_TIPOPRODUCTOID);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.PROVEEDOR_PROVEEDORID);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .Property(e => e.FAMILIAPRODUCTOID);
 
-            modelBuilder.Entity<PRODUCTO>()
+            modelBuilder.Entity<Producto>()
                 .HasMany(e => e.VENTADETALLE)
                 .WithRequired(e => e.PRODUCTO)
                 .HasForeignKey(e => e.PRODUCTO_PRODUCTOID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.PROVEEDORID);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.RUT)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.RAZONSOCIAL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.TELEFONO);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.MAIL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.CONTACTO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.RUBROID);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.CALLE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.NUMERO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.COMUNAID);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .Property(e => e.COMPLEMENTO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .HasMany(e => e.ORDENPEDIDO)
                 .WithRequired(e => e.PROVEEDOR)
                 .HasForeignKey(e => e.PROVEEDOR_PROVEEDORID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<PROVEEDOR>()
+            modelBuilder.Entity<Proveedor>()
                 .HasMany(e => e.PRODUCTO)
                 .WithRequired(e => e.PROVEEDOR)
                 .HasForeignKey(e => e.PROVEEDOR_PROVEEDORID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<REGION>()
+            modelBuilder.Entity<Region>()
                 .Property(e => e.REGIONID);
 
-            modelBuilder.Entity<REGION>()
+            modelBuilder.Entity<Region>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<REGION>()
+            modelBuilder.Entity<Region>()
                 .Property(e => e.ORDEN);
 
-            modelBuilder.Entity<REGION>()
+            modelBuilder.Entity<Region>()
                 .HasMany(e => e.COMUNA)
                 .WithRequired(e => e.REGION)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<RUBRO>()
+            modelBuilder.Entity<Rubro>()
                 .Property(e => e.RUBROID);
 
-            modelBuilder.Entity<RUBRO>()
+            modelBuilder.Entity<Rubro>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<RUBRO>()
+            modelBuilder.Entity<Rubro>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<RUBRO>()
+            modelBuilder.Entity<Rubro>()
                 .HasMany(e => e.PROVEEDOR)
                 .WithRequired(e => e.RUBRO)
                 .WillCascadeOnDelete(false);
 
 
-            modelBuilder.Entity<TIPOPAGO>()
+            modelBuilder.Entity<TipoPago>()
                 .Property(e => e.TIPOPAGOID);
 
-            modelBuilder.Entity<TIPOPAGO>()
+            modelBuilder.Entity<TipoPago>()
                 .Property(e => e.NOMBRE)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TIPOPAGO>()
+            modelBuilder.Entity<TipoPago>()
                 .Property(e => e.DESCRIPCION)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TIPOPAGO>()
+            modelBuilder.Entity<TipoPago>()
                 .HasMany(e => e.COMPROBANTE)
                 .WithRequired(e => e.TIPOPAGO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<TIPOPRODUCTO>()
+            modelBuilder.Entity<TipoProducto>()
                 .Property(e => e.TIPOPRODUCTOID);
 
-            modelBuilder.Entity<TIPOPRODUCTO>()
+            modelBuilder.Entity<TipoProducto>()
                 .Property(e => e.MEDIDA);
 
-            modelBuilder.Entity<TIPOPRODUCTO>()
+            modelBuilder.Entity<TipoProducto>()
                 .Property(e => e.UNIDADMEDIDA)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TIPOPRODUCTO>()
+            modelBuilder.Entity<TipoProducto>()
                 .HasMany(e => e.DETALLEPEDIDO)
                 .WithRequired(e => e.TIPOPRODUCTO)
                 .HasForeignKey(e => e.TIPOPRODUCTO_TIPOPRODUCTOID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<TIPOPRODUCTO>()
+            modelBuilder.Entity<TipoProducto>()
                 .HasMany(e => e.PRODUCTO)
                 .WithRequired(e => e.TIPOPRODUCTO)
                 .HasForeignKey(e => e.TIPOPRODUCTO_TIPOPRODUCTOID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<USUARIO>()
+            modelBuilder.Entity<Usuario>()
                 .Property(e => e.USUARIOID);
 
-            modelBuilder.Entity<USUARIO>()
+            modelBuilder.Entity<Usuario>()
                 .Property(e => e.PERSONAID);
 
-            modelBuilder.Entity<USUARIO>()
+            modelBuilder.Entity<Usuario>()
                 .Property(e => e.PERFILID);
 
-            modelBuilder.Entity<USUARIO>()
+            modelBuilder.Entity<Usuario>()
                 .Property(e => e.PERSONA_RUT)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<USUARIO>()
+            modelBuilder.Entity<Usuario>()
                 .Property(e => e.PASSWORD)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<USUARIO>()
+            modelBuilder.Entity<Usuario>()
                 .Property(e => e.EMAIL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<USUARIO>()
+            modelBuilder.Entity<Usuario>()
                 .HasMany(e => e.COMPROBANTE)
                 .WithRequired(e => e.USUARIO)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<VENTADETALLE>()
+            modelBuilder.Entity<VentaDetalle>()
                 .Property(e => e.VENTADETALLEID);
 
-            modelBuilder.Entity<VENTADETALLE>()
+            modelBuilder.Entity<VentaDetalle>()
                 .Property(e => e.CLIENTEID);
 
-            modelBuilder.Entity<VENTADETALLE>()
+            modelBuilder.Entity<VentaDetalle>()
                 .Property(e => e.PRODUCTO_PRODUCTOID);
 
-            modelBuilder.Entity<VENTADETALLE>()
+            modelBuilder.Entity<VentaDetalle>()
                 .Property(e => e.COMPROBANTE_COMPROBANTEID);
         }
     }

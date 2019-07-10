@@ -11,14 +11,14 @@ using AlmacenYuyitos.Models;
 namespace AlmacenYuyitos.Controllers
 {
     [Authorize]
-    public class ProductoFamiliaController : Controller
+    public class FamiliaProductoController : Controller
     {
         private YuyitosModel db = new YuyitosModel();
 
         // GET: ProductoFamilia
         public ActionResult Index()
         {
-            return View(db.FAMILIAPRODUCTO.ToList());
+            return View(db.FamiliaProducto.ToList());
         }
 
         // GET: ProductoFamilia/Details/5
@@ -28,7 +28,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FAMILIAPRODUCTO fAMILIAPRODUCTO = db.FAMILIAPRODUCTO.Find(id);
+            FamiliaProducto fAMILIAPRODUCTO = db.FamiliaProducto.Find(id);
             if (fAMILIAPRODUCTO == null)
             {
                 return HttpNotFound();
@@ -47,11 +47,11 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FAMILIAPRODUCTOID,DESCRIPCION")] FAMILIAPRODUCTO fAMILIAPRODUCTO)
+        public ActionResult Create([Bind(Include = "FAMILIAPRODUCTOID,DESCRIPCION")] FamiliaProducto fAMILIAPRODUCTO)
         {
             if (ModelState.IsValid)
             {
-                db.FAMILIAPRODUCTO.Add(fAMILIAPRODUCTO);
+                db.FamiliaProducto.Add(fAMILIAPRODUCTO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FAMILIAPRODUCTO fAMILIAPRODUCTO = db.FAMILIAPRODUCTO.Find(id);
+            FamiliaProducto fAMILIAPRODUCTO = db.FamiliaProducto.Find(id);
             if (fAMILIAPRODUCTO == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FAMILIAPRODUCTOID,DESCRIPCION")] FAMILIAPRODUCTO fAMILIAPRODUCTO)
+        public ActionResult Edit([Bind(Include = "FAMILIAPRODUCTOID,DESCRIPCION")] FamiliaProducto fAMILIAPRODUCTO)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FAMILIAPRODUCTO fAMILIAPRODUCTO = db.FAMILIAPRODUCTO.Find(id);
+            FamiliaProducto fAMILIAPRODUCTO = db.FamiliaProducto.Find(id);
             if (fAMILIAPRODUCTO == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            FAMILIAPRODUCTO fAMILIAPRODUCTO = db.FAMILIAPRODUCTO.Find(id);
-            db.FAMILIAPRODUCTO.Remove(fAMILIAPRODUCTO);
+            FamiliaProducto fAMILIAPRODUCTO = db.FamiliaProducto.Find(id);
+            db.FamiliaProducto.Remove(fAMILIAPRODUCTO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

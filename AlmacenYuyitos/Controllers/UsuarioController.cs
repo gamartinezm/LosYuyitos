@@ -29,7 +29,7 @@ namespace AlmacenYuyitos.Controllers
         {
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
-                var user = db.USUARIO.FirstOrDefault(u => u.EMAIL == email && u.PASSWORD == password);
+                var user = db.Usuario.FirstOrDefault(u => u.EMAIL == email && u.PASSWORD == password);
 
                 if (user != null)
                 {
@@ -58,7 +58,7 @@ namespace AlmacenYuyitos.Controllers
         {
             if(!string.IsNullOrEmpty(correo) && !string.IsNullOrEmpty(clave))
             {
-                var user = db.USUARIO.FirstOrDefault(u => u.EMAIL == correo && u.PASSWORD == clave);
+                var user = db.Usuario.FirstOrDefault(u => u.EMAIL == correo && u.PASSWORD == clave);
 
                 if(user != null)
                 {
@@ -79,7 +79,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
-            var uSUARIO = db.USUARIO.Include(u => u.PERFIL).Include(u => u.PERSONA);
+            var uSUARIO = db.Usuario.Include(u => u.PERFIL).Include(u => u.PERSONA);
             return View(uSUARIO.ToList());
         }
 
@@ -90,7 +90,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            USUARIO uSUARIO = db.USUARIO.Find(id);
+            Usuario uSUARIO = db.Usuario.Find(id);
             if (uSUARIO == null)
             {
                 return HttpNotFound();
@@ -101,8 +101,8 @@ namespace AlmacenYuyitos.Controllers
         // GET: Usuario/Create
         public ActionResult Create()
         {
-            ViewBag.PERFILID = new SelectList(db.PERFIL, "PERFILID", "NOMBRE");
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT");
+            ViewBag.PERFILID = new SelectList(db.Perfil, "PERFILID", "NOMBRE");
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT");
             return View();
         }
 
@@ -111,17 +111,17 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "USUARIOID,PERSONAID,PERFILID,PERSONA_RUT,PASSWORD,EMAIL")] USUARIO uSUARIO)
+        public ActionResult Create([Bind(Include = "USUARIOID,PERSONAID,PERFILID,PERSONA_RUT,PASSWORD,EMAIL")] Usuario uSUARIO)
         {
             if (ModelState.IsValid)
             {
-                db.USUARIO.Add(uSUARIO);
+                db.Usuario.Add(uSUARIO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PERFILID = new SelectList(db.PERFIL, "PERFILID", "NOMBRE", uSUARIO.PERFILID);
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT", uSUARIO.PERSONAID);
+            ViewBag.PERFILID = new SelectList(db.Perfil, "PERFILID", "NOMBRE", uSUARIO.PERFILID);
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT", uSUARIO.PERSONAID);
             return View(uSUARIO);
         }
 
@@ -132,13 +132,13 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            USUARIO uSUARIO = db.USUARIO.Find(id);
+            Usuario uSUARIO = db.Usuario.Find(id);
             if (uSUARIO == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PERFILID = new SelectList(db.PERFIL, "PERFILID", "NOMBRE", uSUARIO.PERFILID);
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT", uSUARIO.PERSONAID);
+            ViewBag.PERFILID = new SelectList(db.Perfil, "PERFILID", "NOMBRE", uSUARIO.PERFILID);
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT", uSUARIO.PERSONAID);
             return View(uSUARIO);
         }
 
@@ -147,7 +147,7 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "USUARIOID,PERSONAID,PERFILID,PERSONA_RUT,PASSWORD,EMAIL")] USUARIO uSUARIO)
+        public ActionResult Edit([Bind(Include = "USUARIOID,PERSONAID,PERFILID,PERSONA_RUT,PASSWORD,EMAIL")] Usuario uSUARIO)
         {
             if (ModelState.IsValid)
             {
@@ -155,8 +155,8 @@ namespace AlmacenYuyitos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PERFILID = new SelectList(db.PERFIL, "PERFILID", "NOMBRE", uSUARIO.PERFILID);
-            ViewBag.PERSONAID = new SelectList(db.PERSONA, "PERSONAID", "RUT", uSUARIO.PERSONAID);
+            ViewBag.PERFILID = new SelectList(db.Perfil, "PERFILID", "NOMBRE", uSUARIO.PERFILID);
+            ViewBag.PERSONAID = new SelectList(db.Persona, "PERSONAID", "RUT", uSUARIO.PERSONAID);
             return View(uSUARIO);
         }
 
@@ -167,7 +167,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            USUARIO uSUARIO = db.USUARIO.Find(id);
+            Usuario uSUARIO = db.Usuario.Find(id);
             if (uSUARIO == null)
             {
                 return HttpNotFound();
@@ -180,8 +180,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            USUARIO uSUARIO = db.USUARIO.Find(id);
-            db.USUARIO.Remove(uSUARIO);
+            Usuario uSUARIO = db.Usuario.Find(id);
+            db.Usuario.Remove(uSUARIO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

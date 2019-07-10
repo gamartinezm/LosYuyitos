@@ -10,7 +10,8 @@ using AlmacenYuyitos.Models;
 
 namespace AlmacenYuyitos.Controllers
 {
-    public class ORDENPEDIDOController : Controller
+    [Authorize]
+    public class OrdenPedidoController : Controller
     {
         private YuyitosModel db = new YuyitosModel();
 
@@ -18,7 +19,7 @@ namespace AlmacenYuyitos.Controllers
         public ActionResult GetDetalle(int proveedorId)
         {
 
-            var oRDENPEDIDO = db.ORDENPEDIDO.Include(o => o.ORDENESTADO).Include(o => o.PROVEEDOR).Where(d => d.PROVEEDOR_PROVEEDORID == proveedorId);
+            var oRDENPEDIDO = db.OrdenPedido.Include(o => o.ORDENESTADO).Include(o => o.PROVEEDOR).Where(d => d.PROVEEDOR_PROVEEDORID == proveedorId);
             return View(oRDENPEDIDO.ToList());
 
             //ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION");
@@ -47,7 +48,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: ORDENPEDIDO
         public ActionResult Index()
         {
-            var oRDENPEDIDO = db.ORDENPEDIDO.Include(o => o.ORDENESTADO).Include(o => o.PROVEEDOR);
+            var oRDENPEDIDO = db.OrdenPedido.Include(o => o.ORDENESTADO).Include(o => o.PROVEEDOR);
             return View(oRDENPEDIDO.ToList());
         }
 
@@ -58,7 +59,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ORDENPEDIDO oRDENPEDIDO = db.ORDENPEDIDO.Find(id);
+            OrdenPedido oRDENPEDIDO = db.OrdenPedido.Find(id);
             if (oRDENPEDIDO == null)
             {
                 return HttpNotFound();
@@ -69,8 +70,8 @@ namespace AlmacenYuyitos.Controllers
         // GET: ORDENPEDIDO/Create
         public ActionResult Create()
         {
-            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.ORDENESTADO, "ESTADO", "ESTADO");
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RAZONSOCIAL");
+            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.OrdenEstado, "ESTADO", "ESTADO");
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RAZONSOCIAL");
             return View();
         }
 
@@ -79,17 +80,17 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ORDENPEDIDOID,FECHACREACION,ORDENESTADO_ESTADO,PROVEEDOR_PROVEEDORID")] ORDENPEDIDO oRDENPEDIDO)
+        public ActionResult Create([Bind(Include = "ORDENPEDIDOID,FECHACREACION,ORDENESTADO_ESTADO,PROVEEDOR_PROVEEDORID")] OrdenPedido oRDENPEDIDO)
         {
             if (ModelState.IsValid)
             {
-                db.ORDENPEDIDO.Add(oRDENPEDIDO);
+                db.OrdenPedido.Add(oRDENPEDIDO);
                 db.SaveChanges();
                 return RedirectToAction("Create","DetallePedido");
             }
 
-            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.ORDENESTADO, "ESTADO", "ESTADO", oRDENPEDIDO.ORDENESTADO_ESTADO);
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RUT", oRDENPEDIDO.PROVEEDOR_PROVEEDORID);
+            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.OrdenEstado, "ESTADO", "ESTADO", oRDENPEDIDO.ORDENESTADO_ESTADO);
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RUT", oRDENPEDIDO.PROVEEDOR_PROVEEDORID);
             return View(oRDENPEDIDO);
         }
 
@@ -100,13 +101,13 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ORDENPEDIDO oRDENPEDIDO = db.ORDENPEDIDO.Find(id);
+            OrdenPedido oRDENPEDIDO = db.OrdenPedido.Find(id);
             if (oRDENPEDIDO == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.ORDENESTADO, "ESTADO", "ESTADO", oRDENPEDIDO.ORDENESTADO_ESTADO);
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RUT", oRDENPEDIDO.PROVEEDOR_PROVEEDORID);
+            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.OrdenEstado, "ESTADO", "ESTADO", oRDENPEDIDO.ORDENESTADO_ESTADO);
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RUT", oRDENPEDIDO.PROVEEDOR_PROVEEDORID);
             return View(oRDENPEDIDO);
         }
 
@@ -115,7 +116,7 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ORDENPEDIDOID,FECHACREACION,ORDENESTADO_ESTADO,PROVEEDOR_PROVEEDORID")] ORDENPEDIDO oRDENPEDIDO)
+        public ActionResult Edit([Bind(Include = "ORDENPEDIDOID,FECHACREACION,ORDENESTADO_ESTADO,PROVEEDOR_PROVEEDORID")] OrdenPedido oRDENPEDIDO)
         {
             if (ModelState.IsValid)
             {
@@ -123,8 +124,8 @@ namespace AlmacenYuyitos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.ORDENESTADO, "ESTADO", "ESTADO", oRDENPEDIDO.ORDENESTADO_ESTADO);
-            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.PROVEEDOR, "PROVEEDORID", "RUT", oRDENPEDIDO.PROVEEDOR_PROVEEDORID);
+            ViewBag.ORDENESTADO_ESTADO = new SelectList(db.OrdenEstado, "ESTADO", "ESTADO", oRDENPEDIDO.ORDENESTADO_ESTADO);
+            ViewBag.PROVEEDOR_PROVEEDORID = new SelectList(db.Proveedor, "PROVEEDORID", "RUT", oRDENPEDIDO.PROVEEDOR_PROVEEDORID);
             return View(oRDENPEDIDO);
         }
 
@@ -135,7 +136,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ORDENPEDIDO oRDENPEDIDO = db.ORDENPEDIDO.Find(id);
+            OrdenPedido oRDENPEDIDO = db.OrdenPedido.Find(id);
             if (oRDENPEDIDO == null)
             {
                 return HttpNotFound();
@@ -148,8 +149,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ORDENPEDIDO oRDENPEDIDO = db.ORDENPEDIDO.Find(id);
-            db.ORDENPEDIDO.Remove(oRDENPEDIDO);
+            OrdenPedido oRDENPEDIDO = db.OrdenPedido.Find(id);
+            db.OrdenPedido.Remove(oRDENPEDIDO);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

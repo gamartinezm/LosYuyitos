@@ -7,13 +7,13 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.ORDENESTADO")]
-    public partial class ORDENESTADO
+    public partial class OrdenEstado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ORDENESTADO()
+        public OrdenEstado()
         {
-            HISTORIALORDEN = new HashSet<HISTORIALORDEN>();
-            ORDENPEDIDO = new HashSet<ORDENPEDIDO>();
+            HISTORIALORDEN = new HashSet<HistorialOrden>();
+            ORDENPEDIDO = new HashSet<OrdenPedido>();
         }
 
         [Key]
@@ -21,9 +21,9 @@ namespace AlmacenYuyitos.Models
         public string ESTADO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HISTORIALORDEN> HISTORIALORDEN { get; set; }
+        public virtual ICollection<HistorialOrden> HISTORIALORDEN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDENPEDIDO> ORDENPEDIDO { get; set; }
+        public virtual ICollection<OrdenPedido> ORDENPEDIDO { get; set; }
     }
 }

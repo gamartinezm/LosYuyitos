@@ -12,7 +12,7 @@ namespace AlmacenYuyitos.Models
         public IEnumerable<SelectListItem> GetRegiones()
         {
             var data = new YuyitosModel();
-            return data.REGION.Select(x => new SelectListItem
+            return data.Region.Select(x => new SelectListItem
             {
                 Text = x.NOMBRE,
                 Value = x.REGIONID.ToString()
@@ -23,7 +23,7 @@ namespace AlmacenYuyitos.Models
         public IEnumerable<SelectListItem> GetComunas(int REGIONID)
         {
             var data = new YuyitosModel();
-            return data.COMUNA.Where(x => x.REGIONID == REGIONID).OrderBy(x => x.NOMBRE).Select(x => new SelectListItem
+            return data.Comuna.Where(x => x.REGIONID == REGIONID).OrderBy(x => x.NOMBRE).Select(x => new SelectListItem
             {
                 Text = x.NOMBRE,
                 Value = x.COMUNAID.ToString()

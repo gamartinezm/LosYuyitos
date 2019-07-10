@@ -7,12 +7,12 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.REGION")]
-    public partial class REGION
+    public partial class Region
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public REGION()
+        public Region()
         {
-            COMUNA = new HashSet<COMUNA>();
+            COMUNA = new HashSet<Comuna>();
         }
 
         public int REGIONID { get; set; }
@@ -25,6 +25,6 @@ namespace AlmacenYuyitos.Models
         public int ORDEN { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMUNA> COMUNA { get; set; }
+        public virtual ICollection<Comuna> COMUNA { get; set; }
     }
 }

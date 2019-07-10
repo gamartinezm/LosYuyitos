@@ -7,13 +7,13 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.ORDENPEDIDO")]
-    public partial class ORDENPEDIDO
+    public partial class OrdenPedido
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ORDENPEDIDO()
+        public OrdenPedido()
         {
-            DETALLEPEDIDO = new HashSet<DETALLEPEDIDO>();
-            HISTORIALORDEN = new HashSet<HISTORIALORDEN>();
+            DETALLEPEDIDO = new HashSet<DetallePedido>();
+            HISTORIALORDEN = new HashSet<HistorialOrden>();
         }
 
         public int ORDENPEDIDOID { get; set; }
@@ -27,13 +27,13 @@ namespace AlmacenYuyitos.Models
         public int PROVEEDOR_PROVEEDORID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLEPEDIDO> DETALLEPEDIDO { get; set; }
+        public virtual ICollection<DetallePedido> DETALLEPEDIDO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HISTORIALORDEN> HISTORIALORDEN { get; set; }
+        public virtual ICollection<HistorialOrden> HISTORIALORDEN { get; set; }
 
-        public virtual ORDENESTADO ORDENESTADO { get; set; }
+        public virtual OrdenEstado ORDENESTADO { get; set; }
 
-        public virtual PROVEEDOR PROVEEDOR { get; set; }
+        public virtual Proveedor PROVEEDOR { get; set; }
     }
 }

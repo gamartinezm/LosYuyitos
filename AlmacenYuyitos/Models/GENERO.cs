@@ -7,12 +7,12 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.GENERO")]
-    public partial class GENERO
+    public partial class Genero
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GENERO()
+        public Genero()
         {
-            PERSONA = new HashSet<PERSONA>();
+            PERSONA = new HashSet<Persona>();
         }
 
         public int GENEROID { get; set; }
@@ -22,6 +22,6 @@ namespace AlmacenYuyitos.Models
         public string NOMBRE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PERSONA> PERSONA { get; set; }
+        public virtual ICollection<Persona> PERSONA { get; set; }
     }
 }

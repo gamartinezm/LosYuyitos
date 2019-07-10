@@ -7,19 +7,21 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.COMPROBANTE")]
-    public partial class COMPROBANTE
+    public partial class Comprobante
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public COMPROBANTE()
+        public Comprobante()
         {
-            HISTORIALCOMPRA = new HashSet<HISTORIALCOMPRA>();
-            VENTADETALLE = new HashSet<VENTADETALLE>();
+            HISTORIALCOMPRA = new HashSet<HistorialCompra>();
+            VENTADETALLE = new HashSet<VentaDetalle>();
         }
 
         public int COMPROBANTEID { get; set; }
 
         public int TIPOPAGOID { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime FECHAEMISION { get; set; }
 
         public int ESTADOID { get; set; }
@@ -30,16 +32,16 @@ namespace AlmacenYuyitos.Models
 
         public int? MONTOCANCELADO { get; set; }
 
-        public virtual PAGOESTADO PAGOESTADO { get; set; }
+        public virtual PagoEstado PAGOESTADO { get; set; }
 
-        public virtual TIPOPAGO TIPOPAGO { get; set; }
+        public virtual TipoPago TIPOPAGO { get; set; }
 
-        public virtual USUARIO USUARIO { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HISTORIALCOMPRA> HISTORIALCOMPRA { get; set; }
+        public virtual Usuario USUARIO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VENTADETALLE> VENTADETALLE { get; set; }
+        public virtual ICollection<HistorialCompra> HISTORIALCOMPRA { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VentaDetalle> VENTADETALLE { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.TIPOPRODUCTO")]
-    public partial class TIPOPRODUCTO
+    public partial class TipoProducto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TIPOPRODUCTO()
+        public TipoProducto()
         {
-            DETALLEPEDIDO = new HashSet<DETALLEPEDIDO>();
-            PRODUCTO = new HashSet<PRODUCTO>();
+            DETALLEPEDIDO = new HashSet<DetallePedido>();
+            PRODUCTO = new HashSet<Producto>();
         }
 
         public int TIPOPRODUCTOID { get; set; }
@@ -25,9 +25,9 @@ namespace AlmacenYuyitos.Models
         public string UNIDADMEDIDA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLEPEDIDO> DETALLEPEDIDO { get; set; }
+        public virtual ICollection<DetallePedido> DETALLEPEDIDO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCTO> PRODUCTO { get; set; }
+        public virtual ICollection<Producto> PRODUCTO { get; set; }
     }
 }

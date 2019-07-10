@@ -7,12 +7,12 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.RUBRO")]
-    public partial class RUBRO
+    public partial class Rubro
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RUBRO()
+        public Rubro()
         {
-            PROVEEDOR = new HashSet<PROVEEDOR>();
+            PROVEEDOR = new HashSet<Proveedor>();
         }
 
         public int RUBROID { get; set; }
@@ -25,6 +25,6 @@ namespace AlmacenYuyitos.Models
         public string DESCRIPCION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PROVEEDOR> PROVEEDOR { get; set; }
+        public virtual ICollection<Proveedor> PROVEEDOR { get; set; }
     }
 }

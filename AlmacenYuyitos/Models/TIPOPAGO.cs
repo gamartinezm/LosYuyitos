@@ -7,12 +7,12 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.TIPOPAGO")]
-    public partial class TIPOPAGO
+    public partial class TipoPago
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TIPOPAGO()
+        public TipoPago()
         {
-            COMPROBANTE = new HashSet<COMPROBANTE>();
+            COMPROBANTE = new HashSet<Comprobante>();
         }
 
         public int TIPOPAGOID { get; set; }
@@ -25,6 +25,6 @@ namespace AlmacenYuyitos.Models
         public string DESCRIPCION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
+        public virtual ICollection<Comprobante> COMPROBANTE { get; set; }
     }
 }

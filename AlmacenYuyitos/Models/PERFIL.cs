@@ -7,12 +7,12 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.PERFIL")]
-    public partial class PERFIL
+    public partial class Perfil
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PERFIL()
+        public Perfil()
         {
-            USUARIO = new HashSet<USUARIO>();
+            USUARIO = new HashSet<Usuario>();
         }
 
         public int PERFILID { get; set; }
@@ -25,6 +25,6 @@ namespace AlmacenYuyitos.Models
         public string DESCRIPCION { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual ICollection<Usuario> USUARIO { get; set; }
     }
 }

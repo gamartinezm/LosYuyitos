@@ -7,7 +7,7 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.DETALLEPEDIDO")]
-    public partial class DETALLEPEDIDO
+    public partial class DetallePedido
     {
         public int? CANTIDAD { get; set; }
 
@@ -25,10 +25,10 @@ namespace AlmacenYuyitos.Models
 
         public int? PRECIOCOMPRA { get; set; }
 
-        public virtual ORDENPEDIDO ORDENPEDIDO { get; set; }
+        public virtual OrdenPedido ORDENPEDIDO { get; set; }
 
-        public virtual TIPOPRODUCTO TIPOPRODUCTO { get; set; }
+        public virtual TipoProducto TIPOPRODUCTO { get; set; }
 
-        public virtual FAMILIAPRODUCTO FAMILIAPRODUCTO { get; set; }
+        public virtual FamiliaProducto FAMILIAPRODUCTO { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: Persona
         public ActionResult Index()
         {
-            var pERSONA = db.PERSONA.Include(p => p.COMUNA).Include(p => p.GENERO1);
+            var pERSONA = db.Persona.Include(p => p.COMUNA).Include(p => p.GENERO1);
             return View(pERSONA.ToList());
         }
 
@@ -32,7 +32,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PERSONA pERSONA = db.PERSONA.Find(id);
+            Persona pERSONA = db.Persona.Find(id);
             if (pERSONA == null)
             {
                 return HttpNotFound();
@@ -43,7 +43,7 @@ namespace AlmacenYuyitos.Controllers
         [HttpPost]
         public ActionResult GetHistorial(int ordenId)
         {
-            var vENTADETALLE = db.VENTADETALLE.Include(v => v.CLIENTE).Include(v => v.PRODUCTO).Where(v => v.CLIENTE.PERSONAID == ordenId);
+            var vENTADETALLE = db.VentaDetalle.Include(v => v.CLIENTE).Include(v => v.PRODUCTO).Where(v => v.CLIENTE.PERSONAID == ordenId);
             return View(vENTADETALLE.ToList());
 
             //ViewBag.FAMILIAPRODUCTOID = new SelectList(db.FAMILIAPRODUCTO, "FAMILIAPRODUCTOID", "DESCRIPCION");
@@ -64,9 +64,9 @@ namespace AlmacenYuyitos.Controllers
         // GET: Persona/Create
         public ActionResult Create()
         {
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE");
-            ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE");
-            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE");
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE");
+            ViewBag.GENERO = new SelectList(db.Genero, "GENEROID", "NOMBRE");
+            ViewBag.REGIONID = new SelectList(db.Region, "REGIONID", "NOMBRE");
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
             var listRegiones = RegionComunaViewModel.GetRegiones();
@@ -81,18 +81,18 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PERSONA pERSONA, [Bind(Include = "PERSONAID")] Cliente cLIENTE)
+        public ActionResult Create([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] Persona pERSONA, [Bind(Include = "PERSONAID")] Cliente cLIENTE)
         {
             if (ModelState.IsValid)
             {
-                db.PERSONA.Add(pERSONA);
+                db.Persona.Add(pERSONA);
                 db.Cliente.Add(cLIENTE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
-            ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
+            ViewBag.GENERO = new SelectList(db.Genero, "GENEROID", "NOMBRE", pERSONA.GENERO);
             //ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
@@ -116,14 +116,14 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PERSONA pERSONA = db.PERSONA.Find(id);
+            Persona pERSONA = db.Persona.Find(id);
             if (pERSONA == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
-            ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
-            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
+            ViewBag.GENERO = new SelectList(db.Genero, "GENEROID", "NOMBRE", pERSONA.GENERO);
+            ViewBag.REGIONID = new SelectList(db.Region, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
             var listRegiones = RegionComunaViewModel.GetRegiones();
@@ -137,19 +137,19 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PERSONA pERSONA)
+        public ActionResult Edit([Bind(Include = "PERSONAID,RUT,NOMBRE,APPATERNO,APMATERNO,FECHANACIMIENTO,TELEFONO,GENERO,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] Persona pERSONA)
         {
             if (ModelState.IsValid)
             {
-                var persona = db.PERSONA.FirstOrDefault(x => x.PERSONAID == pERSONA.PERSONAID);
+                var persona = db.Persona.FirstOrDefault(x => x.PERSONAID == pERSONA.PERSONAID);
                 persona.PERSONAID = pERSONA.PERSONAID;
 
                 //db.Entry(pERSONA).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
-            ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
+            ViewBag.GENERO = new SelectList(db.Genero, "GENEROID", "NOMBRE", pERSONA.GENERO);
             //ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pERSONA.COMUNAID);
             //ViewBag.GENERO = new SelectList(db.GENERO, "GENEROID", "NOMBRE", pERSONA.GENERO);
             //ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pERSONA.COMUNA.REGIONID);
@@ -168,7 +168,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PERSONA pERSONA = db.PERSONA.Find(id);
+            Persona pERSONA = db.Persona.Find(id);
             if (pERSONA == null)
             {
                 return HttpNotFound();
@@ -181,8 +181,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PERSONA pERSONA = db.PERSONA.Find(id);
-            db.PERSONA.Remove(pERSONA);
+            Persona pERSONA = db.Persona.Find(id);
+            db.Persona.Remove(pERSONA);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -198,7 +198,7 @@ namespace AlmacenYuyitos.Controllers
 
         public void ExportExcel()
         {
-            var pERSONA = db.PERSONA.Include(p => p.COMUNA).Include(p => p.GENERO1);
+            var pERSONA = db.Persona.Include(p => p.COMUNA).Include(p => p.GENERO1);
 
             ExcelPackage pck = new ExcelPackage();
             ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Report");

@@ -7,12 +7,12 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.USUARIO")]
-    public partial class USUARIO
+    public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USUARIO()
+        public Usuario()
         {
-            COMPROBANTE = new HashSet<COMPROBANTE>();
+            COMPROBANTE = new HashSet<Comprobante>();
         }
 
         public int USUARIOID { get; set; }
@@ -33,10 +33,10 @@ namespace AlmacenYuyitos.Models
         public string EMAIL { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
+        public virtual ICollection<Comprobante> COMPROBANTE { get; set; }
 
-        public virtual PERFIL PERFIL { get; set; }
+        public virtual Perfil PERFIL { get; set; }
 
-        public virtual PERSONA PERSONA { get; set; }
+        public virtual Persona PERSONA { get; set; }
     }
 }

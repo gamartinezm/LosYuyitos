@@ -18,7 +18,7 @@ namespace AlmacenYuyitos.Controllers
         // GET: Proveedor
         public ActionResult Index()
         {
-            var pROVEEDOR = db.PROVEEDOR.Include(p => p.COMUNA).Include(p => p.RUBRO);
+            var pROVEEDOR = db.Proveedor.Include(p => p.COMUNA).Include(p => p.RUBRO);
             return View(pROVEEDOR.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PROVEEDOR pROVEEDOR = db.PROVEEDOR.Find(id);
+            Proveedor pROVEEDOR = db.Proveedor.Find(id);
             if (pROVEEDOR == null)
             {
                 return HttpNotFound();
@@ -40,10 +40,10 @@ namespace AlmacenYuyitos.Controllers
         // GET: Proveedor/Create
         public ActionResult Create()
         {
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE");
-            ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE");
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE");
+            ViewBag.RUBROID = new SelectList(db.Rubro, "RUBROID", "NOMBRE");
 
-            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE");
+            ViewBag.REGIONID = new SelectList(db.Region, "REGIONID", "NOMBRE");
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
             var listRegiones = RegionComunaViewModel.GetRegiones();
@@ -57,17 +57,17 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PROVEEDOR pROVEEDOR)
+        public ActionResult Create([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] Proveedor pROVEEDOR)
         {
             if (ModelState.IsValid)
             {
-                db.PROVEEDOR.Add(pROVEEDOR);
+                db.Proveedor.Add(pROVEEDOR);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
-            ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
+            ViewBag.RUBROID = new SelectList(db.Rubro, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
             var listRegiones = RegionComunaViewModel.GetRegiones();
@@ -90,14 +90,14 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PROVEEDOR pROVEEDOR = db.PROVEEDOR.Find(id);
+            Proveedor pROVEEDOR = db.Proveedor.Find(id);
             if (pROVEEDOR == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
-            ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
-            ViewBag.REGIONID = new SelectList(db.REGION, "REGIONID", "NOMBRE", pROVEEDOR.COMUNA.REGIONID);
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
+            ViewBag.RUBROID = new SelectList(db.Rubro, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
+            ViewBag.REGIONID = new SelectList(db.Region, "REGIONID", "NOMBRE", pROVEEDOR.COMUNA.REGIONID);
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
             var listRegiones = RegionComunaViewModel.GetRegiones();
@@ -111,7 +111,7 @@ namespace AlmacenYuyitos.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] PROVEEDOR pROVEEDOR)
+        public ActionResult Edit([Bind(Include = "PROVEEDORID,RUT,RAZONSOCIAL,TELEFONO,MAIL,CONTACTO,RUBROID,CALLE,NUMERO,COMUNAID,COMPLEMENTO")] Proveedor pROVEEDOR)
         {
             if (ModelState.IsValid)
             {
@@ -119,8 +119,8 @@ namespace AlmacenYuyitos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.COMUNAID = new SelectList(db.COMUNA, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
-            ViewBag.RUBROID = new SelectList(db.RUBRO, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
+            ViewBag.COMUNAID = new SelectList(db.Comuna, "COMUNAID", "NOMBRE", pROVEEDOR.COMUNAID);
+            ViewBag.RUBROID = new SelectList(db.Rubro, "RUBROID", "NOMBRE", pROVEEDOR.RUBROID);
 
             RegionComunaViewModel RegionComunaViewModel = new RegionComunaViewModel();
             var listRegiones = RegionComunaViewModel.GetRegiones();
@@ -136,7 +136,7 @@ namespace AlmacenYuyitos.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PROVEEDOR pROVEEDOR = db.PROVEEDOR.Find(id);
+            Proveedor pROVEEDOR = db.Proveedor.Find(id);
             if (pROVEEDOR == null)
             {
                 return HttpNotFound();
@@ -149,8 +149,8 @@ namespace AlmacenYuyitos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PROVEEDOR pROVEEDOR = db.PROVEEDOR.Find(id);
-            db.PROVEEDOR.Remove(pROVEEDOR);
+            Proveedor pROVEEDOR = db.Proveedor.Find(id);
+            db.Proveedor.Remove(pROVEEDOR);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

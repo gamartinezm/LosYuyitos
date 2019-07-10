@@ -9,13 +9,13 @@ namespace AlmacenYuyitos.Models
     using System.Linq;
 
     [Table("YUYITOS.PERSONA")]
-    public partial class PERSONA
+    public partial class Persona
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PERSONA()
+        public Persona()
         {
             CLIENTE = new HashSet<Cliente>();
-            USUARIO = new HashSet<USUARIO>();
+            USUARIO = new HashSet<Usuario>();
         }
 
         public int PERSONAID { get; set; }
@@ -69,11 +69,11 @@ namespace AlmacenYuyitos.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cliente> CLIENTE { get; set; }
 
-        public virtual COMUNA COMUNA { get; set; }
+        public virtual Comuna COMUNA { get; set; }
 
-        public virtual GENERO GENERO1 { get; set; }
+        public virtual Genero GENERO1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USUARIO> USUARIO { get; set; }
+        public virtual ICollection<Usuario> USUARIO { get; set; }
     }
 }

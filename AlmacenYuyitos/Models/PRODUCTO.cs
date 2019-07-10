@@ -7,12 +7,12 @@ namespace AlmacenYuyitos.Models
     using System.Data.Entity.Spatial;
 
     [Table("YUYITOS.PRODUCTO")]
-    public partial class PRODUCTO
+    public partial class Producto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCTO()
+        public Producto()
         {
-            VENTADETALLE = new HashSet<VENTADETALLE>();
+            VENTADETALLE = new HashSet<VentaDetalle>();
         }
 
         public Int64 PRODUCTOID { get; set; }
@@ -33,13 +33,13 @@ namespace AlmacenYuyitos.Models
 
         public int FAMILIAPRODUCTOID { get; set; }
 
-        public virtual FAMILIAPRODUCTO FAMILIAPRODUCTO { get; set; }
+        public virtual FamiliaProducto FAMILIAPRODUCTO { get; set; }
 
-        public virtual PROVEEDOR PROVEEDOR { get; set; }
+        public virtual Proveedor PROVEEDOR { get; set; }
 
-        public virtual TIPOPRODUCTO TIPOPRODUCTO { get; set; }
+        public virtual TipoProducto TIPOPRODUCTO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VENTADETALLE> VENTADETALLE { get; set; }
+        public virtual ICollection<VentaDetalle> VENTADETALLE { get; set; }
     }
 }
